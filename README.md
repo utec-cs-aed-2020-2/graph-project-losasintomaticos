@@ -3,9 +3,8 @@
 --------
 
 ## Integrantes
-- 
-- 
-- 
+- José Vásquez Ayala
+- Luciano Zagastizabal Granadino
 
 ----
 
