@@ -59,7 +59,30 @@ public:
     virtual bool createEdge(string id1, string id2, TE w) = 0;     
     bool deleteVertex(string id)
     {
-        
+        if(findById(id))
+        {
+            for(auto itr:vertexes)
+            {
+                list<Edge<TV, TE>*> edge_temp= itr.second->edges;
+                //auto itri = edge_temp.begin(); 
+                //cout<<itri->vertexes[1];
+               // while (  itri != edge_temp.end() )
+               // {
+               //     if ((*itri)->vertexes[1] == returnbyid(id))
+               //     {
+                //        delete (*itri++);
+                //    }
+
+                //    else
+                //    {
+                //        ++itri;
+                //    }
+                //}
+            }
+             vertexes.erase(id);
+        }
+        else
+            return false;
     }     
     virtual bool deleteEdge(string start, string end) = 0;   
     //virtual TE &operator()(string start, string end)= 0;  
