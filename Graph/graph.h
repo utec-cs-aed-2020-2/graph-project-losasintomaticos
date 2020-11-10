@@ -35,7 +35,14 @@ template<typename TV, typename TE>
 struct Vertex {
     TV data;
     std::list<Edge<TV, TE>*> edges;
-    Vertex(TV data):data(data){};
+    Vertex(TV data):data(data)
+    {
+        for(auto p:edges)
+        {
+            p->vertexes[0]=nullptr;
+            p->vertexes[1]=nullptr;
+        }
+    }
 };
 
 template<typename TV, typename TE>
@@ -54,7 +61,7 @@ public:
     {
         
     }     
-    //virtual bool deleteEdge(string id) = 0;   
+    virtual bool deleteEdge(string start, string end) = 0;   
     //virtual TE &operator()(string start, string end)= 0;  
     virtual float density() = 0;
     virtual bool isDense(float threshold = 0.5) = 0;
@@ -72,6 +79,7 @@ public:
                 if(!visited[itr->vertexes[1]->data])
                 {
                     visited[itr->vertexes[1]->data]=true;
+                    visited[itr->vertexes[0]->data]=true;
                 }
             }
         }
@@ -83,7 +91,7 @@ public:
         }
         return true;
     }
-    bool isStronglyConnected() throw();
+    virtual bool isStronglyConnected() throw()=0;
     bool empty()
     {
         return (vertexes.empty()? 1:0);

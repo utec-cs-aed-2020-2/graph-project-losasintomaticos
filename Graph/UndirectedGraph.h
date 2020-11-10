@@ -76,5 +76,15 @@ class UnDirectedGraph : public Graph<TV, TE>{
                 cout<<'\n';
             }
         }
+
+        bool isStronglyConnected() throw()
+        {
+            throw 0;
+        }
+
+        bool deleteEdge(string start, string end)
+        {
+
+        }
 };
 #endif
