@@ -82,9 +82,68 @@ class UnDirectedGraph : public Graph<TV, TE>{
             throw 0;
         }
 
+        TV returnDatabyid(string id)
+        {
+            for(auto p:this->vertexes)
+            {
+                if(p.first==id)
+                    return p.second->data;
+            }
+        }
+
         bool deleteEdge(string start, string end)
         {
+            if(this->findById(start) && this->findById(end))
+            {
+                for(auto p:this->vertexes)
+                {
+                    typename list<Edge<TV, TE>*>::iterator itri = p.second->edges.begin(); 
+                    while (  itri != p.second->edges.end())
+                    {
+                        if(((*itri)->vertexes[0]->data == returnDatabyid(start) && 
+                        (*itri)->vertexes[1]->data == returnDatabyid(end)) || 
+                        ((*itri)->vertexes[0]->data == returnDatabyid(end) &&
+                        (*itri)->vertexes[1]->data == returnDatabyid(start)))
+                        {
+                            p.second->edges.erase(itri++);
+                        }
 
+                        else
+                        {
+                            ++itri;
+                        }
+                    }
+                }
+            }
+            else
+                return false;
+        }
+
+        bool deleteVertex(string id)
+        {   
+            if(this->findById(id))
+            {
+                for(auto itr:this->vertexes)
+                {
+                    typename list<Edge<TV, TE>*>::iterator itri = itr.second->edges.begin(); 
+                    while (  itri != itr.second->edges.end())
+                    {
+                        if ((*itri)->vertexes[1]->data == returnDatabyid(id))
+                        {
+                            itr.second->edges.erase(itri++);
+                        }
+
+                        else
+                        {
+                            ++itri;
+                        }
+                    }
+                }
+
+                this->vertexes.erase(id);
+            }
+            else
+                return false;
         }
 };
 #endif

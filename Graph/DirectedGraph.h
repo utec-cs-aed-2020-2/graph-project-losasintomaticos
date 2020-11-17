@@ -50,8 +50,6 @@ class DirectedGraph : public Graph<TV, TE>{
             Vertex<TV,TE>* vertice = p.second;
             cout<<vertice->data<<": ";
             list<Edge<TV, TE>*> edge_temp = vertice->edges;
-            if(edge_temp.empty())
-                return;
             for(auto itr:edge_temp)
             {
                 cout<<itr->vertexes[1]->data<<'('<<itr->weight<<')'<<", ";
@@ -106,32 +104,66 @@ class DirectedGraph : public Graph<TV, TE>{
 
     bool deleteEdge(string start, string end)
     {
-        list<Edge<TV, TE>*> edge_temp = this->vertexes[start]->edges;
-
-        auto itri = edge_temp.begin(); 
-        while (  itri != edge_temp.end() )
+        if(this->findById(start) && this->findById(end))
         {
-            if ((*itri)->vertexes[1]==this->vertexes[end])
+            for(auto p:this->vertexes)
             {
-                delete *itri;
-                break;
-            }
+                typename list<Edge<TV, TE>*>::iterator itri = p.second->edges.begin(); 
+                while (  itri != p.second->edges.end())
+                {
+                    if((*itri)->vertexes[0]->data == returnDatabyid(start) && 
+                    (*itri)->vertexes[1]->data == returnDatabyid(end))
+                    {
+                        p.second->edges.erase(itri++);
+                        return 1;
+                    }
 
-            else
-            {
-                ++itri;
+                    else
+                    {
+                        ++itri;
+                    }
+                }
             }
         }
+        else
+            return false;
 
-        //for(auto p:edge_temp)
-       // {
-         //   if(p->vertexes[1]==this->vertexes[end])
-           // {
-             //   edge_temp.remove(p);
-               // break;
-         //   }
-       // }
+    }
 
+    TV returnDatabyid(string id)
+    {
+        for(auto p:this->vertexes)
+        {
+            if(p.first==id)
+                return p.second->data;
+        }
+    }
+
+    bool deleteVertex(string id)
+    {   
+        if(this->findById(id))
+        {
+            for(auto itr:this->vertexes)
+            {
+                typename list<Edge<TV, TE>*>::iterator itri = itr.second->edges.begin(); 
+                while (  itri != itr.second->edges.end())
+                {
+                    if ((*itri)->vertexes[1]->data == returnDatabyid(id))
+                    {
+                        itr.second->edges.erase(itri++);
+                    }
+
+                    else
+                    {
+                        ++itri;
+                    }
+                }
+            }
+
+            this->vertexes.erase(id);
+        }
+        else
+            return false;
     }
 
 };

@@ -56,38 +56,36 @@ public:
         Vertex<TV,TE>* temp = new Vertex<TV,TE>(vertex);
         vertexes[id] = temp;
     }
-    virtual bool createEdge(string id1, string id2, TE w) = 0;     
-    bool deleteVertex(string id)
-    {
-        if(findById(id))
-        {
-            for(auto itr:vertexes)
-            {
-                list<Edge<TV, TE>*> edge_temp= itr.second->edges;
-                //auto itri = edge_temp.begin(); 
-                //cout<<itri->vertexes[1];
-               // while (  itri != edge_temp.end() )
-               // {
-               //     if ((*itri)->vertexes[1] == returnbyid(id))
-               //     {
-                //        delete (*itri++);
-                //    }
+    bool createEdge(string id1, string id2, TE w);     
+    bool deleteVertex(string id); 
+    bool deleteEdge(string start, string end);   
 
-                //    else
-                //    {
-                //        ++itri;
-                //    }
-                //}
-            }
-             vertexes.erase(id);
+    TE &operator()(string start, string end)
+    {
+        TV data_end;
+        for(auto p:this->vertexes)
+        {
+            if(p.first==end)
+                data_end = p.second->data;
         }
-        else
-            return false;
-    }     
-    virtual bool deleteEdge(string start, string end) = 0;   
-    //virtual TE &operator()(string start, string end)= 0;  
-    virtual float density() = 0;
-    virtual bool isDense(float threshold = 0.5) = 0;
+
+        for(auto p:this->vertexes)
+        {
+            if(p.first==start)
+            {
+                list<Edge<TV, TE>*> edge_temp = p.second->edges;
+                for(auto itr:edge_temp)
+                {
+                    if(itr->vertexes[1]->data==data_end)
+                        return itr->weight;
+                }
+                throw ("No existe esa arista");
+            }
+        }
+    }
+    
+    float density();
+    bool isDense(float threshold = 0.5);
     bool isConnected()
     {
         unordered_map<string,int> visited;
@@ -114,7 +112,7 @@ public:
         }
         return true;
     }
-    virtual bool isStronglyConnected() throw()=0;
+    bool isStronglyConnected() throw();
     bool empty()
     {
         return (vertexes.empty()? 1:0);
@@ -138,7 +136,7 @@ public:
         }
         return false;
     }
-    virtual void display() = 0;
+    void display();
 };
 
 #endif
