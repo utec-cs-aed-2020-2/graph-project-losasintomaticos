@@ -265,7 +265,7 @@ rapidjson/istreamwrapper.h
 /cygdrive/c/Users/lucia/Documents/GitHub/graph-project-losasintomaticos/main.cpp
 iostream
 -
-string.h
+cstring
 -
 Graph/parser.h
 /cygdrive/c/Users/lucia/Documents/GitHub/graph-project-losasintomaticos/Graph/parser.h

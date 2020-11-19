@@ -21,7 +21,7 @@ void clear(){
 } //Clears parser saved values
 
 void readJSON(){
-    ifstream peru_parse {R"(pe.json)"};
+    ifstream peru_parse {R"(Parser\Data\pe.json)"};
     if (!peru_parse.is_open()){
         cerr << "No se puede leer el archivo seleccionado";
         return;
