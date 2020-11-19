@@ -1,0 +1,36 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/cygdrive/c/Users/lucia/Documents/GitHub/graph-project-losasintomaticos/Graph/Directedgraph.h
+graph.h
+/cygdrive/c/Users/lucia/Documents/GitHub/graph-project-losasintomaticos/Graph/graph.h
+
+/cygdrive/c/Users/lucia/Documents/GitHub/graph-project-losasintomaticos/Graph/Undirectedgraph.h
+graph.h
+/cygdrive/c/Users/lucia/Documents/GitHub/graph-project-losasintomaticos/Graph/graph.h
+
+/cygdrive/c/Users/lucia/Documents/GitHub/graph-project-losasintomaticos/Graph/graph.h
+list
+-
+vector
+-
+unordered_map
+-
+string.h
+-
+
+/cygdrive/c/Users/lucia/Documents/GitHub/graph-project-losasintomaticos/main.cpp
+iostream
+-
+string.h
+-
+Graph/Undirectedgraph.h
+/cygdrive/c/Users/lucia/Documents/GitHub/graph-project-losasintomaticos/Graph/Undirectedgraph.h
+Graph/Directedgraph.h
+/cygdrive/c/Users/lucia/Documents/GitHub/graph-project-losasintomaticos/Graph/Directedgraph.h
+

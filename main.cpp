@@ -2,9 +2,9 @@
 #include <string.h>
 
 //#include "Tester/tester.h"
-//#include "Parser/parser.h"
-#include "Graph/Undirectedgraph.h"
-#include "Graph/Directedgraph.h"
+#include "parser.h"
+#include "UndirectedGraph.h"
+#include "DirectedGraph.h"
 
 using namespace std;
 
@@ -79,6 +79,7 @@ void testDirectedGraph()
     cout<<"9. Eliminar el grafo"<<endl;
     cin>>opcion;
     std::cout << "================================================" << std::endl;
+
     switch (opcion)
     {
     case '1':
