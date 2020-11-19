@@ -2,9 +2,9 @@
 #include <string.h>
 
 //#include "Tester/tester.h"
-#include "parser.h"
-#include "UndirectedGraph.h"
-#include "DirectedGraph.h"
+#include "Graph/parser.h"
+#include "Graph/UndirectedGraph.h"
+#include "Graph/DirectedGraph.h"
 
 using namespace std;
 

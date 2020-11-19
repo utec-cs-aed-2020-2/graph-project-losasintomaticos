@@ -6,5 +6,5 @@ CXX_FLAGS = -g   -std=gnu++14
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/cygdrive/c/Users/lucia/Documents/GitHub/graph-project-losasintomaticos/./Graph -I/cygdrive/c/Users/lucia/Documents/GitHub/graph-project-losasintomaticos/./include -I/cygdrive/c/Users/lucia/Documents/GitHub/graph-project-losasintomaticos/./Parser 
+CXX_INCLUDES = -I/cygdrive/c/Users/lucia/Documents/GitHub/graph-project-losasintomaticos/./include 
 

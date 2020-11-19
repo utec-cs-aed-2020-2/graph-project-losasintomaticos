@@ -5,11 +5,11 @@
 #include <list>
 #include <vector>
 #include <fstream>
+#include "UndirectedGraph.h"
+#include "DirectedGraph.h"
 #include "rapidjson/document.h"
 #include "rapidjson/writer.h"
 #include "rapidjson/stringbuffer.h"
-#include "UndirectedGraph.h"
-#include "DirectedGraph.h"
 
 using namespace std;
 using namespace rapidjson;
