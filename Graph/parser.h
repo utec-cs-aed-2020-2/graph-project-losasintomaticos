@@ -17,7 +17,7 @@ using namespace rapidjson;
 //Metodos a implementar
 
 void clear(){
-
+    
 } //Clears parser saved values
 
 void readJSON(){
