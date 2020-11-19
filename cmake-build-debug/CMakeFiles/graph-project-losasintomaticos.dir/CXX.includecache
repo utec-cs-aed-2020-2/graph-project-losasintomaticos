@@ -68,19 +68,7 @@ limits
 intrin.h
 -
 
-../include/rapidjson/internal/dtoa.h
-itoa.h
-../include/rapidjson/internal/itoa.h
-diyfp.h
-../include/rapidjson/internal/diyfp.h
-ieee754.h
 ../include/rapidjson/internal/ieee754.h
-
-../include/rapidjson/internal/ieee754.h
-../rapidjson.h
-../include/rapidjson/rapidjson.h
-
-../include/rapidjson/internal/itoa.h
 ../rapidjson.h
 ../include/rapidjson/rapidjson.h
 
@@ -126,6 +114,14 @@ limits
 ../rapidjson.h
 ../include/rapidjson/rapidjson.h
 
+../include/rapidjson/istreamwrapper.h
+stream.h
+../include/rapidjson/stream.h
+iosfwd
+-
+ios
+-
+
 ../include/rapidjson/memorystream.h
 stream.h
 ../include/rapidjson/stream.h
@@ -142,6 +138,12 @@ stdint.h
 limits.h
 -
 wchar.h
+-
+
+../include/rapidjson/ostreamwrapper.h
+stream.h
+../include/rapidjson/stream.h
+iosfwd
 -
 
 ../include/rapidjson/rapidjson.h
@@ -220,34 +222,6 @@ utility
 internal/stack.h
 ../include/rapidjson/internal/stack.h
 
-../include/rapidjson/writer.h
-stream.h
-../include/rapidjson/stream.h
-internal/clzll.h
-../include/rapidjson/internal/clzll.h
-internal/meta.h
-../include/rapidjson/internal/meta.h
-internal/stack.h
-../include/rapidjson/internal/stack.h
-internal/strfunc.h
-../include/rapidjson/internal/strfunc.h
-internal/dtoa.h
-../include/rapidjson/internal/dtoa.h
-internal/itoa.h
-../include/rapidjson/internal/itoa.h
-stringbuffer.h
-../include/rapidjson/stringbuffer.h
-new
--
-intrin.h
--
-nmmintrin.h
--
-emmintrin.h
--
-arm_neon.h
--
-
 /cygdrive/c/Users/lucia/Documents/GitHub/graph-project-losasintomaticos/Graph/DirectedGraph.h
 graph.h
 /cygdrive/c/Users/lucia/Documents/GitHub/graph-project-losasintomaticos/Graph/graph.h
@@ -281,10 +255,12 @@ DirectedGraph.h
 /cygdrive/c/Users/lucia/Documents/GitHub/graph-project-losasintomaticos/Graph/DirectedGraph.h
 rapidjson/document.h
 /cygdrive/c/Users/lucia/Documents/GitHub/graph-project-losasintomaticos/Graph/rapidjson/document.h
-rapidjson/writer.h
-/cygdrive/c/Users/lucia/Documents/GitHub/graph-project-losasintomaticos/Graph/rapidjson/writer.h
+rapidjson/ostreamwrapper.h
+/cygdrive/c/Users/lucia/Documents/GitHub/graph-project-losasintomaticos/Graph/rapidjson/ostreamwrapper.h
 rapidjson/stringbuffer.h
 /cygdrive/c/Users/lucia/Documents/GitHub/graph-project-losasintomaticos/Graph/rapidjson/stringbuffer.h
+rapidjson/istreamwrapper.h
+/cygdrive/c/Users/lucia/Documents/GitHub/graph-project-losasintomaticos/Graph/rapidjson/istreamwrapper.h
 
 /cygdrive/c/Users/lucia/Documents/GitHub/graph-project-losasintomaticos/main.cpp
 iostream
