@@ -56,9 +56,12 @@ public:
         Vertex<TV,TE>* temp = new Vertex<TV,TE>(vertex);
         vertexes[id] = temp;
     }
-    bool createEdge(string id1, string id2, TE w);     
-    bool deleteVertex(string id); 
-    bool deleteEdge(string start, string end);   
+
+    bool createEdge(string id1, string id2, TE w);
+
+    bool deleteVertex(string id);
+
+    bool deleteEdge(string start, string end);
 
     TE &operator()(string start, string end)
     {
@@ -83,8 +86,9 @@ public:
             }
         }
     }
-    
+
     float density();
+
     bool isDense(float threshold = 0.5);
     bool isConnected()
     {
@@ -112,6 +116,7 @@ public:
         }
         return true;
     }
+
     bool isStronglyConnected() throw();
     bool empty()
     {
@@ -136,6 +141,7 @@ public:
         }
         return false;
     }
+
     void display();
 };
 

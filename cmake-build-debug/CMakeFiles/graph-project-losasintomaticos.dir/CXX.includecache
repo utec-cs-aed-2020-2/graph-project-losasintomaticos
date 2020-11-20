@@ -243,12 +243,16 @@ string.h
 /cygdrive/c/Users/lucia/Documents/GitHub/graph-project-losasintomaticos/Graph/parser.h
 iostream
 -
+cmath
+-
 list
 -
 vector
 -
 fstream
 -
+graph.h
+/cygdrive/c/Users/lucia/Documents/GitHub/graph-project-losasintomaticos/Graph/graph.h
 UndirectedGraph.h
 /cygdrive/c/Users/lucia/Documents/GitHub/graph-project-losasintomaticos/Graph/UndirectedGraph.h
 DirectedGraph.h

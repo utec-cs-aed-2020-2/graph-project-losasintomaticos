@@ -1,6 +1,5 @@
 #include <iostream>
 #include <cstring>
-
 //#include "Tester/tester.h"
 #include "Graph/parser.h"
 #include "Graph/UndirectedGraph.h"
@@ -11,6 +10,8 @@ using namespace std;
 void testDirectedGraph();
 void testUnDirectedGraph();
 
+void testAirportParser();
+
 int main(int argc, char *argv[]) {
     uint8_t option_graph;
     std::cout << "================================================" << std::endl;
@@ -19,17 +20,24 @@ int main(int argc, char *argv[]) {
     cout<<"Escoja una opcion"<<endl;
     cout<<"1. Grafo Dirigido"<<endl;
     cout<<"2. Grafo No Dirigido"<<endl;
+    cout<<"3. Grafo a base de documento JSON"<<endl;
     //Falta poner aca el execute examples y el executeparser
     cin>>option_graph;
     std::cout << "================================================" << std::endl;
-    if(option_graph)
+    if(option_graph == 1)
         testDirectedGraph();
-    else
+    else if (option_graph == 2)
         testUnDirectedGraph();
+    else if (option_graph == 3)
+        testAirportParser();
 
     //Tester::executeExamples();
     //Tester::executeParser();    
     return EXIT_SUCCESS;
+}
+
+void testAirportParser() {
+    AirportParser<string, float> graph_parse;
 }
 
 void testDirectedGraph()
