@@ -24,8 +24,11 @@ public:
     AirportParser(): Graph<TV, TE>(){}
     ~AirportParser()= default;
 
+    string Ciudad, Nombre;
+    float Longitud, Latitud;
+    int Id, Adyacentes;
     ifstream peru_parse{R"(Parser\Data\pe.json)"};
-    IStreamWrapper isw{peru_parse};
+    IStreamWrapper isw {peru_parse};
     Document peru_doc{};
     StringBuffer buffer{};
 
@@ -45,9 +48,9 @@ public:
         peru_doc.ParseStream(isw);
 
         for (auto itr = peru_doc.Begin(); itr != peru_doc.End(); ++itr) {
-            string Ciudad = (*itr)["City"].GetString(), Nombre = (*itr)["Name"].GetString();
-            float Longitud = stof((*itr)["Longitude"].GetString()), Latitud = stof((*itr)["Latitude"].GetString());
-            int Id = stoi((*itr)["Airport Id"].GetString()), Adyacentes = stoi((*itr)["destinations"].GetString());
+            Ciudad = (*itr)["City"].GetString(), Nombre = (*itr)["Name"].GetString();
+            Longitud = stof((*itr)["Longitude"].GetString()), Latitud = stof((*itr)["Latitude"].GetString());
+            Id = stoi((*itr)["Airport Id"].GetString()), Adyacentes = stoi((*itr)["destinations"].GetString());
         }
 
     };// Parser JSON file and saves data into class
