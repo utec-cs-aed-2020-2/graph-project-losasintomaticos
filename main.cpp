@@ -1,7 +1,7 @@
 #include <iostream>
 #include <cstring>
 //#include "Tester/tester.h"
-#include "Graph/parser.h"
+//#include "Graph/parser.h"
 #include "Graph/UndirectedGraph.h"
 #include "Graph/DirectedGraph.h"
 
@@ -37,7 +37,7 @@ int main(int argc, char *argv[]) {
 }
 
 void testAirportParser() {
-    AirportParser<string, float> graph_parse;
+  //  AirportParser<string, float> graph_parse;
 }
 
 void testDirectedGraph()
@@ -97,10 +97,10 @@ void testDirectedGraph()
     cout<<"8. Verificar si el grafo esta vacio"<<endl;
     cout<<"9. Eliminar el grafo"<<endl;
     cout<<"10. Mostrar el grafo"<<endl;
-    cin>>opcion;
+    cin>>opcion_switch;
     std::cout << "================================================" << std::endl;
 
-    switch (opcion)
+    switch (opcion_switch)
     {
     case 1:
         flag_loop="si";
