@@ -1,7 +1,7 @@
 #include <iostream>
-#include <cstring>
+#include <string.h>
 //#include "Tester/tester.h"
-//#include "Graph/parser.h"
+#include "Graph/parser.h"
 #include "Graph/UndirectedGraph.h"
 #include "Graph/DirectedGraph.h"
 
@@ -9,11 +9,10 @@ using namespace std;
 
 void testDirectedGraph();
 void testUnDirectedGraph();
-
 void testAirportParser();
 
 int main(int argc, char *argv[]) {
-    uint8_t option_graph;
+    int option_graph;
     std::cout << "================================================" << std::endl;
     std::cout << "MENU GRAPH TESTER" << std::endl;
     std::cout << "================================================" << std::endl;
@@ -37,7 +36,8 @@ int main(int argc, char *argv[]) {
 }
 
 void testAirportParser() {
-  //  AirportParser<string, float> graph_parse;
+    AirportParser<string, float> graph_parser;
+    graph_parser.readJSON();
 }
 
 void testDirectedGraph()
