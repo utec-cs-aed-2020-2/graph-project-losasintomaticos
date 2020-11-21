@@ -7,7 +7,7 @@ template<typename TV, typename TE>
 class DirectedGraph : public Graph<TV, TE>{
     public:
     DirectedGraph(): Graph<TV, TE>(){}
-    ~DirectedGraph(){}
+    ~DirectedGraph()= default;
 
     bool createEdge(string id1, string id2, TE w)
     {

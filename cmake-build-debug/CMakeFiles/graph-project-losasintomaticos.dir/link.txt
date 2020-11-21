@@ -1,0 +1,1 @@
+/usr/bin/c++.exe -g  -Wl,--enable-auto-import CMakeFiles/graph-project-losasintomaticos.dir/main.cpp.o  -o graph-project-losasintomaticos.exe -Wl,--out-implib,libgraph-project-losasintomaticos.dll.a -Wl,--major-image-version,0,--minor-image-version,0 
