@@ -24,10 +24,14 @@ public:
     AirportParser(): Graph<TV, TE>(){}
     ~AirportParser()= default;
 
-    string Ciudad, Nombre;
-    float Longitud, Latitud;
-    int Id, Adyacentes;
-    ifstream peru_parse{R"(Parser\Data\pe.json)"};
+    template <typename T>
+    struct Node{
+        list<int> Id;
+        list<string> Nombre;
+        float Longitud{}, Latitud{}, euclid{};
+    };
+
+    ifstream peru_parse{R"(../Parser/Data/pe.json)"};
     IStreamWrapper isw {peru_parse};
     Document peru_doc{};
     StringBuffer buffer{};
@@ -46,13 +50,31 @@ public:
         }
 
         peru_doc.ParseStream(isw);
+        for (auto itr = peru_doc.Begin(); itr != peru_doc.End(); itr++){
+            string temp_nombre = (*itr)["Name"].GetString();
+            Nombre.push_back(temp_nombre);
+            Longitud = stof((*itr)["Longitude"].GetString());
+            int temp_id = stoi((*itr)["Airport ID"].GetString());
+            Id.push_back(temp_id);
+            Latitud = stof((*itr)["Latitude"].GetString());
+            cout << Longitud << endl;
+            cout << Latitud << endl;
+//            Adyacentes = stoi((*itr)["destinations"].GetString());
+//            cout << Adyacentes << endl;
 
-        for (auto itr = peru_doc.Begin(); itr != peru_doc.End(); ++itr) {
-            Ciudad = (*itr)["City"].GetString(), Nombre = (*itr)["Name"].GetString();
-            Longitud = stof((*itr)["Longitude"].GetString()), Latitud = stof((*itr)["Latitude"].GetString());
-            Id = stoi((*itr)["Airport Id"].GetString()), Adyacentes = stoi((*itr)["destinations"].GetString());
+            euclid = sqrt((la2-la1)^2+(lo2-lo1)^2);
+        }
+        for (auto hola = Nombre.begin(); hola != Nombre.end(); hola++){
+            cout << *hola << endl;
         }
 
+        for (auto hola = Id.begin(); hola != Id.end(); hola++){
+            cout << *hola << endl;
+        }
+
+//        for (auto itr = peru_doc.Begin(); itr != peru_doc.End(); ++itr){
+//            cout << Nombre << endl;
+//        }
     };// Parser JSON file and saves data into class
 
     void clear() {

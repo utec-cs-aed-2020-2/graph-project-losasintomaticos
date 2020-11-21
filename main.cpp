@@ -2,7 +2,7 @@
 #include <cstring>
 #include "stdint.h"
 //#include "Tester/tester.h"
-//#include "Graph/parser.h"
+#include "Graph/parser.h"
 #include "Graph/UndirectedGraph.h"
 #include "Graph/DirectedGraph.h"
 
