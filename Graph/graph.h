@@ -17,6 +17,11 @@ struct Vertex;
 template<typename TV, typename TE>
 class Graph;
 
+template<typename TV, typename TE>
+class Prim;
+
+template<typename TV, typename TE>
+class Kruskal;
 //////////////////////////////////////////////////////
 
 template<typename TV, typename TE>
@@ -29,6 +34,7 @@ struct Edge {
         vertexes[0] = id1;
         vertexes[1] = id2;
     }
+    friend class Prim<TV, TE>;
 };
 
 template<typename TV, typename TE>
@@ -43,6 +49,7 @@ struct Vertex {
             p->vertexes[1]=nullptr;
         }
     }
+    friend class Prim<TV, TE>;
 };
 
 template<typename TV, typename TE>
@@ -51,6 +58,10 @@ protected:
     std::unordered_map<string, Vertex<TV, TE>*>  vertexes;
     
 public:
+    
+    
+    
+
     bool insertVertex(string id, TV vertex)
     {
         Vertex<TV,TE>* temp = new Vertex<TV,TE>(vertex);
@@ -143,6 +154,9 @@ public:
     }
 
     void display();
+
+    friend class Prim<TV, TE>;
+    friend class Kruskal<TV, TE>;
 };
 
 #endif
