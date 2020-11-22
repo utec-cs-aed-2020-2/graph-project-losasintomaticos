@@ -2,7 +2,7 @@
 #include <cstring>
 #include "stdint.h"
 //#include "Tester/tester.h"
-//#include "Graph/parser.h"
+#include "Graph/parser.h"
 #include "Graph/UndirectedGraph.h"
 #include "Graph/DirectedGraph.h"
 
@@ -12,8 +12,7 @@ void testDirectedGraph();
 void testUnDirectedGraph();
 void testPrimGraph();    
 string check_answer(string answer);
-
-//void testAirportParser();
+void testAirportParser();
 
 int main(int argc, char *argv[]) {
     int option_graph;
@@ -39,9 +38,9 @@ int main(int argc, char *argv[]) {
         testDirectedGraph();
     else if(option_graph==2)
         testUnDirectedGraph();
-        
-   // else if (option_graph == 3)
-     //   testAirportParser();
+
+    else if (option_graph == 3)
+        testAirportParser();
 
     else if(option_graph==4)
         testPrimGraph();
@@ -51,9 +50,21 @@ int main(int argc, char *argv[]) {
     return EXIT_SUCCESS;
 }
 
-//void testAirportParser() {
-  //  AirportParser<string, float> graph_parse;
-//}
+void testAirportParser() {
+    AirportParser<string, float> graph_parse;
+    int opcion;
+    cout << "Elija la opción para que sea un grafo dirigido o no dirigido a base de un archivo JSON: " << endl;
+    cin >> opcion;
+    if (opcion == 1){
+        UnDirectedGraph<string, double> undirectedjson;
+        graph_parse.uGraphMake(undirectedjson);
+    }
+    else if(opcion == 2){
+        DirectedGraph<string, double> directedjson;
+        graph_parse.dGraphMake(directedjson);
+    }
+
+}
 
 void testDirectedGraph()
 {

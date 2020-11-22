@@ -73,6 +73,8 @@ vector
 -
 fstream
 -
+algorithm
+/cygdrive/c/Users/lucia/Documents/GitHub/graph-project-losasintomaticos/Graph/algorithm
 graph.h
 /cygdrive/c/Users/lucia/Documents/GitHub/graph-project-losasintomaticos/Graph/graph.h
 UndirectedGraph.h
@@ -307,8 +309,10 @@ internal/stack.h
 /cygdrive/c/Users/lucia/Documents/GitHub/graph-project-losasintomaticos/main.cpp
 iostream
 -
-string.h
+cstring
 -
+stdint.h
+/cygdrive/c/Users/lucia/Documents/GitHub/graph-project-losasintomaticos/stdint.h
 Graph/parser.h
 /cygdrive/c/Users/lucia/Documents/GitHub/graph-project-losasintomaticos/Graph/parser.h
 Graph/UndirectedGraph.h
