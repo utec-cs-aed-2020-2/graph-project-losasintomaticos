@@ -47,13 +47,15 @@ int main(int argc, char *argv[]) {
 void testAirportParser() {
     AirportParser<string, float> graph_parse;
     int opcion;
-    cout << "Elija la opción para leer o borrar el archivo: " << endl;
+    cout << "Elija la opción para que sea un grafo dirigido o no dirigido a base de un archivo JSON: " << endl;
     cin >> opcion;
     if (opcion == 1){
-        graph_parse.readJSON();
+        UnDirectedGraph<string, double> undirectedjson;
+        graph_parse.uGraphMake(undirectedjson);
     }
     else if(opcion == 2){
-        graph_parse.clear();
+        DirectedGraph<string, double> directedjson;
+        graph_parse.dGraphMake(directedjson);
     }
 
 }

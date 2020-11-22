@@ -6,6 +6,7 @@
 #include <list>
 #include <vector>
 #include <fstream>
+#include "algorithm"
 #include "graph.h"
 #include "UndirectedGraph.h"
 #include "DirectedGraph.h"
@@ -26,7 +27,7 @@ public:
 
     struct Node{
         list<int> Id;
-        list<string> Nombre;
+        list<string> Nombre1, Nombre2;
         float Longitud{}, Latitud{}, euclid{};
     };
 
@@ -55,7 +56,8 @@ public:
         for (auto itr = peru_doc.Begin(); itr != peru_doc.End(); itr++){
 
             string temp_nombre = (*itr)["Name"].GetString();
-            temp -> Nombre.push_back(temp_nombre);
+            temp -> Nombre1.push_back(temp_nombre);
+            temp -> Nombre2.push_back(temp_nombre);
             temp -> Longitud = stof((*itr)["Longitude"].GetString());
             int temp_id = stoi((*itr)["Airport ID"].GetString());
             temp -> Id.push_back(temp_id);
@@ -64,22 +66,41 @@ public:
             //cout << temp -> Adyacentes << endl;
             //euclid = sqrt((la2-la1)^2+(lo2-lo1)^2);
         }
-
-        cout << "Los aeropuertos disponibles son los siguientes: " << endl;
-        for (auto hola = temp -> Nombre.begin(); hola != temp -> Nombre.end(); hola++){
-                cout << " - " << *hola << endl;
+        string Input1, Input2;
+        cout << "Escoga el aeropuerto de partida: " << endl;
+        for (auto hola = temp -> Nombre1.begin(); hola != temp -> Nombre1.end(); hola++){
+                cout << " - " << *hola << " " << temp -> Longitud << " " << temp -> Latitud << endl;
         }
+        cin >> Input1;
+        cout << "Escoga el aeropuerto de llegada: " << endl;
+        for (auto hola = temp -> Nombre2.begin(); hola != temp -> Nombre2.end(); hola++){
+            cout << " - " << *hola << " " << temp -> Longitud << " " << temp -> Latitud << endl;
+        }
+        cin >> Input2;
+        if ((std::find(temp -> Nombre1.begin(), temp -> Nombre1.end(), Input1) != temp -> Nombre1.end()) && (std::find(temp -> Nombre2.begin(), temp -> Nombre2.end(), Input2) != temp -> Nombre2.end())){
+            cout << "Aeropuertos inválidos, cancelando..." << endl;
+        }
+        else{
+            cout << "Aeropuertos válidos" << endl;
+        }
+
+
     };// Parser JSON file and saves data into class
 
     void clear() {
         peru_doc.Swap(Value(kObjectType).Move());
-        cout << "Archivo borrado exitosamente!" << endl;
+        cout << "Archivo despejado exitosamente!" << endl;
     } //Clears parser saved values
 
     void uGraphMake(UnDirectedGraph<string, double> &tempGraph) {
+        readJSON();
+
     }
 
     void dGraphMake(DirectedGraph<string, double> &tempGraph) {
+        Node *temp = new Node();
+        readJSON();
+        //tempGraph.createEdge(Input1, Input2, Id);
     }
 };
 

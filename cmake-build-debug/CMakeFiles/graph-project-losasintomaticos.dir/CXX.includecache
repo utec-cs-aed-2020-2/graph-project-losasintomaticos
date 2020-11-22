@@ -73,6 +73,8 @@ vector
 -
 fstream
 -
+algorithm
+/cygdrive/c/Users/lucia/Documents/GitHub/graph-project-losasintomaticos/Graph/algorithm
 graph.h
 /cygdrive/c/Users/lucia/Documents/GitHub/graph-project-losasintomaticos/Graph/graph.h
 UndirectedGraph.h
