@@ -307,8 +307,10 @@ internal/stack.h
 /cygdrive/c/Users/lucia/Documents/GitHub/graph-project-losasintomaticos/main.cpp
 iostream
 -
-string.h
+cstring
 -
+stdint.h
+/cygdrive/c/Users/lucia/Documents/GitHub/graph-project-losasintomaticos/stdint.h
 Graph/parser.h
 /cygdrive/c/Users/lucia/Documents/GitHub/graph-project-losasintomaticos/Graph/parser.h
 Graph/UndirectedGraph.h

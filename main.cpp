@@ -11,8 +11,7 @@ using namespace std;
 void testDirectedGraph();
 void testUnDirectedGraph();
 string check_answer(string answer);
-
-//void testAirportParser();
+void testAirportParser();
 
 int main(int argc, char *argv[]) {
     int option_graph;
@@ -37,17 +36,27 @@ int main(int argc, char *argv[]) {
         testDirectedGraph();
     else if(option_graph==2)
         testUnDirectedGraph();
-   // else if (option_graph == 3)
-     //   testAirportParser();
+    else if (option_graph == 3)
+        testAirportParser();
 
     //Tester::executeExamples();
     //Tester::executeParser();    
     return EXIT_SUCCESS;
 }
 
-//void testAirportParser() {
-  //  AirportParser<string, float> graph_parse;
-//}
+void testAirportParser() {
+    AirportParser<string, float> graph_parse;
+    int opcion;
+    cout << "Elija la opción para leer o borrar el archivo: " << endl;
+    cin >> opcion;
+    if (opcion == 1){
+        graph_parse.readJSON();
+    }
+    else if(opcion == 2){
+        graph_parse.clear();
+    }
+
+}
 
 void testDirectedGraph()
 {
