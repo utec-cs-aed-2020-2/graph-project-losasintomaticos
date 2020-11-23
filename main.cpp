@@ -47,7 +47,7 @@ int main(int argc, char *argv[]) {
 void testAirportParser() {
     AirportParser<string, float> graph_parse;
     int opcion;
-    cout << "Elija la opción para que sea un grafo dirigido o no dirigido a base de un archivo JSON: " << endl;
+    cout << "Elija la opcion para que sea un grafo dirigido o no dirigido a base de un archivo JSON: " << endl;
     cin >> opcion;
     if (opcion == 1){
         UnDirectedGraph<string, double> undirectedjson;
@@ -174,7 +174,7 @@ void testDirectedGraph()
                 cout<<"ID2 => ";
                 cin>>id2;
                 cout<<"El peso de la arista es => "<<graph(id1,id2);
-                cout<<"Quiere conocer otro peso? (si/no)"<<endl;
+                cout<<"\nQuiere conocer otro peso? (si/no)"<<endl;
                 cout<<"Respuesta => ";
                 cin>>flag_loop;
                 flag_loop=check_answer(flag_loop);
@@ -219,12 +219,15 @@ void testDirectedGraph()
             break;
         }
 
-        cout<<"\nQuieres probar otras funciones? (si/no)"<<endl;
-        cout<<"Respuesta => ";
-        cin>>flag_loop;
-        flag_loop=check_answer(flag_loop);
-        if(flag_loop=="no")
-            flag_function=false;
+        if(flag_function!=false)
+        {
+            cout<<"\nQuieres probar otras funciones? (si/no)"<<endl;
+            cout<<"Respuesta => ";
+            cin>>flag_loop;
+            flag_loop=check_answer(flag_loop);
+            if(flag_loop=="no")
+                flag_function=false;
+        }
     }
 }
 
