@@ -24,12 +24,11 @@ int main(int argc, char *argv[]) {
     cout<<"2. Grafo No Dirigido"<<endl;
     cout<<"3. Grafo a base de documento JSON"<<endl;
     cout<<"4. Grafo Prim"<<endl;
-    //Falta poner aca el execute examples y el executeparser
     cout<<"\nOpcion => ";
     cin>>option_graph;
     while(option_graph!=1&&option_graph!=2&&option_graph!=3&&option_graph!=4)
     {
-        cout<<"\nOpcion incorrecta, por favor digita una correcta opcion";
+        cout<<"\nOpcion incorrecta, por favor digita una opcion correcta";
         cout<<"\nOpcion => ";
         cin>>option_graph;
     }
@@ -61,11 +60,12 @@ void testAirportParser() {
     if (opcion == 1){
         UnDirectedGraph<string, double> undirectedjson;
         graph_parse.uGraphMake(undirectedjson);
+        graph_parse.display();
     }
     else if(opcion == 2){
         DirectedGraph<string, double> directedjson;
         graph_parse.dGraphMake(directedjson);
-        graph_parse.clear_parser();
+        graph_parse.display();
     }
 
 }
