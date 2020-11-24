@@ -67,11 +67,15 @@ iostream
 -
 cmath
 -
+array
+-
 list
 -
 vector
 -
 fstream
+-
+unordered_map
 -
 algorithm
 /cygdrive/c/Users/lucia/Documents/GitHub/graph-project-losasintomaticos/Graph/algorithm

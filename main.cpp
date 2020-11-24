@@ -54,6 +54,9 @@ void testAirportParser() {
     AirportParser<string, float> graph_parse;
     int opcion;
     cout << "Elija la opción para que sea un grafo dirigido o no dirigido a base de un archivo JSON: " << endl;
+    cout << "1. Grafo no dirigido a base  aeropuertos del Peru" << endl;
+    cout << "2. Grafo dirigido a base de aeropuertos del Peru" << endl;
+    cout << "\nOpcion => ";
     cin >> opcion;
     if (opcion == 1){
         UnDirectedGraph<string, double> undirectedjson;
@@ -62,6 +65,7 @@ void testAirportParser() {
     else if(opcion == 2){
         DirectedGraph<string, double> directedjson;
         graph_parse.dGraphMake(directedjson);
+        graph_parse.clear_parser();
     }
 
 }
