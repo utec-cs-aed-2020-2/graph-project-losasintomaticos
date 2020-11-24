@@ -58,16 +58,15 @@ void testAirportParser() {
     cout << "\nOpcion => ";
     cin >> opcion;
     if (opcion == 1){
-        UnDirectedGraph<string, double> undirectedjson;
+        UnDirectedGraph<string, float> undirectedjson;
         graph_parse.uGraphMake(undirectedjson);
-        graph_parse.display();
+        undirectedjson.display();
     }
     else if(opcion == 2){
-        DirectedGraph<string, double> directedjson;
+        DirectedGraph<string, float> directedjson;
         graph_parse.dGraphMake(directedjson);
-        graph_parse.display();
+        directedjson.display();
     }
-
 }
 
 void testDirectedGraph()

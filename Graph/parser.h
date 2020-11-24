@@ -32,7 +32,7 @@ struct Node{
     string Nombre;
     vector<string> Adyacentes;
     float Longitud = 0, Latitud = 0;
-    unordered_map<string, float> euclid_sucio;
+    unordered_map<string, TE> euclid_sucio;
     Node(string name, float lo, float la, vector<string> adya){
         this -> Nombre = name;
         this -> Longitud = lo;
@@ -81,14 +81,7 @@ public:
             auto *temp = new Node<TV, TE>(temp_nombre, Longitud, Latitud, Adyacentes);
             map_general[temp_id] = temp;
         }
-
-//        euclid(map_general);
-//        for (auto p:map_general){
-//            cout << p.first << " => " << p.second -> Nombre << endl;
-//            for(auto o:p.second -> euclid_sucio){
-//                cout << o.first << " => " << p.second << endl;
-//            }
-//        }
+        euclid(map_general);
     };// Parser JSON file and saves data into class
 
     void clear_parser() {
@@ -96,23 +89,36 @@ public:
         cout << "Archivo despejado exitosamente!" << endl;
     } //Clears parser saved values
 
-    void uGraphMake(UnDirectedGraph<string, double> &tempGraph) {
+    void uGraphMake(UnDirectedGraph<string, TE> &tempGraph) {
         readJSON();
         cout << "Los aeropuertos son los siguientes: " << endl;
         for (auto p:map_general) {
-            cout << " - " << p.second->Nombre << endl;
-            tempGraph.insertVertex(p.first, p.second->Nombre);
-            tempGraph.createEdge(p.second->Nombre, p.second->Nombre, p.second->euclid_sucio[p]);
+            cout << " - " << p.second -> Nombre << endl;
+            cout << "\n";
+            tempGraph.insertVertex(p.first, p.second -> Nombre);
+        }
+
+        for (auto p:map_general){
+            auto temp = p.second -> euclid_sucio;
+            for (auto itr:temp){
+                tempGraph.createEdge(p.first, itr.first, itr.second);
+            }
         }
     }
 
-    void dGraphMake(DirectedGraph<string, double> &tempGraph) {
+    void dGraphMake(DirectedGraph<string, TE> &tempGraph) {
         readJSON();
         cout << "Los aeropuertos son los siguientes: " << endl;
         for (auto p:map_general) {
-            cout << " - " << p.second->Nombre << endl;
-            tempGraph.insertVertex(p.first, p.second->Nombre);
-            tempGraph.createEdge(p.second->Nombre, p.second->Nombre, p.second->euclid_sucio[p]);
+            cout << " - " << p.second -> Nombre << endl;
+            tempGraph.insertVertex(p.first, p.second -> Nombre);
+        }
+
+        for (auto p:map_general){
+            auto temp = p.second -> euclid_sucio;
+            for (auto itr:temp){
+                tempGraph.createEdge(p.first, itr.first, itr.second);
+            }
         }
     }
 
@@ -127,7 +133,6 @@ public:
 
     void euclid(unordered_map<string, Node<TV,TE>*> map_general){
         for (auto p:map_general) {
-            cout << p.second -> Nombre << endl;
             vector<string> temp = p.second -> Adyacentes;
             for (auto i = temp.begin(); i != temp.end() ; ++i) {
                 float la2 = get_la(*i);
@@ -147,5 +152,7 @@ public:
         auto *temp = map_general[id];
         return temp -> Longitud;
     }
+
+    
 };
 #endif

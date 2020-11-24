@@ -34,7 +34,6 @@ struct Edge {
         vertexes[0] = id1;
         vertexes[1] = id2;
     }
-    friend class Prim<TV, TE>;
 };
 
 template<typename TV, typename TE>
@@ -49,7 +48,6 @@ struct Vertex {
             p->vertexes[1]=nullptr;
         }
     }
-    friend class Prim<TV, TE>;
 };
 
 template<typename TV, typename TE>
