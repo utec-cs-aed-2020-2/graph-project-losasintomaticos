@@ -152,7 +152,5 @@ public:
         auto *temp = map_general[id];
         return temp -> Longitud;
     }
-
-    
 };
 #endif
