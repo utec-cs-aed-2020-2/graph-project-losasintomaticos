@@ -6,50 +6,24 @@
 
 #IncludeRegexTransform: 
 
-../include/rapidjson/error/error.h
-../rapidjson.h
-../include/rapidjson/rapidjson.h
+/cygdrive/c/Users/lucia/Documents/GitHub/graph-project-losasintomaticos/Graph/Algorithms/Kruskal.h
+../DirectedGraph.h
+/cygdrive/c/Users/lucia/Documents/GitHub/graph-project-losasintomaticos/Graph/DirectedGraph.h
+../UndirectedGraph.h
+/cygdrive/c/Users/lucia/Documents/GitHub/graph-project-losasintomaticos/Graph/UndirectedGraph.h
 
-../include/rapidjson/reader.h
-allocators.h
-../include/rapidjson/allocators.h
-stream.h
-../include/rapidjson/stream.h
-encodedstream.h
-../include/rapidjson/encodedstream.h
-internal/clzll.h
-../include/rapidjson/internal/clzll.h
-internal/meta.h
-../include/rapidjson/internal/meta.h
-internal/stack.h
-../include/rapidjson/internal/stack.h
-internal/strtod.h
-../include/rapidjson/internal/strtod.h
-limits
--
-intrin.h
--
-nmmintrin.h
--
-emmintrin.h
--
-arm_neon.h
--
-stdexcept
--
-rapidjson/error/error.h
-../include/rapidjson/rapidjson/error/error.h
-rapidjson/reader.h
-../include/rapidjson/rapidjson/reader.h
-error/error.h
-../include/rapidjson/error/error.h
+/cygdrive/c/Users/lucia/Documents/GitHub/graph-project-losasintomaticos/Graph/Algorithms/Prim.h
+../DirectedGraph.h
+/cygdrive/c/Users/lucia/Documents/GitHub/graph-project-losasintomaticos/Graph/DirectedGraph.h
+../UndirectedGraph.h
+/cygdrive/c/Users/lucia/Documents/GitHub/graph-project-losasintomaticos/Graph/UndirectedGraph.h
 
 /cygdrive/c/Users/lucia/Documents/GitHub/graph-project-losasintomaticos/Graph/DirectedGraph.h
-graph.h
+../Graph/graph.h
 /cygdrive/c/Users/lucia/Documents/GitHub/graph-project-losasintomaticos/Graph/graph.h
 
 /cygdrive/c/Users/lucia/Documents/GitHub/graph-project-losasintomaticos/Graph/UndirectedGraph.h
-graph.h
+../Graph/graph.h
 /cygdrive/c/Users/lucia/Documents/GitHub/graph-project-losasintomaticos/Graph/graph.h
 
 /cygdrive/c/Users/lucia/Documents/GitHub/graph-project-losasintomaticos/Graph/graph.h
@@ -78,12 +52,12 @@ fstream
 unordered_map
 -
 algorithm
-/cygdrive/c/Users/lucia/Documents/GitHub/graph-project-losasintomaticos/Graph/algorithm
-graph.h
+-
+../Graph/graph.h
 /cygdrive/c/Users/lucia/Documents/GitHub/graph-project-losasintomaticos/Graph/graph.h
-UndirectedGraph.h
+../Graph/UndirectedGraph.h
 /cygdrive/c/Users/lucia/Documents/GitHub/graph-project-losasintomaticos/Graph/UndirectedGraph.h
-DirectedGraph.h
+../Graph/DirectedGraph.h
 /cygdrive/c/Users/lucia/Documents/GitHub/graph-project-losasintomaticos/Graph/DirectedGraph.h
 ../include/rapidjson/document.h
 /cygdrive/c/Users/lucia/Documents/GitHub/graph-project-losasintomaticos/include/rapidjson/document.h
@@ -93,6 +67,22 @@ DirectedGraph.h
 /cygdrive/c/Users/lucia/Documents/GitHub/graph-project-losasintomaticos/include/rapidjson/stringbuffer.h
 ../include/rapidjson/istreamwrapper.h
 /cygdrive/c/Users/lucia/Documents/GitHub/graph-project-losasintomaticos/include/rapidjson/istreamwrapper.h
+
+/cygdrive/c/Users/lucia/Documents/GitHub/graph-project-losasintomaticos/Tester/TestMenu.h
+../Graph/UndirectedGraph.h
+/cygdrive/c/Users/lucia/Documents/GitHub/graph-project-losasintomaticos/Graph/UndirectedGraph.h
+../Graph/DirectedGraph.h
+/cygdrive/c/Users/lucia/Documents/GitHub/graph-project-losasintomaticos/Graph/DirectedGraph.h
+../Graph/Algorithms/Kruskal.h
+/cygdrive/c/Users/lucia/Documents/GitHub/graph-project-losasintomaticos/Graph/Algorithms/Kruskal.h
+../Graph/Algorithms/Prim.h
+/cygdrive/c/Users/lucia/Documents/GitHub/graph-project-losasintomaticos/Graph/Algorithms/Prim.h
+iostream
+-
+string.h
+-
+stdbool.h
+-
 
 /cygdrive/c/Users/lucia/Documents/GitHub/graph-project-losasintomaticos/include/rapidjson/allocators.h
 rapidjson.h
@@ -317,10 +307,16 @@ cstring
 -
 stdint.h
 /cygdrive/c/Users/lucia/Documents/GitHub/graph-project-losasintomaticos/stdint.h
+Tester/TestMenu.h
+/cygdrive/c/Users/lucia/Documents/GitHub/graph-project-losasintomaticos/Tester/TestMenu.h
 Graph/parser.h
 /cygdrive/c/Users/lucia/Documents/GitHub/graph-project-losasintomaticos/Graph/parser.h
 Graph/UndirectedGraph.h
 /cygdrive/c/Users/lucia/Documents/GitHub/graph-project-losasintomaticos/Graph/UndirectedGraph.h
 Graph/DirectedGraph.h
 /cygdrive/c/Users/lucia/Documents/GitHub/graph-project-losasintomaticos/Graph/DirectedGraph.h
+Graph/Algorithms/Prim.h
+/cygdrive/c/Users/lucia/Documents/GitHub/graph-project-losasintomaticos/Graph/Algorithms/Prim.h
+Graph/Algorithms/Kruskal.h
+/cygdrive/c/Users/lucia/Documents/GitHub/graph-project-losasintomaticos/Graph/Algorithms/Kruskal.h
 

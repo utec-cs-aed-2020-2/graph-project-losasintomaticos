@@ -8,10 +8,10 @@
 #include <vector>
 #include <fstream>
 #include <unordered_map>
-#include "algorithm"
-#include "graph.h"
-#include "UndirectedGraph.h"
-#include "DirectedGraph.h"
+#include <algorithm>
+#include "../Graph/graph.h"
+#include "../Graph/UndirectedGraph.h"
+#include "../Graph/DirectedGraph.h"
 #include "../include/rapidjson/document.h"
 #include "../include/rapidjson/ostreamwrapper.h"
 #include "../include/rapidjson/stringbuffer.h"
@@ -153,7 +153,5 @@ public:
         auto *temp = map_general[id];
         return temp -> Longitud;
     }
-
-    
 };
 #endif
