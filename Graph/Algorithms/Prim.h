@@ -1,25 +1,27 @@
 #ifndef PRIM_H
 #define PRIM_H
 
-#include <list>
-#include <vector>
-#include <unordered_map>
-#include <string.h>
-#include<iostream>
-
-#include "../graph.h"
+#include "../DirectedGraph.h"
+#include "../UndirectedGraph.h"
 using namespace std;
 
 template<typename TV, typename TE>
 class Prim{ 
 
+private:
+    UnDirectedGraph<TV, TE> prim_vertexes;
+    TV inicio;
+
 public:
+    //Prim():{}
+
+    Prim(UnDirectedGraph<TV, TE> grafito,TV dato):prim_vertexes(grafito),inicio(dato){}
 
     TV minEdge(unordered_map<TV,int> visited,unordered_map<TV,TE> weight_edge)
     {
         int min=INT16_MAX;
         TV min_index;
-        for(auto p:this->vertexes)
+        for(auto p:this->prim_vertexes.vertexes)
         {
             if(visited[p.second->data]==false && weight_edge[p.second->data]<min)
             {
@@ -32,7 +34,7 @@ public:
 
     list<Edge<TV, TE>*> edge_min(TV min)
     {
-        for(auto p:this->vertexes)
+        for(auto p:this->prim_vertexes.vertexes)
         {
             if(p.second->data==min)
             {
@@ -43,7 +45,7 @@ public:
     
     string id_min(TV min)
     {
-        for(auto p:this->vertexes)
+        for(auto p:this->prim_vertexes.vertexes)
         {
             if(p.second->data==min)
             {
@@ -52,23 +54,22 @@ public:
         }
     }
 
-    DirectedGraph<char, float> prim(TV dato)
+    UnDirectedGraph<string, float> apply()
     {
         unordered_map<TV,int> visited;
         unordered_map<TV,TE> weight_edge;
         unordered_map<TV,TV> father;
-        DirectedGraph<char, float> return_grafo;
-
-        for(auto p:this->vertexes)
+        UnDirectedGraph<string, float> return_grafo;
+        
+        for(auto p:this->prim_vertexes.vertexes)
         {
             visited[p.second->data]=false;
             weight_edge[p.second->data]=INT16_MAX;
             father[p.second->data] = p.second->data;
         }
-        weight_edge[dato]=0;
+        weight_edge[inicio]=0;
         
-
-        for(auto p:this->vertexes)
+        for(auto p:this->prim_vertexes.vertexes)
         {
             TV min=minEdge(visited,weight_edge);
             visited[min]=true;
@@ -92,7 +93,6 @@ public:
         }
 
         return return_grafo;
-
     }
 
 };

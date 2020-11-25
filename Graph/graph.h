@@ -57,9 +57,6 @@ protected:
     
 public:
     
-    
-    
-
     bool insertVertex(string id, TV vertex)
     {
         Vertex<TV,TE>* temp = new Vertex<TV,TE>(vertex);
