@@ -17,6 +17,7 @@
 #include "../include/rapidjson/stringbuffer.h"
 #include "../include/rapidjson/istreamwrapper.h"
 
+
 using namespace std;
 using namespace rapidjson;
 //Metodos a implementar
