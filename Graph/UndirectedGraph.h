@@ -67,7 +67,7 @@ class UnDirectedGraph : public Graph<TV, TE>{
             for(auto p:this->vertexes)
             {
                 Vertex<TV,TE>* vertice = p.second;
-                cout<<vertice->data<<": ";
+                cout<<vertice->data<<" => ";
                 list<Edge<TV, TE>*> edge_temp = vertice->edges;
                 for(auto itr:edge_temp)
                 {
@@ -145,5 +145,7 @@ class UnDirectedGraph : public Graph<TV, TE>{
             else
                 return false;
         }
+        friend class Prim<TV, TE>;
+        friend class Kruskal<TV, TE>;
 };
 #endif

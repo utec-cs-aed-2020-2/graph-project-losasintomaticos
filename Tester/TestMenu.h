@@ -1,91 +1,191 @@
-#include <iostream>
-#include <cstring>
-#include "stdint.h"
-#include "Tester/TestMenu.h"
-#include "Graph/parser.h"
-#include "Graph/UndirectedGraph.h"
-#include "Graph/DirectedGraph.h"
-#include "Graph/Algorithms/Prim.h"
-#include "Graph/Algorithms/Kruskal.h"
+#ifndef TESTMENU_H
+#define TESTMENU_H
 
+#include "../Graph/UndirectedGraph.h"
+#include "../Graph/DirectedGraph.h"
+#include "../Graph/Algorithms/Kruskal.h"
+#include "../Graph/Algorithms/Prim.h"
+#include <iostream>
+#include <string.h>
+#include <stdbool.h>
 
 using namespace std;
 
 void testDirectedGraph();
-void testUnDirectedGraph();
-void testPrimGraph();    
-void testKruskalGraph();  
 string check_answer(string answer);
-void testAirportParser();
+void testUnDirectedGraph();
+void testPrimGraph();
+void testKruskalGraph();
 
-int main(int argc, char *argv[]) {
-    int option_graph;
-    string flag_all ="si";
-    while(flag_all=="si")
+
+void testUnDirectedGraph()
+{
+    UnDirectedGraph<string, float> graph;
+    string flag_loop="si",id_vertex,data_vertex;
+    while(flag_loop=="si")
     {
-        std::cout << "================================================" << std::endl;
-        std::cout << "              MENU GRAPH TESTER" << std::endl;
-        std::cout << "================================================" << std::endl;
-        cout<<"\nEscoja una opcion"<<endl;
-        cout<<"1. Grafo Dirigido"<<endl;
-        cout<<"2. Grafo No Dirigido"<<endl;
-        cout<<"3. Grafo a base de documento JSON"<<endl;
-        cout<<"4. Grafo Prim"<<endl;
-        cout<<"5. Grafo Kruskal"<<endl;
-        cout<<"6. Salir"<<endl;
-        cout<<"\nOpcion => ";
-        cin>>option_graph;
-        while(option_graph>6 || option_graph<1)
+        cout<<"\nIngrese datos del vertice:"<<endl;
+        cout<<"ID => ";
+        cin>>id_vertex;
+        cout<<"Dato => ";
+        cin>>data_vertex;
+        graph.insertVertex(id_vertex,data_vertex);
+        cout<<"\nQuiere seguir introduciendo mas vertices? (si/no)"<<endl;
+        cout<<"Respuesta => ";
+        cin>>flag_loop;
+        flag_loop=check_answer(flag_loop);
+    }
+    std::cout << "\n================================================" << std::endl;
+    cout<<"Quiere insertar aristas al grafo? (Si/No)"<<endl;
+    cin>>flag_loop;
+    while(flag_loop=="si")
+    {
+        uint16_t peso;
+        string id1,id2;
+        cout<<"\nInserte Arista:"<<endl;
+        cout<<"ID1 => ";
+        cin>>id1;
+        cout<<"ID2 => ";
+        cin>>id2;
+        while (graph.findById(id1) && graph.findById(id2)!=1)
         {
-            cout<<"\nOpcion incorrecta, por favor digita una correcta opcion";
-            cout<<"\nOpcion => ";
-            cin>>option_graph;
+            cout<<"\nIDs invalidos, intente de nuevo"<<endl;
+            cout<<"\nInserte Arista:"<<endl;
+            cout<<"ID1 => ";
+            cin>>id1;
+            cout<<"ID2 => ";
+            cin>>id2;
         }
+
+        cout<<"Peso de la arista => ";
+        cin>>peso;
+        graph.createEdge(id1,id2,peso);
+        cout<<"\nQuiere seguir insertando aristas al grafo? (si/no)"<<endl;
+        cout<<"Respuesta => ";
+        cin>>flag_loop;
+        flag_loop=check_answer(flag_loop);
+    }
+    int opcion_switch;
+    bool flag_function=true;
+    while(flag_function)
+    {
         std::cout << "\n================================================" << std::endl;
-        if(option_graph==1)
-            testDirectedGraph();
-        else if(option_graph==2)
-            testUnDirectedGraph();
+        cout<<"\nEscoja una funcion:"<<endl;
+        cout<<"\n1. Eliminar un vertice"<<endl;
+        cout<<"2. Eliminar una arista"<<endl;
+        cout<<"3. Conocer el peso entre aristas"<<endl;
+        cout<<"4. Densidad del grafo"<<endl;
+        cout<<"5. Verificar si el grafo pasa la densidad minima (0.5)"<<endl;
+        cout<<"6. Verificar si el grafo esta conectado"<<endl;
+        cout<<"7. Verificar si el grafo esta vacio"<<endl;
+        cout<<"8. Eliminar el grafo"<<endl;
+        cout<<"9. Mostrar el grafo"<<endl;
+        cout<<"10. Salir"<<endl;
+        cout<<"\nOpcion => ";
+        cin>>opcion_switch;
+        std::cout << "\n================================================" << std::endl;
 
-        else if (option_graph == 3)
-            testAirportParser();
-
-        else if(option_graph==4)
-            testPrimGraph();
-        else if(option_graph==5)
-            testKruskalGraph();
-        else
-            flag_all="no";
-        
-        if(flag_all!="no")
+        switch (opcion_switch)
         {
-            cout<<"\nQuieres probar otras opciones? (si/no)"<<endl;
-            cout<<"Respuesta => ";
-            cin>>flag_all;
-            flag_all=check_answer(flag_all);
+        case 1:
+            flag_loop="si";
+            while (flag_loop=="si")
+            {
+                cout<<"\nQue vertice quiere eliminar?"<<endl;
+                cout<<"ID => ";
+                cin>>id_vertex;
+                graph.deleteVertex(id_vertex);
+                cout<<"Quiere seguir eliminando vertices? (si/no)"<<endl;
+                cout<<"Respuesta => ";
+                cin>>flag_loop;
+                flag_loop=check_answer(flag_loop);
+            }
+            break;
+
+        case 2:
+            flag_loop="si";
+            while (flag_loop=="si")
+            {
+                string id1,id2;
+                cout<<"\nQue arista quiere eliminar?"<<endl;
+                cout<<"ID1 => ";
+                cin>>id1;
+                cout<<"ID2 => ";
+                cin>>id2;
+                graph.deleteEdge(id1,id2);
+                cout<<"Quiere seguir eliminando aristas? (si/no)"<<endl;
+                cout<<"Respuesta => ";
+                cin>>flag_loop;
+                flag_loop=check_answer(flag_loop);
+            }
+            break;
+        
+        case 3:
+            flag_loop="si";
+            while (flag_loop=="si")
+            {
+                string id1,id2;
+                cout<<"\nElija la arista"<<endl;
+                cout<<"ID1 => ";
+                cin>>id1;
+                cout<<"ID2 => ";
+                cin>>id2;
+                cout<<"El peso de la arista es => "<<graph(id1,id2);
+                cout<<"\nQuiere conocer otro peso? (si/no)"<<endl;
+                cout<<"Respuesta => ";
+                cin>>flag_loop;
+                flag_loop=check_answer(flag_loop);
+            }
+            break;
+        
+        case 4:
+            cout<<"\nLa densidad del grafo es: "<<graph.density()<<endl;
+            break;
+        
+        case 5:
+            cout<<"\nEl grafo tiene la  densidad minima requerida? "<<std::boolalpha<<graph.isDense()<<endl;
+            break;
+        
+        case 6:
+            cout<<"\nEl grafo es conectado? "<<std::boolalpha<<graph.isConnected()<<endl;
+            break;
+        
+        case 7:
+            cout<<"\nEl grafo es vacio? "<<std::boolalpha<<graph.empty()<<endl;
+            break;
+
+        case 8:
+            graph.empty();
+            cout<<"\nGrafo eliminado!"<<endl;
+            break;
+        case 9:
+            cout<<"\nEl grafo creado es\n"<<endl;
+            graph.display();
+            break;
+
+        case 10:
+            cout<<"\nHa salido del menu"<<endl;
+            flag_function=false;
+            break;
+        default:
+            cout<<"\nFuncion no valida!"<<endl;
+            break;
         }
-        cout<<"\n\n";
-    }   
-    return EXIT_SUCCESS;
+
+        if(flag_function!=false)
+        {
+            cout<<"\nQuieres probar otras funciones? (si/no)"<<endl;
+            cout<<"Respuesta => ";
+            cin>>flag_loop;
+            flag_loop=check_answer(flag_loop);
+            if(flag_loop=="no")
+                flag_function=false;
+        }
+    }
 }
 
-void testAirportParser() {
-    AirportParser<string, float> graph_parse;
-    int opcion;
-    cout << "Elija la opcion para que sea un grafo dirigido o no dirigido a base de un archivo JSON: " << endl;
-    cin >> opcion;
-    if (opcion == 1){
-        UnDirectedGraph<string, double> undirectedjson;
-        graph_parse.uGraphMake(undirectedjson);
-    }
-    else if(opcion == 2){
-        DirectedGraph<string, double> directedjson;
-        graph_parse.dGraphMake(directedjson);
-    }
 
-}
-
-/* void testDirectedGraph()
+void testDirectedGraph()
 {
     DirectedGraph<string, float> graph;
     string flag_loop="si",id_vertex,data_vertex;
@@ -254,14 +354,9 @@ void testAirportParser() {
                 flag_function=false;
         }
     }
-} */
+}
 
-/* void testUnDirectedGraph()
-{
-    UnDirectedGraph<string, float> graph;
-} */
-
-/* string check_answer(string answer)
+string check_answer(string answer)
 {
     while(answer!="si" && answer!="no")
     {
@@ -270,11 +365,9 @@ void testAirportParser() {
         cin>>answer;
     }
     return answer;
-} */
+}
 
-
-
-/* void testPrimGraph()
+void testPrimGraph()
 {
     UnDirectedGraph<string, float> graph;
     graph.insertVertex("1", "A");
@@ -330,4 +423,6 @@ void testKruskalGraph()
     DirectedGraph<string,float> grafes = grafito.apply();
     grafes.display();
     std::cout << "\n================================================" << std::endl;
-} */
+}
+
+#endif
