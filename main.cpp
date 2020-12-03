@@ -30,12 +30,13 @@ int main(int argc, char *argv[]) {
         cout<<"1. Grafo Dirigido"<<endl;
         cout<<"2. Grafo No Dirigido"<<endl;
         cout<<"3. Grafo a base de documento JSON"<<endl;
-        cout<<"4. Grafo Prim"<<endl;
-        cout<<"5. Grafo Kruskal"<<endl;
-        cout<<"6. Salir"<<endl;
+        cout<<"4. Algoritmo Prim"<<endl;
+        cout<<"5. Algoritmo Kruskal"<<endl;
+        cout<<"6. Algoritmo Floyd Warshall"<<endl;
+        cout<<"7. Salir"<<endl;
         cout<<"\nOpcion => ";
         cin>>option_graph;
-        while(option_graph>6 || option_graph<1)
+        while(option_graph>7 || option_graph<1)
         {
             cout<<"\nOpcion incorrecta, por favor digita una correcta opcion";
             cout<<"\nOpcion => ";
@@ -54,6 +55,8 @@ int main(int argc, char *argv[]) {
             testPrimGraph();
         else if(option_graph==5)
             testKruskalGraph();
+        else if(option_graph==6)
+            testFloydGraph();
         else
             flag_all="no";
         

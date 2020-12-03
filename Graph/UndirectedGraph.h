@@ -147,5 +147,6 @@ class UnDirectedGraph : public Graph<TV, TE>{
         }
         friend class Prim<TV, TE>;
         friend class Kruskal<TV, TE>;
+        friend class Floyd<TV,TE>;
 };
 #endif

@@ -9,9 +9,8 @@
 #include <fstream>
 #include <unordered_map>
 #include <algorithm>
-#include "../Graph/graph.h"
-#include "../Graph/UndirectedGraph.h"
-#include "../Graph/DirectedGraph.h"
+#include "UndirectedGraph.h"
+#include "DirectedGraph.h"
 #include "../include/rapidjson/document.h"
 #include "../include/rapidjson/ostreamwrapper.h"
 #include "../include/rapidjson/stringbuffer.h"

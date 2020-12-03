@@ -5,6 +5,7 @@
 #include "../Graph/DirectedGraph.h"
 #include "../Graph/Algorithms/Kruskal.h"
 #include "../Graph/Algorithms/Prim.h"
+#include "../Graph/Algorithms/Floyd.h"
 #include <iostream>
 #include <string.h>
 #include <stdbool.h>
@@ -16,6 +17,7 @@ string check_answer(string answer);
 void testUnDirectedGraph();
 void testPrimGraph();
 void testKruskalGraph();
+void testFloydGraph();
 
 
 void testUnDirectedGraph()
@@ -422,6 +424,36 @@ void testKruskalGraph()
     Kruskal<string,float> grafito(graph);
     DirectedGraph<string,float> grafes = grafito.apply();
     grafes.display();
+    std::cout << "\n================================================" << std::endl;
+}
+
+void testFloydGraph()
+{
+    DirectedGraph<string, float> graph;
+    graph.insertVertex("1","1");
+    graph.insertVertex("2","2");
+    graph.insertVertex("3","3");
+    graph.insertVertex("4","4");
+    graph.insertVertex("5","5");
+
+    graph.createEdge("1","3",6);
+    graph.createEdge("1","4",3);
+    graph.createEdge("2","1",3);
+    graph.createEdge("3","4",2);
+    graph.createEdge("4","2",1);
+    graph.createEdge("4","3",1);
+    graph.createEdge("5","2",4);
+    graph.createEdge("5","4",2);
+
+    std::cout << "\n\n================================================" << std::endl;
+    std::cout << "               ALGORITMO KRUSKAL" << std::endl;
+    std::cout << "================================================" << std::endl;
+    cout<<"El Grafo de Ejemplo es el siguiente:"<<endl;
+    graph.display();
+    cout<<"\nAplicando el Algoritmo Kruskal:"<<endl;
+    Floyd<string,float> grafito(graph);
+    grafito.apply();
+    //grafes.display();
     std::cout << "\n================================================" << std::endl;
 }
 

@@ -22,6 +22,9 @@ class Prim;
 
 template<typename TV, typename TE>
 class Kruskal;
+
+template<typename TV, typename TE>
+class Floyd;
 //////////////////////////////////////////////////////
 
 template<typename TV, typename TE>
@@ -152,6 +155,7 @@ public:
 
     friend class Prim<TV, TE>;
     friend class Kruskal<TV, TE>;
+    friend class Floyd<TV,TE>;
 };
 
 #endif
