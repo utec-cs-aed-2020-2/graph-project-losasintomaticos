@@ -23,8 +23,8 @@ void testFloydGraph();
 void testUnDirectedGraph()
 {
     UnDirectedGraph<string, float> graph;
-    string flag_loop="si",id_vertex,data_vertex;
-    while(flag_loop=="si")
+    string flag_loop="Si",id_vertex,data_vertex;
+    while(flag_loop=="Si")
     {
         cout<<"\nIngrese datos del vertice:"<<endl;
         cout<<"ID => ";
@@ -32,7 +32,7 @@ void testUnDirectedGraph()
         cout<<"Dato => ";
         cin>>data_vertex;
         graph.insertVertex(id_vertex,data_vertex);
-        cout<<"\nQuiere seguir introduciendo mas vertices? (si/no)"<<endl;
+        cout<<"\nQuiere seguir introduciendo mas vertices? (Si/No)"<<endl;
         cout<<"Respuesta => ";
         cin>>flag_loop;
         flag_loop=check_answer(flag_loop);
@@ -40,7 +40,7 @@ void testUnDirectedGraph()
     std::cout << "\n================================================" << std::endl;
     cout<<"Quiere insertar aristas al grafo? (Si/No)"<<endl;
     cin>>flag_loop;
-    while(flag_loop=="si")
+    while(flag_loop=="Si")
     {
         uint16_t peso;
         string id1,id2;
@@ -62,7 +62,7 @@ void testUnDirectedGraph()
         cout<<"Peso de la arista => ";
         cin>>peso;
         graph.createEdge(id1,id2,peso);
-        cout<<"\nQuiere seguir insertando aristas al grafo? (si/no)"<<endl;
+        cout<<"\nQuiere seguir insertando aristas al grafo? (Si/No)"<<endl;
         cout<<"Respuesta => ";
         cin>>flag_loop;
         flag_loop=check_answer(flag_loop);
@@ -90,14 +90,14 @@ void testUnDirectedGraph()
         switch (opcion_switch)
         {
         case 1:
-            flag_loop="si";
-            while (flag_loop=="si")
+            flag_loop="Si";
+            while (flag_loop=="Si")
             {
                 cout<<"\nQue vertice quiere eliminar?"<<endl;
                 cout<<"ID => ";
                 cin>>id_vertex;
                 graph.deleteVertex(id_vertex);
-                cout<<"Quiere seguir eliminando vertices? (si/no)"<<endl;
+                cout<<"Quiere seguir eliminando vertices? (Si/No)"<<endl;
                 cout<<"Respuesta => ";
                 cin>>flag_loop;
                 flag_loop=check_answer(flag_loop);
@@ -105,8 +105,8 @@ void testUnDirectedGraph()
             break;
 
         case 2:
-            flag_loop="si";
-            while (flag_loop=="si")
+            flag_loop="Si";
+            while (flag_loop=="Si")
             {
                 string id1,id2;
                 cout<<"\nQue arista quiere eliminar?"<<endl;
@@ -115,7 +115,7 @@ void testUnDirectedGraph()
                 cout<<"ID2 => ";
                 cin>>id2;
                 graph.deleteEdge(id1,id2);
-                cout<<"Quiere seguir eliminando aristas? (si/no)"<<endl;
+                cout<<"Quiere seguir eliminando aristas? (Si/No)"<<endl;
                 cout<<"Respuesta => ";
                 cin>>flag_loop;
                 flag_loop=check_answer(flag_loop);
@@ -123,8 +123,8 @@ void testUnDirectedGraph()
             break;
         
         case 3:
-            flag_loop="si";
-            while (flag_loop=="si")
+            flag_loop="Si";
+            while (flag_loop=="Si")
             {
                 string id1,id2;
                 cout<<"\nElija la arista"<<endl;
@@ -133,7 +133,7 @@ void testUnDirectedGraph()
                 cout<<"ID2 => ";
                 cin>>id2;
                 cout<<"El peso de la arista es => "<<graph(id1,id2);
-                cout<<"\nQuiere conocer otro peso? (si/no)"<<endl;
+                cout<<"\nQuiere conocer otro peso? (Si/No)"<<endl;
                 cout<<"Respuesta => ";
                 cin>>flag_loop;
                 flag_loop=check_answer(flag_loop);
@@ -176,11 +176,11 @@ void testUnDirectedGraph()
 
         if(flag_function!=false)
         {
-            cout<<"\nQuieres probar otras funciones? (si/no)"<<endl;
+            cout<<"\nQuieres probar otras funciones? (Si/No)"<<endl;
             cout<<"Respuesta => ";
             cin>>flag_loop;
             flag_loop=check_answer(flag_loop);
-            if(flag_loop=="no")
+            if(flag_loop=="No")
                 flag_function=false;
         }
     }
@@ -190,8 +190,8 @@ void testUnDirectedGraph()
 void testDirectedGraph()
 {
     DirectedGraph<string, float> graph;
-    string flag_loop="si",id_vertex,data_vertex;
-    while(flag_loop=="si")
+    string flag_loop="Si",id_vertex,data_vertex;
+    while(flag_loop=="Si")
     {
         cout<<"\nIngrese datos del vertice:"<<endl;
         cout<<"ID => ";
@@ -199,7 +199,7 @@ void testDirectedGraph()
         cout<<"Dato => ";
         cin>>data_vertex;
         graph.insertVertex(id_vertex,data_vertex);
-        cout<<"\nQuiere seguir introduciendo mas vertices? (si/no)"<<endl;
+        cout<<"\nQuiere seguir introduciendo mas vertices? (Si/No)"<<endl;
         cout<<"Respuesta => ";
         cin>>flag_loop;
         flag_loop=check_answer(flag_loop);
@@ -207,7 +207,7 @@ void testDirectedGraph()
     std::cout << "\n================================================" << std::endl;
     cout<<"Quiere insertar aristas al grafo? (Si/No)"<<endl;
     cin>>flag_loop;
-    while(flag_loop=="si")
+    while(flag_loop=="Si")
     {
         uint16_t peso;
         string id1,id2;
@@ -229,7 +229,7 @@ void testDirectedGraph()
         cout<<"Peso de la arista => ";
         cin>>peso;
         graph.createEdge(id1,id2,peso);
-        cout<<"\nQuiere seguir insertando aristas al grafo? (si/no)"<<endl;
+        cout<<"\nQuiere seguir insertando aristas al grafo? (Si/No)"<<endl;
         cout<<"Respuesta => ";
         cin>>flag_loop;
         flag_loop=check_answer(flag_loop);
@@ -258,14 +258,14 @@ void testDirectedGraph()
         switch (opcion_switch)
         {
         case 1:
-            flag_loop="si";
-            while (flag_loop=="si")
+            flag_loop="Si";
+            while (flag_loop=="Si")
             {
                 cout<<"\nQue vertice quiere eliminar?"<<endl;
                 cout<<"ID => ";
                 cin>>id_vertex;
                 graph.deleteVertex(id_vertex);
-                cout<<"Quiere seguir eliminando vertices? (si/no)"<<endl;
+                cout<<"Quiere seguir eliminando vertices? (Si/No)"<<endl;
                 cout<<"Respuesta => ";
                 cin>>flag_loop;
                 flag_loop=check_answer(flag_loop);
@@ -273,8 +273,8 @@ void testDirectedGraph()
             break;
 
         case 2:
-            flag_loop="si";
-            while (flag_loop=="si")
+            flag_loop="Si";
+            while (flag_loop=="Si")
             {
                 string id1,id2;
                 cout<<"\nQue arista quiere eliminar?"<<endl;
@@ -283,7 +283,7 @@ void testDirectedGraph()
                 cout<<"ID2 => ";
                 cin>>id2;
                 graph.deleteEdge(id1,id2);
-                cout<<"Quiere seguir eliminando aristas? (si/no)"<<endl;
+                cout<<"Quiere seguir eliminando aristas? (Si/No)"<<endl;
                 cout<<"Respuesta => ";
                 cin>>flag_loop;
                 flag_loop=check_answer(flag_loop);
@@ -291,8 +291,8 @@ void testDirectedGraph()
             break;
         
         case 3:
-            flag_loop="si";
-            while (flag_loop=="si")
+            flag_loop="Si";
+            while (flag_loop=="Si")
             {
                 string id1,id2;
                 cout<<"\nElija la arista"<<endl;
@@ -301,7 +301,7 @@ void testDirectedGraph()
                 cout<<"ID2 => ";
                 cin>>id2;
                 cout<<"El peso de la arista es => "<<graph(id1,id2);
-                cout<<"\nQuiere conocer otro peso? (si/no)"<<endl;
+                cout<<"\nQuiere conocer otro peso? (Si/No)"<<endl;
                 cout<<"Respuesta => ";
                 cin>>flag_loop;
                 flag_loop=check_answer(flag_loop);
@@ -348,11 +348,11 @@ void testDirectedGraph()
 
         if(flag_function!=false)
         {
-            cout<<"\nQuieres probar otras funciones? (si/no)"<<endl;
+            cout<<"\nQuieres probar otras funciones? (Si/No)"<<endl;
             cout<<"Respuesta => ";
             cin>>flag_loop;
             flag_loop=check_answer(flag_loop);
-            if(flag_loop=="no")
+            if(flag_loop=="No")
                 flag_function=false;
         }
     }
@@ -360,9 +360,9 @@ void testDirectedGraph()
 
 string check_answer(string answer)
 {
-    while(answer!="si" && answer!="no")
+    while(answer!="Si" && answer!="No")
     {
-        cout<<"\nRespuesta incorrecta, por favor digite de nuevo (si/no)"<<endl;
+        cout<<"\nRespuesta incorrecta, por favor digite de nuevo (Si/No)"<<endl;
         cout<<"Respuesta => ";
         cin>>answer;
     }

@@ -58,11 +58,11 @@ int main(int argc, char *argv[]) {
         else if(option_graph==6)
             testFloydGraph();
         else
-            flag_all="no";
+            flag_all="No";
         
-        if(flag_all!="no")
+        if(flag_all!="No")
         {
-            cout<<"\nQuieres probar otras opciones? (si/no)"<<endl;
+            cout<<"\nQuieres probar otras opciones? (Si/No)"<<endl;
             cout<<"Respuesta => ";
             cin>>flag_all;
             flag_all=check_answer(flag_all);
@@ -194,7 +194,7 @@ void testAirportParser() {
                 flag_loop=check_answer(flag_loop);
             }
             break;
-        
+
         case 3:
             flag_loop="si";
             while (flag_loop=="si")
@@ -212,23 +212,23 @@ void testAirportParser() {
                 flag_loop=check_answer(flag_loop);
             }
             break;
-        
+
         case 4:
             cout<<"\nLa densidad del grafo es: "<<graph.density()<<endl;
             break;
-        
+
         case 5:
             cout<<"\nEl grafo tiene la  densidad minima requerida? "<<std::boolalpha<<graph.isDense()<<endl;
             break;
-        
+
         case 6:
             cout<<"\nEl grafo es conectado? "<<std::boolalpha<<graph.isConnected()<<endl;
             break;
-        
+
         case 7:
             cout<<"\nEl grafo es fuertemente conectado? "<<std::boolalpha<<graph.isStronglyConnected()<<endl;
             break;
-        
+
         case 8:
             cout<<"\nEl grafo es vacio? "<<std::boolalpha<<graph.empty()<<endl;
             break;

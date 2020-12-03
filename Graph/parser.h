@@ -91,7 +91,7 @@ public:
 
     void uGraphMake(UnDirectedGraph<string, TE> &tempGraph) {
         readJSON();
-        cout << "Los aeropuertos son los siguientes: " << endl;
+        cout << "Los aeropuertos son los siguientes: \n" << endl;
         for (auto p:map_general) {
             cout << " - " << p.second -> Nombre << endl;
             cout << "\n";
@@ -108,9 +108,10 @@ public:
 
     void dGraphMake(DirectedGraph<string, TE> &tempGraph) {
         readJSON();
-        cout << "Los aeropuertos son los siguientes: " << endl;
+        cout << "Los aeropuertos son los siguientes: \n" << endl;
         for (auto p:map_general) {
             cout << " - " << p.second -> Nombre << endl;
+            cout << "\n";
             tempGraph.insertVertex(p.first, p.second -> Nombre);
         }
 
