@@ -18,20 +18,27 @@ public:
 
     Floyd(DirectedGraph<TV, TE> grafito):floydVertexes(grafito){}
 
-    int InsertElements(int size,unordered_map<int, TV> temp)
+    int** getArray(int size)
     {
-        int arr[size][size]; 
+        int** arr = new int*[size];
+        for(int i=0;i<size;i++){
+            arr[i]=new int[size];
+            for(int j=0;j<size;j++){
+                arr[i][j]=i+j;
+            }
+        }
+        return arr;
+    }
+
+    int** InsertElements(int size,unordered_map<int, TV> temp)
+    {
+        int** arr;
+        arr= getArray(size); 
         int i, j;
         for (i = 0; i < size; i++)
         {
             for (j = 0; j < size; j++)
             {
-                //cout<<i<<" "<<j<<endl;
-                /* if(i==j)
-                {
-                    arr[i][j]=0;
-                //    cout<<arr[i][j];
-                } */
                 if(VerifyAdj(i,j,temp))
                     arr[i][j] = weight(i,j,temp);
                 else
@@ -39,24 +46,11 @@ public:
                 if(i==j)
                 {
                     arr[i][j]=0;
-                //    cout<<arr[i][j];
                 }
             }   
         }  
 
-        for (int i = 0; i < size; i++)  
-        {  
-            for (int j = 0; j < size; j++)  
-            {  
-                if (arr[i][j] == INF)  
-                    cout<<"INF"<<"     ";  
-                else
-                    cout<<arr[i][j]<<"     ";  
-            }  
-            cout<<endl;  
-        }  
-
-        return arr[size][size];
+        return arr;
     }
 
     int sizeGraph(DirectedGraph<TV, TE> grafo)
@@ -101,30 +95,42 @@ public:
         }
     }
 
-    void apply()
+    int** apply()
     {
         unordered_map<int, TV> temp;
         int size = sizeGraph(floydVertexes);
-        int matrix[size][size];
-        //matrix = new TE[sizeGraph(floydVertexes)][sizeGraph(floydVertexes)];
-        int count=0;
+        int** matrix;
+
         for(auto itr:this->floydVertexes.vertexes)
-        {
-            temp[count] = itr.second->data;
-            ++count; 
+            temp[stoi(itr.second->data)-1] = itr.second->data;
+
+        matrix = InsertElements(size,temp);
+
+        int k,i,j;
+        for (k = 0; k < size; k++)  
+        {  
+            for (i = 0; i < size; i++)  
+            {  
+                for (j = 0; j < size; j++)  
+                {   
+                    if (matrix[i][k] + matrix[k][j] < matrix[i][j])  
+                        matrix[i][j] = matrix[i][k] + matrix[k][j];  
+                }  
+            }  
         }
 
-        for(auto itr:temp)
-        {
-            cout<<"ID: "<<itr.first<<" "<<"data: "<<itr.second<<endl;
-        }
+        displayMatrix(size,matrix);
 
-        cout<<size<<endl;
+        return matrix;
+    }
 
-        matrix[size][size] = InsertElements(size,temp);
-
+    void displayMatrix(int size, int** matrix)
+    {
+        cout<<"     1     2     3     4     5"<<endl;
+        cout<<"     -     -     -     -     -"<<endl;
         for (int i = 0; i < size; i++)  
         {  
+            cout<<i+1<<" => ";
             for (int j = 0; j < size; j++)  
             {  
                 if (matrix[i][j] == INF)  
@@ -133,7 +139,7 @@ public:
                     cout<<matrix[i][j]<<"     ";  
             }  
             cout<<endl;  
-        }  
+        }    
     }
 
 };

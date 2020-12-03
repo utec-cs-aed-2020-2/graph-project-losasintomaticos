@@ -58,11 +58,11 @@ int main(int argc, char *argv[]) {
         else if(option_graph==6)
             testFloydGraph();
         else
-            flag_all="No";
+            flag_all="no";
         
-        if(flag_all!="No")
+        if(flag_all!="no")
         {
-            cout<<"\nQuieres probar otras opciones? (Si/No)"<<endl;
+            cout<<"\nQuieres probar otras opciones? (si/no)"<<endl;
             cout<<"Respuesta => ";
             cin>>flag_all;
             flag_all=check_answer(flag_all);
