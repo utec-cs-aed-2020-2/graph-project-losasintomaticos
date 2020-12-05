@@ -53,14 +53,6 @@ public:
         return arr;
     }
 
-    int sizeGraph(DirectedGraph<TV, TE> grafo)
-    {
-        int count=0;
-        for(auto itr:grafo.vertexes)
-            ++count;
-        return count;
-    }
-
     Vertex<TV, TE>* returnVertex(TV data)
     {
         for(auto itr:this->floydVertexes.vertexes)
@@ -98,7 +90,7 @@ public:
     int** apply()
     {
         unordered_map<int, TV> temp;
-        int size = sizeGraph(floydVertexes);
+        int size = floydVertexes.sizeGraph();
         int** matrix;
 
         for(auto itr:this->floydVertexes.vertexes)

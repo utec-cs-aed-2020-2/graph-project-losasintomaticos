@@ -20,36 +20,52 @@ class UnDirectedGraph : public Graph<TV, TE>{
             temp2->edges.push_back(edge_temp2);
         }
 
+
+        int sizeEdges()
+        {
+            int count=0;
+            unordered_map<TV,unordered_map<TV,int>> visited;
+            for(auto p:this->vertexes)
+            {
+                list<Edge<TV, TE>*> edge_temp= p.second->edges;
+                for(auto it:edge_temp)
+                {
+                    visited[p.second->data][it->vertexes[1]->data]=false;
+                }
+            }
+
+            for(auto itr:this->vertexes)
+            {
+                list<Edge<TV, TE>*> edge_temp= itr.second->edges;
+                for(auto it:edge_temp)
+                {
+                    if(!visited[itr.second->data][it->vertexes[1]->data])
+                    {
+                        count++;
+                        visited[it->vertexes[1]->data][itr.second->data]=true;
+                    }
+                }
+            }
+
+            return count;
+        }
+
+        int sizeGraph()
+        {
+            int count=0;
+            for(auto itr:this->vertexes)
+                ++count;
+            return count;
+        }
+
         float density()
         {
             if(this->isConnected())
             {
-                unordered_map<string,unordered_map<string,int>> visited;
-                for(auto p:this->vertexes)
-                {
-                    list<Edge<TV, TE>*> edge_temp= p.second->edges;
-                    for(auto it:edge_temp)
-                    {
-                        visited[p.second->data][it->vertexes[1]->data]=false;
-                    }
-                }
+                int countEdges = sizeEdges();
+                int countVertice = sizeGraph();
 
-                int count_vertice=0,count_edges=0;
-                for(auto it:this->vertexes)
-                {
-                    count_vertice++;
-                    list<Edge<TV, TE>*> edge_temp= it.second->edges;
-                    for(auto itr:edge_temp)
-                    {
-                        if(!visited[it.second->data][itr->vertexes[1]->data])
-                        {
-                            count_edges++;
-                            visited[itr->vertexes[1]->data][it.second->data]=true;
-                        }
-                    }
-                }
-
-                float densidad = (float)2*count_edges/(count_vertice*(count_vertice-1));
+                float densidad = (float)2*countEdges/(countVertice*(countVertice-1));
                 return densidad;
             }  
             else
@@ -148,5 +164,6 @@ class UnDirectedGraph : public Graph<TV, TE>{
         friend class Prim<TV, TE>;
         friend class Kruskal<TV, TE>;
         friend class Floyd<TV,TE>;
+        friend class Bellman<TV,TE>;
 };
 #endif

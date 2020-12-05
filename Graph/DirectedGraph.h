@@ -16,25 +16,39 @@ class DirectedGraph : public Graph<TV, TE>{
         Edge<TV,TE>* edge_temp1= new Edge<TV,TE>(w,temp1,temp2);
         temp1->edges.push_back(edge_temp1);
     }
+    
+    int sizeEdges()
+    {
+        int countEdges=0;
+        for(auto it:this->vertexes)
+        {
+            list<Edge<TV, TE>*> edge_temp= it.second->edges;
+            for(auto itr:edge_temp)
+                countEdges++;
+        }
+        return countEdges;
+    }
 
     float density()
     {
         if(this->isConnected())
         {
-            int count_vertice=0,count_edges=0;
-            for(auto it:this->vertexes)
-            {
-                count_vertice++;
-                list<Edge<TV, TE>*> edge_temp= it.second->edges;
-                for(auto itr:edge_temp)
-                    count_edges++;
-            }
+            int countVertice = sizeGraph();
+            int countEdges = sizeEdges();
 
-            float densidad = (float)count_edges/(count_vertice*(count_vertice-1));
+            float densidad = (float)countEdges/(countVertice*(countVertice-1));
             return densidad;
         }  
         else
             return 0;
+    }
+
+    int sizeGraph()
+    {
+        int count=0;
+        for(auto itr:this->vertexes)
+            ++count;
+        return count;
     }
 
     bool isDense(float threshold = 0.5)
@@ -168,6 +182,7 @@ class DirectedGraph : public Graph<TV, TE>{
     friend class Prim<TV, TE>;
     friend class Kruskal<TV, TE>;
     friend class Floyd<TV,TE>;
+    friend class Bellman<TV,TE>;
 };
 
 #endif

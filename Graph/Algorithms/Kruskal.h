@@ -69,14 +69,6 @@ public:
 
     Kruskal(UnDirectedGraph<TV, TE> grafito):kruskal_vertexes(grafito){}
 
-    int size()
-    {
-        int count=0;
-        for(auto p:this->kruskal_vertexes.vertexes)
-            count++;
-        return count;
-    }
-
     string id_min(TV min)
     {
         for(auto p:this->kruskal_vertexes.vertexes)
@@ -87,9 +79,6 @@ public:
             }
         }
     }
-
-
-
 
     DirectedGraph<string, float> apply()
     {
@@ -123,7 +112,7 @@ public:
 
         sort(edges.begin(), edges.end()); 
 
-        DisjointSets<TV,TE> ds(size(),visited); 
+        DisjointSets<TV,TE> ds(kruskal_vertexes.sizeGraph(),visited); 
 
         typename vector< pair<TE, pair<TV, TV>> >::iterator it;
 

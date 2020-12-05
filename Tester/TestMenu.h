@@ -6,10 +6,12 @@
 #include "../Graph/Algorithms/Kruskal.h"
 #include "../Graph/Algorithms/Prim.h"
 #include "../Graph/Algorithms/Floyd.h"
+#include "../Graph/Algorithms/Bellman.h"
 #include <iostream>
 #include <string.h>
 #include <stdbool.h>
 #include <algorithm>
+#include <unordered_map>
 
 using namespace std;
 
@@ -19,6 +21,7 @@ void testUnDirectedGraph();
 void testPrimGraph();
 void testKruskalGraph();
 void testFloydGraph();
+void testBellmanGraph();
 
 
 void testUnDirectedGraph()
@@ -467,6 +470,35 @@ void testFloydGraph()
 
     //grafes.display();
     std::cout << "\n================================================" << std::endl;
+}
+
+void testBellmanGraph()
+{
+    DirectedGraph<string, float> graph;
+    graph.insertVertex("1","1");
+    graph.insertVertex("2","2");
+    graph.insertVertex("3","3");
+    graph.insertVertex("4","4");
+    graph.insertVertex("5","5");
+    graph.insertVertex("6","6");
+
+    graph.createEdge("1","2",1);
+    graph.createEdge("1","3",2);
+    graph.createEdge("1","4",8);
+    graph.createEdge("3","4",5);
+    graph.createEdge("2","5",3);
+    graph.createEdge("3","5",3);
+    graph.createEdge("5","6",4);
+    graph.createEdge("3","6",8);
+    graph.createEdge("4","6",12);
+    std::cout << "\n\n================================================" << std::endl;
+    std::cout << "            ALGORITMO Bellman Ford" << std::endl;
+    std::cout << "================================================" << std::endl;
+    cout<<"El Grafo de Ejemplo es el siguiente:"<<endl;
+    graph.display();
+    cout<<"\nAplicando el Algoritmo Bellman Ford:\n"<<endl;
+    Bellman<string,float> grafito(graph);
+    unordered_map<int,float> bellmanMap = grafito.apply("1");
 }
 
 #endif
