@@ -35,7 +35,8 @@ int main(int argc, char *argv[]) {
         cout<<"6. Algoritmo Floyd Warshall"<<endl;
         cout<<"7. Algoritmo Bellman Ford"<<endl;
         cout<<"8. Algoritmo BFS"<<endl;
-        cout<<"9. Salir"<<endl;
+        cout<<"9. Algoritmo DFS"<<endl;
+        cout<<"10. Salir"<<endl;
         cout<<"\nOpcion => ";
         cin>>option_graph;
         while(option_graph>8 || option_graph<1)
@@ -63,6 +64,8 @@ int main(int argc, char *argv[]) {
             testBellmanGraph();
         else if (option_graph==8)
             testBFSGraph();
+        else if (option_graph==9)
+            testDFSGraph();
         else
             flag_all="no";
         

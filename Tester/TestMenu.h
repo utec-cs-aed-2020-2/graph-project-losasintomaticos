@@ -531,6 +531,36 @@ void testBFSGraph()
     DirectedGraph<string, float> grafes = grafito.BFS();
     grafes.display();
     std::cout << "\n================================================" << std::endl;
-};
+}
+
+void testDFSGraph()
+{
+    DirectedGraph<string, float> graph;
+    graph.insertVertex("1", "A");
+    graph.insertVertex("2", "C");
+    graph.insertVertex("3", "D");
+    graph.insertVertex("4", "F");
+    graph.insertVertex("5", "E");
+    graph.insertVertex("6", "G");
+
+    graph.createEdge("1", "2", 12);
+    graph.createEdge("2", "3", 2);
+    graph.createEdge("2", "4", 4);
+    graph.createEdge("3", "5", 7);
+    graph.createEdge("5", "6", 15);
+    graph.createEdge("4", "6", 10);
+    graph.createEdge("4", "5", 1);
+
+    std::cout << "\n\n================================================" << std::endl;
+    std::cout << "            ALGORITMO Depth First Search" << std::endl;
+    std::cout << "================================================" << std::endl;
+    cout << "El Grafo de Ejemplo es el siguiente:" << endl;
+    graph.display();
+    cout << "\nAplicando el Algoritmo BFS:\n" << endl;
+    DFSSearch<string, float> grafito(graph);
+    DirectedGraph<string, float> grafes = grafito.DFS();
+    grafes.display();
+    std::cout << "\n================================================" << std::endl;
+}
 
 #endif

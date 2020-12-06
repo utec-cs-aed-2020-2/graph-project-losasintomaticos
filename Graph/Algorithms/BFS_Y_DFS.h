@@ -25,9 +25,9 @@ public:
 
     DirectedGraph<TV, TE> BFS(){
         DirectedGraph<TV, TE> dBFS;
-        unordered_map<string,int> visited;
+        unordered_map<TV,unordered_map<TV,int>> visited;
 
-        for (auto i:this->bGraphSearch.vertexes) {
+        for (auto i:bGraphSearch.vertexes -> data) {
             queue<Vertex<TV,TE>*> q;
             q.push(i);
             visited[i] = false;
@@ -39,9 +39,9 @@ public:
                 list<Edge<TV, TE>*> edge = vertice -> edges;
 
                 for (auto itr:edge) {
-                    if (!visited[itr -> vertexes[1] -> data]){
+                    if (!visited[itr.second -> data][itr -> vertexes[1]] -> data){
                         q.push(itr -> vertexes[1]);
-                        visited[itr -> vertexes[1] -> data] = true;
+                        visited[itr -> vertexes[1] -> data][itr.second -> data] = true;
                     }
                 }
             }
@@ -65,30 +65,25 @@ public:
         list<Edge<TV, TE>*> edge = vertice -> edges;
 
         for (auto p:edge) {
-            if (!visited[p->vertexes[1] -> data]) {
-                //grafito.insertVertex(id1, p -> vertexes[1] -> data);
-                //grafito.createEdge(temp)
-                dfs_prev(grafito, p.vertexes[1], visited);
+            if (!visited[p.second -> data][p -> vertexes[1]] -> data) {
+                dfs_prev(grafito, p -> vertexes[1] -> data, visited);
             }
         }
     }
 
     DirectedGraph<TV, TE> DFS(){
         DirectedGraph<TV, TE> dDFS;
-        unordered_map<string,unordered_map<string,int>> visited;
+        unordered_map<TV,unordered_map<TV,int>> visited;
         for(auto p:this -> vertexes){
             Vertex<TV, TE>* temp = p.second;
             visited[temp -> data] = false;
         }
 
-        Vertex<TV, TE>* temp = this -> vertexes[1];
+        //Vertex<TV, TE>* temp = this -> vertexes[1];
         //dDFS.insertVertex(1, temp -> data);
         dDFS = dfs_prev(dDFS, this -> vertexes[1], visited);
         return dDFS;
-
     }
-
-
 };
 
 #endif //GRAPH_PROJECT_LOSASINTOMATICOS_BFS_Y_DFS_H
