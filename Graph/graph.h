@@ -28,6 +28,12 @@ class Floyd;
 
 template<typename TV, typename TE>
 class Bellman;
+
+template<typename TV, typename TE>
+class BFSSearch;
+
+template<typename TV, typename TE>
+class DFSSearch;
 //////////////////////////////////////////////////////
 
 template<typename TV, typename TE>
@@ -160,6 +166,8 @@ public:
     friend class Kruskal<TV, TE>;
     friend class Floyd<TV,TE>;
     friend class Bellman<TV,TE>;
+    friend class BFSSearch<TV, TE>;
+    friend class DFSSearch<TV, TE>;
 };
 
 #endif

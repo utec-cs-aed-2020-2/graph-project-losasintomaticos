@@ -2,6 +2,7 @@
 #define NONDIRECTEDGRAPH_H
 
 #include "../Graph/graph.h"
+#include <iostream>
 
 template<typename TV, typename TE>
 class DirectedGraph : public Graph<TV, TE>{
@@ -179,6 +180,7 @@ class DirectedGraph : public Graph<TV, TE>{
         else
             return false;
     }
+
     friend class Prim<TV, TE>;
     friend class Kruskal<TV, TE>;
     friend class Floyd<TV,TE>;

@@ -6,6 +6,30 @@
 
 #IncludeRegexTransform: 
 
+/cygdrive/c/Users/lucia/Documents/GitHub/graph-project-losasintomaticos/Graph/Algorithms/BFS_Y_DFS.h
+../DirectedGraph.h
+/cygdrive/c/Users/lucia/Documents/GitHub/graph-project-losasintomaticos/Graph/DirectedGraph.h
+../UndirectedGraph.h
+/cygdrive/c/Users/lucia/Documents/GitHub/graph-project-losasintomaticos/Graph/UndirectedGraph.h
+queue
+-
+unordered_map
+-
+
+/cygdrive/c/Users/lucia/Documents/GitHub/graph-project-losasintomaticos/Graph/Algorithms/Bellman.h
+../DirectedGraph.h
+/cygdrive/c/Users/lucia/Documents/GitHub/graph-project-losasintomaticos/Graph/DirectedGraph.h
+../UndirectedGraph.h
+/cygdrive/c/Users/lucia/Documents/GitHub/graph-project-losasintomaticos/Graph/UndirectedGraph.h
+unordered_map
+-
+
+/cygdrive/c/Users/lucia/Documents/GitHub/graph-project-losasintomaticos/Graph/Algorithms/Floyd.h
+../DirectedGraph.h
+/cygdrive/c/Users/lucia/Documents/GitHub/graph-project-losasintomaticos/Graph/DirectedGraph.h
+../UndirectedGraph.h
+/cygdrive/c/Users/lucia/Documents/GitHub/graph-project-losasintomaticos/Graph/UndirectedGraph.h
+
 /cygdrive/c/Users/lucia/Documents/GitHub/graph-project-losasintomaticos/Graph/Algorithms/Kruskal.h
 ../DirectedGraph.h
 /cygdrive/c/Users/lucia/Documents/GitHub/graph-project-losasintomaticos/Graph/DirectedGraph.h
@@ -21,6 +45,8 @@
 /cygdrive/c/Users/lucia/Documents/GitHub/graph-project-losasintomaticos/Graph/DirectedGraph.h
 ../Graph/graph.h
 /cygdrive/c/Users/lucia/Documents/GitHub/graph-project-losasintomaticos/Graph/graph.h
+iostream
+-
 
 /cygdrive/c/Users/lucia/Documents/GitHub/graph-project-losasintomaticos/Graph/UndirectedGraph.h
 ../Graph/graph.h
@@ -53,11 +79,9 @@ unordered_map
 -
 algorithm
 -
-../Graph/graph.h
-/cygdrive/c/Users/lucia/Documents/GitHub/graph-project-losasintomaticos/Graph/graph.h
-../Graph/UndirectedGraph.h
+UndirectedGraph.h
 /cygdrive/c/Users/lucia/Documents/GitHub/graph-project-losasintomaticos/Graph/UndirectedGraph.h
-../Graph/DirectedGraph.h
+DirectedGraph.h
 /cygdrive/c/Users/lucia/Documents/GitHub/graph-project-losasintomaticos/Graph/DirectedGraph.h
 ../include/rapidjson/document.h
 /cygdrive/c/Users/lucia/Documents/GitHub/graph-project-losasintomaticos/include/rapidjson/document.h
@@ -77,11 +101,21 @@ algorithm
 /cygdrive/c/Users/lucia/Documents/GitHub/graph-project-losasintomaticos/Graph/Algorithms/Kruskal.h
 ../Graph/Algorithms/Prim.h
 /cygdrive/c/Users/lucia/Documents/GitHub/graph-project-losasintomaticos/Graph/Algorithms/Prim.h
+../Graph/Algorithms/Floyd.h
+/cygdrive/c/Users/lucia/Documents/GitHub/graph-project-losasintomaticos/Graph/Algorithms/Floyd.h
+../Graph/Algorithms/Bellman.h
+/cygdrive/c/Users/lucia/Documents/GitHub/graph-project-losasintomaticos/Graph/Algorithms/Bellman.h
+../Graph/Algorithms/BFS_Y_DFS.h
+/cygdrive/c/Users/lucia/Documents/GitHub/graph-project-losasintomaticos/Graph/Algorithms/BFS_Y_DFS.h
 iostream
 -
 string.h
 -
 stdbool.h
+-
+algorithm
+-
+unordered_map
 -
 
 /cygdrive/c/Users/lucia/Documents/GitHub/graph-project-losasintomaticos/include/rapidjson/allocators.h

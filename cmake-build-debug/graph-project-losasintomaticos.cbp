@@ -80,22 +80,10 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/cygdrive/c/Users/lucia/Documents/GitHub/graph-project-losasintomaticos/Graph/DirectedGraph.h">
+		<Unit filename="/cygdrive/c/Users/lucia/Documents/GitHub/graph-project-losasintomaticos/Graph/Algorithms">
 			<Option target="graph-project-losasintomaticos"/>
 		</Unit>
-		<Unit filename="/cygdrive/c/Users/lucia/Documents/GitHub/graph-project-losasintomaticos/Graph/UndirectedGraph.h">
-			<Option target="graph-project-losasintomaticos"/>
-		</Unit>
-		<Unit filename="/cygdrive/c/Users/lucia/Documents/GitHub/graph-project-losasintomaticos/Graph/graph.h">
-			<Option target="graph-project-losasintomaticos"/>
-		</Unit>
-		<Unit filename="/cygdrive/c/Users/lucia/Documents/GitHub/graph-project-losasintomaticos/Graph/parser.h">
-			<Option target="graph-project-losasintomaticos"/>
-		</Unit>
-		<Unit filename="/cygdrive/c/Users/lucia/Documents/GitHub/graph-project-losasintomaticos/Parser/Data/airports.json">
-			<Option target="graph-project-losasintomaticos"/>
-		</Unit>
-		<Unit filename="/cygdrive/c/Users/lucia/Documents/GitHub/graph-project-losasintomaticos/Parser/Data/pe.json">
+		<Unit filename="/cygdrive/c/Users/lucia/Documents/GitHub/graph-project-losasintomaticos/Parser/Data">
 			<Option target="graph-project-losasintomaticos"/>
 		</Unit>
 		<Unit filename="/cygdrive/c/Users/lucia/Documents/GitHub/graph-project-losasintomaticos/main.cpp">

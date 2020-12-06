@@ -11,7 +11,6 @@ class Kruskal;
 template<typename TV, typename TE>
 struct DisjointSets;
 
-
 /*****************************************/
 
 template<typename TV, typename TE>
