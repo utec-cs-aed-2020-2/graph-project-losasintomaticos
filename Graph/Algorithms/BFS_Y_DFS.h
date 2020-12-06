@@ -23,26 +23,29 @@ private:
 public:
     BFSSearch(DirectedGraph<TV, TE> grafito):bGraphSearch(grafito){}
 
-    DirectedGraph<TV, TE> BFS(){
+    DirectedGraph<TV, TE> BFS() {
         DirectedGraph<TV, TE> dBFS;
-        unordered_map<TV,unordered_map<TV,int>> visited;
+        unordered_map<TV, unordered_map<TV, int>> visited;
 
-        for (auto i:bGraphSearch.vertexes -> data) {
-            queue<Vertex<TV,TE>*> q;
-            q.push(i);
-            visited[i] = false;
+        for (auto i:this->vertexes) {
+            list<Edge<TV, TE> *> edge1 = i.second->edges;
+            for (auto k:edge1) {
+                visited[i.second->data][k->vertexes[1]->data] = false;
+            }
+        }
+        queue<Vertex<TV, TE> *> q;
+        q.push(i);
 
-            while (!q.empty()){
-                Vertex<TV,TE>* vertice = q.front();
-                q.pop();
-                cout << i << " " << endl;
-                list<Edge<TV, TE>*> edge = vertice -> edges;
+        while (!q.empty()) {
+            Vertex<TV, TE> *vertice = q.front();
+            q.pop();
+            cout << i << " " << endl;
+            list<Edge<TV, TE> *> edge2 = vertice->edges;
 
-                for (auto itr:edge) {
-                    if (!visited[itr.second -> data][itr -> vertexes[1]] -> data){
-                        q.push(itr -> vertexes[1]);
-                        visited[itr -> vertexes[1] -> data][itr.second -> data] = true;
-                    }
+            for (auto itr:edge2) {
+                if (!visited[itr.second->data][itr->vertexes[1]]->data) {
+                    q.push(itr->vertexes[1]);
+                    visited[itr->vertexes[1]->data][itr.second->data] = true;
                 }
             }
         }
