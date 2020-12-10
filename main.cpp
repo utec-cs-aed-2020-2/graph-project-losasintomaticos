@@ -39,7 +39,7 @@ int main(int argc, char *argv[]) {
         cout<<"10. Salir"<<endl;
         cout<<"\nOpcion => ";
         cin>>option_graph;
-        while(option_graph>8 || option_graph<1)
+        while(option_graph>9 || option_graph<1)
         {
             cout<<"\nOpcion incorrecta, por favor digita una correcta opcion";
             cout<<"\nOpcion => ";

@@ -4,6 +4,7 @@
 #include "../DirectedGraph.h"
 #include "../UndirectedGraph.h"
 #include <queue>
+#include <stack>
 #include <unordered_map>
 using namespace std;
 
@@ -23,29 +24,28 @@ private:
 public:
     BFSSearch(DirectedGraph<TV, TE> grafito):bGraphSearch(grafito){}
 
-    DirectedGraph<TV, TE> BFS() {
+    DirectedGraph<TV, TE> BFS(string id) {
         DirectedGraph<TV, TE> dBFS;
-        unordered_map<TV, unordered_map<TV, int>> visited;
+        unordered_map<TV, bool> visited;
 
-        for (auto i:this->vertexes) {
-            list<Edge<TV, TE> *> edge1 = i.second->edges;
-            for (auto k:edge1) {
-                visited[i.second->data][k->vertexes[1]->data] = false;
-            }
+        for (auto v:bGraphSearch.vertexes) {
+            visited.insert({v.first, false});
         }
-        queue<Vertex<TV, TE> *> q;
-        q.push(i);
+
+        Vertex<TV, TE> *temp = bGraphSearch.vertexes[id];
+        queue<Vertex<TV, TE>*> q;
+        q.push(temp);
 
         while (!q.empty()) {
-            Vertex<TV, TE> *vertice = q.front();
+            Vertex<TV, TE> *vertice_begin = q.front();
+            cout << vertice_begin->data << " " << endl;
             q.pop();
-            cout << i << " " << endl;
-            list<Edge<TV, TE> *> edge2 = vertice->edges;
+            list<Edge<TV, TE> *> edge2 = vertice_begin->edges;
 
-            for (auto itr:edge2) {
-                if (!visited[itr.second->data][itr->vertexes[1]]->data) {
-                    q.push(itr->vertexes[1]);
-                    visited[itr->vertexes[1]->data][itr.second->data] = true;
+            for (auto &adj:vertice_begin->edges) {
+                    if (!visited[adj->vertexes[1]->id]){
+                        visited[adj->vertexes[1]->id] = true;
+                        q.push(adj->vertexes[1]);
                 }
             }
         }
@@ -60,33 +60,55 @@ private:
 public:
     DFSSearch(DirectedGraph<TV, TE> grafito): dGraphSearch(grafito){}
 
-    DirectedGraph<TV, TE> dfs_prev(DirectedGraph<TV, TE> &grafito, Vertex<TV, TE>*vertice, unordered_map<string, int> &visited){
-        string id1;
-        visited[vertice -> data] = true;
-        cout << vertice -> data << " " << endl;
+    DirectedGraph<TV, TE> DFS(string id) {
+        DirectedGraph<TV, TE> dDFS;
+        unordered_map<TV, bool> visited;
 
-        list<Edge<TV, TE>*> edge = vertice -> edges;
+        for (auto v:dGraphSearch.vertexes) {
+            visited.insert({v.first, false});
+        }
 
-        for (auto p:edge) {
-            if (!visited[p.second -> data][p -> vertexes[1]] -> data) {
-                dfs_prev(grafito, p -> vertexes[1] -> data, visited);
+        Vertex<TV, TE> *temp = dGraphSearch.vertexes[id];
+        stack<Vertex<TV, TE>*> s;
+        s.push(temp);
+        while (!s.empty()) {
+            Vertex<TV, TE> *vertice_begin = s.top();
+            s.pop();
+
+            if (!visited[vertice_begin->id]){
+                cout << vertice_begin->data << " " << endl;
+                visited[vertice_begin->id] = true;
+            }
+
+            for (auto &adj:vertice_begin->edges) {
+                if (!visited[adj->vertexes[1]->id]){
+                    s.push(adj->vertexes[1]);
+                }
             }
         }
     }
+};
 
-    DirectedGraph<TV, TE> DFS(){
+template<typename TV, typename TE>
+class strongConnected : public Graph<TV, TE>{
+private:
+    DirectedGraph<TV, TE> strong;
+
+public:
+    strongConnected(DirectedGraph<TV, TE> grafito): strong(grafito){}
+
+    DirectedGraph<TV, TE> dstrong(){
         DirectedGraph<TV, TE> dDFS;
-        unordered_map<TV,unordered_map<TV,int>> visited;
-        for(auto p:this -> vertexes){
-            Vertex<TV, TE>* temp = p.second;
-            visited[temp -> data] = false;
+        unordered_map<TV, bool> visited;
+        stack<Vertex<TV, TE>*> s;
+
+        for (auto v:strong.vertexes) {
+            visited.insert({v.first, false});
         }
 
-        //Vertex<TV, TE>* temp = this -> vertexes[1];
-        //dDFS.insertVertex(1, temp -> data);
-        dDFS = dfs_prev(dDFS, this -> vertexes[1], visited);
-        return dDFS;
+
     }
+
 };
 
 #endif //GRAPH_PROJECT_LOSASINTOMATICOS_BFS_Y_DFS_H

@@ -506,20 +506,21 @@ void testBellmanGraph() {
 void testBFSGraph()
 {
     DirectedGraph<string, float> graph;
-    graph.insertVertex("1", "A");
+    graph.insertVertex("0", "A");
+    graph.insertVertex("1", "B");
     graph.insertVertex("2", "C");
     graph.insertVertex("3", "D");
-    graph.insertVertex("4", "F");
-    graph.insertVertex("5", "E");
-    graph.insertVertex("6", "G");
+    graph.insertVertex("4", "E");
+    graph.insertVertex("5", "F");
 
-    graph.createEdge("1", "2", 12);
-    graph.createEdge("2", "3", 2);
-    graph.createEdge("2", "4", 4);
-    graph.createEdge("3", "5", 7);
-    graph.createEdge("5", "6", 15);
-    graph.createEdge("4", "6", 10);
+    graph.createEdge("0", "1", 12);
+    graph.createEdge("0", "2", 2);
+    graph.createEdge("1", "2", 4);
+    graph.createEdge("2", "0", 7);
+    graph.createEdge("2", "3", 15);
+    graph.createEdge("3", "3", 10);
     graph.createEdge("4", "5", 1);
+
 
     std::cout << "\n\n================================================" << std::endl;
     std::cout << "            ALGORITMO Breath First Search" << std::endl;
@@ -528,7 +529,7 @@ void testBFSGraph()
     graph.display();
     cout << "\nAplicando el Algoritmo BFS:\n" << endl;
     BFSSearch<string, float> grafito(graph);
-    DirectedGraph<string, float> grafes = grafito.BFS();
+    DirectedGraph<string, float> grafes = grafito.BFS("3");
     grafes.display();
     std::cout << "\n================================================" << std::endl;
 }
@@ -536,19 +537,19 @@ void testBFSGraph()
 void testDFSGraph()
 {
     DirectedGraph<string, float> graph;
-    graph.insertVertex("1", "A");
+    graph.insertVertex("0", "A");
+    graph.insertVertex("1", "B");
     graph.insertVertex("2", "C");
     graph.insertVertex("3", "D");
-    graph.insertVertex("4", "F");
-    graph.insertVertex("5", "E");
-    graph.insertVertex("6", "G");
+    graph.insertVertex("4", "E");
+    graph.insertVertex("5", "F");
 
-    graph.createEdge("1", "2", 12);
-    graph.createEdge("2", "3", 2);
-    graph.createEdge("2", "4", 4);
-    graph.createEdge("3", "5", 7);
-    graph.createEdge("5", "6", 15);
-    graph.createEdge("4", "6", 10);
+    graph.createEdge("0", "1", 12);
+    graph.createEdge("0", "2", 2);
+    graph.createEdge("1", "2", 4);
+    graph.createEdge("2", "0", 7);
+    graph.createEdge("2", "3", 15);
+    graph.createEdge("3", "3", 10);
     graph.createEdge("4", "5", 1);
 
     std::cout << "\n\n================================================" << std::endl;
@@ -558,7 +559,9 @@ void testDFSGraph()
     graph.display();
     cout << "\nAplicando el Algoritmo BFS:\n" << endl;
     DFSSearch<string, float> grafito(graph);
-    DirectedGraph<string, float> grafes = grafito.DFS();
+
+    DirectedGraph<string, float> grafes = grafito.DFS("0");
+
     grafes.display();
     std::cout << "\n================================================" << std::endl;
 }
