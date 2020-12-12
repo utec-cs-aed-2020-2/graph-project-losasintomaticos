@@ -113,7 +113,7 @@ public:
 
         DisjointSets<TV,TE> ds(kruskal_vertexes.sizeGraph(),visited); 
 
-        typename vector< pair<TE, pair<TV, TV>> >::iterator it;
+        typename vector< pair<TE, pair<TV, TV>> >::iterator it; 
 
         for (it=edges.begin(); it!=edges.end(); it++) 
         { 
@@ -127,9 +127,9 @@ public:
             { 
                 TV father = ds.merge(set_u, set_v); 
                 if(father!=set_u)  
-                    kruskal.createEdge(id_min(set_u),id_min(set_v),1);
+                    kruskal.createEdge(id_min(set_u),id_min(set_v),1); 
                 else
-                    kruskal.createEdge(id_min(set_v),id_min(set_u),1);
+                    kruskal.createEdge(id_min(set_v),id_min(set_u),1); 
             } 
         }
         edges.clear();

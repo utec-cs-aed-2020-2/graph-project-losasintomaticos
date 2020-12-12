@@ -50,10 +50,8 @@ int main(int argc, char *argv[]) {
             testDirectedGraph();
         else if(option_graph==2)
             testUnDirectedGraph();
-
         else if (option_graph == 3)
             testAirportParser();
-
         else if(option_graph==4)
             testPrimGraph();
         else if(option_graph==5)
