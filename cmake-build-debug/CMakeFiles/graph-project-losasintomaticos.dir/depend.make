@@ -3,9 +3,11 @@
 
 CMakeFiles/graph-project-losasintomaticos.dir/main.cpp.o: ../Graph/Algorithms/BFS_Y_DFS.h
 CMakeFiles/graph-project-losasintomaticos.dir/main.cpp.o: ../Graph/Algorithms/Bellman.h
+CMakeFiles/graph-project-losasintomaticos.dir/main.cpp.o: ../Graph/Algorithms/Dijsktra.h
 CMakeFiles/graph-project-losasintomaticos.dir/main.cpp.o: ../Graph/Algorithms/Floyd.h
 CMakeFiles/graph-project-losasintomaticos.dir/main.cpp.o: ../Graph/Algorithms/Kruskal.h
 CMakeFiles/graph-project-losasintomaticos.dir/main.cpp.o: ../Graph/Algorithms/Prim.h
+CMakeFiles/graph-project-losasintomaticos.dir/main.cpp.o: ../Graph/Algorithms/StrongConnected.h
 CMakeFiles/graph-project-losasintomaticos.dir/main.cpp.o: ../Graph/DirectedGraph.h
 CMakeFiles/graph-project-losasintomaticos.dir/main.cpp.o: ../Graph/UndirectedGraph.h
 CMakeFiles/graph-project-losasintomaticos.dir/main.cpp.o: ../Graph/graph.h

@@ -20,7 +20,6 @@ class UnDirectedGraph : public Graph<TV, TE>{
             temp2->edges.push_back(edge_temp2);
         }
 
-
         int sizeEdges()
         {
             int count=0;
@@ -165,5 +164,9 @@ class UnDirectedGraph : public Graph<TV, TE>{
         friend class Kruskal<TV, TE>;
         friend class Floyd<TV,TE>;
         friend class Bellman<TV,TE>;
+        friend class BFSSearch<TV, TE>;
+        friend class DFSSearch<TV, TE>;
+        friend class strongConnected<TV, TE>;
+        friend class Dijsktra<TV, TE>;
 };
 #endif
