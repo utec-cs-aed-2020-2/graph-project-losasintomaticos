@@ -4,9 +4,11 @@
 CMakeFiles/graph-project-losasintomaticos.dir/main.cpp.o
  /cygdrive/c/Users/lucia/Documents/GitHub/graph-project-losasintomaticos/Graph/Algorithms/BFS_Y_DFS.h
  /cygdrive/c/Users/lucia/Documents/GitHub/graph-project-losasintomaticos/Graph/Algorithms/Bellman.h
+ /cygdrive/c/Users/lucia/Documents/GitHub/graph-project-losasintomaticos/Graph/Algorithms/Dijsktra.h
  /cygdrive/c/Users/lucia/Documents/GitHub/graph-project-losasintomaticos/Graph/Algorithms/Floyd.h
  /cygdrive/c/Users/lucia/Documents/GitHub/graph-project-losasintomaticos/Graph/Algorithms/Kruskal.h
  /cygdrive/c/Users/lucia/Documents/GitHub/graph-project-losasintomaticos/Graph/Algorithms/Prim.h
+ /cygdrive/c/Users/lucia/Documents/GitHub/graph-project-losasintomaticos/Graph/Algorithms/StrongConnected.h
  /cygdrive/c/Users/lucia/Documents/GitHub/graph-project-losasintomaticos/Graph/DirectedGraph.h
  /cygdrive/c/Users/lucia/Documents/GitHub/graph-project-losasintomaticos/Graph/UndirectedGraph.h
  /cygdrive/c/Users/lucia/Documents/GitHub/graph-project-losasintomaticos/Graph/graph.h

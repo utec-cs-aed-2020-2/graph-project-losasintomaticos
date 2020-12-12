@@ -26,6 +26,12 @@ unordered_map
 unordered_map
 -
 
+/cygdrive/c/Users/lucia/Documents/GitHub/graph-project-losasintomaticos/Graph/Algorithms/Dijsktra.h
+../DirectedGraph.h
+/cygdrive/c/Users/lucia/Documents/GitHub/graph-project-losasintomaticos/Graph/DirectedGraph.h
+../UndirectedGraph.h
+/cygdrive/c/Users/lucia/Documents/GitHub/graph-project-losasintomaticos/Graph/UndirectedGraph.h
+
 /cygdrive/c/Users/lucia/Documents/GitHub/graph-project-losasintomaticos/Graph/Algorithms/Floyd.h
 ../DirectedGraph.h
 /cygdrive/c/Users/lucia/Documents/GitHub/graph-project-losasintomaticos/Graph/DirectedGraph.h
@@ -43,6 +49,18 @@ unordered_map
 /cygdrive/c/Users/lucia/Documents/GitHub/graph-project-losasintomaticos/Graph/DirectedGraph.h
 ../UndirectedGraph.h
 /cygdrive/c/Users/lucia/Documents/GitHub/graph-project-losasintomaticos/Graph/UndirectedGraph.h
+
+/cygdrive/c/Users/lucia/Documents/GitHub/graph-project-losasintomaticos/Graph/Algorithms/StrongConnected.h
+../DirectedGraph.h
+/cygdrive/c/Users/lucia/Documents/GitHub/graph-project-losasintomaticos/Graph/DirectedGraph.h
+../UndirectedGraph.h
+/cygdrive/c/Users/lucia/Documents/GitHub/graph-project-losasintomaticos/Graph/UndirectedGraph.h
+queue
+-
+stack
+-
+unordered_map
+-
 
 /cygdrive/c/Users/lucia/Documents/GitHub/graph-project-losasintomaticos/Graph/DirectedGraph.h
 ../Graph/graph.h
@@ -109,6 +127,12 @@ DirectedGraph.h
 /cygdrive/c/Users/lucia/Documents/GitHub/graph-project-losasintomaticos/Graph/Algorithms/Bellman.h
 ../Graph/Algorithms/BFS_Y_DFS.h
 /cygdrive/c/Users/lucia/Documents/GitHub/graph-project-losasintomaticos/Graph/Algorithms/BFS_Y_DFS.h
+../Graph/Algorithms/StrongConnected.h
+/cygdrive/c/Users/lucia/Documents/GitHub/graph-project-losasintomaticos/Graph/Algorithms/StrongConnected.h
+../Graph/parser.h
+/cygdrive/c/Users/lucia/Documents/GitHub/graph-project-losasintomaticos/Graph/parser.h
+../Graph/Algorithms/Dijsktra.h
+/cygdrive/c/Users/lucia/Documents/GitHub/graph-project-losasintomaticos/Graph/Algorithms/Dijsktra.h
 iostream
 -
 string.h

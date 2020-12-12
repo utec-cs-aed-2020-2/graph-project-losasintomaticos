@@ -91,9 +91,7 @@ public:
                 }
             }
         }
-
         return return_grafo;
     }
-
 };
 #endif

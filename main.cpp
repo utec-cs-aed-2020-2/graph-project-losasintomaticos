@@ -34,12 +34,16 @@ int main(int argc, char *argv[]) {
         cout<<"5. Algoritmo Kruskal"<<endl;
         cout<<"6. Algoritmo Floyd Warshall"<<endl;
         cout<<"7. Algoritmo Bellman Ford"<<endl;
-        cout<<"8. Algoritmo BFS"<<endl;
-        cout<<"9. Algoritmo DFS"<<endl;
-        cout<<"10. Salir"<<endl;
+        cout<<"8. Algoritmo BFS Directed"<<endl;
+        cout<<"9. Algoritmo DFS Directed"<<endl;
+        cout<<"10. Algoritmo BFS UnDirected"<<endl;
+        cout<<"11. Algoritmo DFS UnDirected"<<endl;
+        cout<<"12. Algoritmo de Dijkstra "<<endl;
+        cout<<"13. Strongly Connected Components"<<endl;
+        cout<<"14. Salir"<<endl;
         cout<<"\nOpcion => ";
         cin>>option_graph;
-        while(option_graph>9 || option_graph<1)
+        while(option_graph>14 || option_graph<1)
         {
             cout<<"\nOpcion incorrecta, por favor digita una correcta opcion";
             cout<<"\nOpcion => ";
@@ -63,9 +67,17 @@ int main(int argc, char *argv[]) {
         else if(option_graph==7)
             testBellmanGraph();
         else if (option_graph==8)
-            testBFSGraph();
+            testdBFSGraph();
         else if (option_graph==9)
-            testDFSGraph();
+            testdDFSGraph();
+        else if (option_graph==10)
+            testuBFSGraph();
+        else if (option_graph==11)
+            testuDFSGraph();
+        else if (option_graph==12)
+            testDijkstra();
+        else if (option_graph==13)
+            testSSCGraph();
         else
             flag_all="no";
         
@@ -81,22 +93,3 @@ int main(int argc, char *argv[]) {
     return EXIT_SUCCESS;
 }
 
-void testAirportParser() {
-    AirportParser<string, float> graph_parse;
-    int opcion;
-    cout << "Elija la opcion para que sea un grafo dirigido o no dirigido a base de un archivo JSON: " << endl;
-    cout << "1. Grafo no dirigido a base  aeropuertos del Peru" << endl;
-    cout << "2. Grafo dirigido a base de aeropuertos del Peru" << endl;
-    cout << "\nOpcion => ";
-    cin >> opcion;
-    if (opcion == 1){
-        UnDirectedGraph<string, float> undirectedjson;
-        graph_parse.uGraphMake(undirectedjson);
-        undirectedjson.display();
-    }
-    else if(opcion == 2){
-        DirectedGraph<string, float> directedjson;
-        graph_parse.dGraphMake(directedjson);
-        directedjson.display();
-    }
-}

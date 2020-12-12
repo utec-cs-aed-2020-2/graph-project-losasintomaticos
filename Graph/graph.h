@@ -34,6 +34,12 @@ class BFSSearch;
 
 template<typename TV, typename TE>
 class DFSSearch;
+
+template<typename TV, typename TE>
+class strongConnected;
+
+template<typename TV, typename TE>
+class Dijsktra;
 //////////////////////////////////////////////////////
 
 template<typename TV, typename TE>
@@ -170,6 +176,8 @@ public:
     friend class Bellman<TV,TE>;
     friend class BFSSearch<TV, TE>;
     friend class DFSSearch<TV, TE>;
+    friend class strongConnected<TV, TE>;
+    friend class Dijsktra<TV, TE>;
 };
 
 #endif

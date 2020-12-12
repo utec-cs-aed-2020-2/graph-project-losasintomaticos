@@ -67,7 +67,7 @@ class DirectedGraph : public Graph<TV, TE>{
             list<Edge<TV, TE>*> edge_temp = vertice->edges;
             for(auto itr:edge_temp)
             {
-                cout<<itr->vertexes[1]->data<<'('<<itr->weight<<')'<<", ";
+                cout<<itr->vertexes[1]->data<<'('<<itr->weight<<')'<<",";
             }
             cout<<'\n';
         }
@@ -185,6 +185,10 @@ class DirectedGraph : public Graph<TV, TE>{
     friend class Kruskal<TV, TE>;
     friend class Floyd<TV,TE>;
     friend class Bellman<TV,TE>;
+    friend class BFSSearch<TV, TE>;
+    friend class DFSSearch<TV, TE>;
+    friend class strongConnected<TV, TE>;
+    friend class Dijsktra<TV, TE>;
 };
 
 #endif

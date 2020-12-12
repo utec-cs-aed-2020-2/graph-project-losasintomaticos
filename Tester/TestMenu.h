@@ -8,6 +8,9 @@
 #include "../Graph/Algorithms/Floyd.h"
 #include "../Graph/Algorithms/Bellman.h"
 #include "../Graph/Algorithms/BFS_Y_DFS.h"
+#include "../Graph/Algorithms/StrongConnected.h"
+#include "../Graph/parser.h"
+#include "../Graph/Algorithms/Dijsktra.h"
 #include <iostream>
 #include <string.h>
 #include <stdbool.h>
@@ -23,7 +26,8 @@ void testPrimGraph();
 void testKruskalGraph();
 void testFloydGraph();
 void testBellmanGraph();
-
+void testAirportParser();
+void testDijkstra();
 
 void testUnDirectedGraph()
 {
@@ -190,7 +194,6 @@ void testUnDirectedGraph()
         }
     }
 }
-
 
 void testDirectedGraph()
 {
@@ -503,7 +506,7 @@ void testBellmanGraph() {
     std::cout << "\n================================================" << std::endl;
 }
 
-void testBFSGraph()
+void testdBFSGraph()
 {
     DirectedGraph<string, float> graph;
     graph.insertVertex("0", "A");
@@ -523,18 +526,49 @@ void testBFSGraph()
 
 
     std::cout << "\n\n================================================" << std::endl;
-    std::cout << "            ALGORITMO Breath First Search" << std::endl;
+    std::cout << "     ALGORITMO Breath First Search Directed" << std::endl;
     std::cout << "================================================" << std::endl;
     cout << "El Grafo de Ejemplo es el siguiente:" << endl;
     graph.display();
-    cout << "\nAplicando el Algoritmo BFS:\n" << endl;
+    cout << "\nAplicando el Algoritmo BFS Directed:\n" << endl;
     BFSSearch<string, float> grafito(graph);
-    DirectedGraph<string, float> grafes = grafito.BFS("3");
+    DirectedGraph<string, float> grafes = grafito.dBFS("3");
     grafes.display();
     std::cout << "\n================================================" << std::endl;
 }
 
-void testDFSGraph()
+void testuBFSGraph()
+{
+    UnDirectedGraph<string, float> graph;
+    graph.insertVertex("0", "A");
+    graph.insertVertex("1", "B");
+    graph.insertVertex("2", "C");
+    graph.insertVertex("3", "D");
+    graph.insertVertex("4", "E");
+    graph.insertVertex("5", "F");
+
+    graph.createEdge("0", "1", 12);
+    graph.createEdge("0", "2", 2);
+    graph.createEdge("1", "2", 4);
+    graph.createEdge("2", "0", 7);
+    graph.createEdge("2", "3", 15);
+    graph.createEdge("3", "3", 10);
+    graph.createEdge("4", "5", 1);
+
+
+    std::cout << "\n\n================================================" << std::endl;
+    std::cout << "    ALGORITMO Breath First Search Undirected" << std::endl;
+    std::cout << "================================================" << std::endl;
+    cout << "El Grafo de Ejemplo es el siguiente:" << endl;
+    graph.display();
+    cout << "\nAplicando el Algoritmo BFS Undirected:\n" << endl;
+    BFSSearch<string, float> grafito(graph, "A");
+    UnDirectedGraph<string, float> grafes = grafito.uBFS("3");
+    grafes.display();
+    std::cout << "\n================================================" << std::endl;
+}
+
+void testdDFSGraph()
 {
     DirectedGraph<string, float> graph;
     graph.insertVertex("0", "A");
@@ -553,17 +587,102 @@ void testDFSGraph()
     graph.createEdge("4", "5", 1);
 
     std::cout << "\n\n================================================" << std::endl;
-    std::cout << "            ALGORITMO Depth First Search" << std::endl;
+    std::cout << "      ALGORITMO Depth First Search Directed" << std::endl;
     std::cout << "================================================" << std::endl;
     cout << "El Grafo de Ejemplo es el siguiente:" << endl;
     graph.display();
-    cout << "\nAplicando el Algoritmo BFS:\n" << endl;
+    cout << "\nAplicando el Algoritmo DFS Directed:\n" << endl;
     DFSSearch<string, float> grafito(graph);
 
-    DirectedGraph<string, float> grafes = grafito.DFS("0");
-
+    DirectedGraph<string, float> grafes = grafito.dDFS("0");
     grafes.display();
     std::cout << "\n================================================" << std::endl;
+}
+
+void testuDFSGraph()
+{
+    UnDirectedGraph<string, float> graph;
+    graph.insertVertex("0", "A");
+    graph.insertVertex("1", "B");
+    graph.insertVertex("2", "C");
+    graph.insertVertex("3", "D");
+    graph.insertVertex("4", "E");
+    graph.insertVertex("5", "F");
+
+    graph.createEdge("0", "1", 12);
+    graph.createEdge("0", "2", 2);
+    graph.createEdge("1", "2", 4);
+    graph.createEdge("2", "0", 7);
+    graph.createEdge("2", "3", 15);
+    graph.createEdge("3", "3", 10);
+    graph.createEdge("4", "5", 1);
+
+    std::cout << "\n\n================================================" << std::endl;
+    std::cout << "    ALGORITMO Depth First Search Undirected" << std::endl;
+    std::cout << "================================================" << std::endl;
+    cout << "El Grafo de Ejemplo es el siguiente:" << endl;
+    graph.display();
+    cout << "\nAplicando el Algoritmo DFS Undirected:\n" << endl;
+    DFSSearch<string, float> grafito(graph, "A");
+
+    DirectedGraph<string, float> grafes = grafito.dDFS("0");
+    grafes.display();
+    std::cout << "\n================================================" << std::endl;
+}
+
+
+void testSSCGraph(){
+//    DirectedGraph<string, float> graph;
+//    graph.insertVertex("0", "A");
+//    graph.insertVertex("1", "B");
+//    graph.insertVertex("2", "C");
+//    graph.insertVertex("3", "D");
+//    graph.insertVertex("4", "E");
+//    graph.insertVertex("5", "F");
+//
+//    graph.createEdge("0", "1", 12);
+//    graph.createEdge("0", "2", 2);
+//    graph.createEdge("1", "2", 4);
+//    graph.createEdge("2", "0", 7);
+//    graph.createEdge("2", "3", 15);
+//    graph.createEdge("3", "3", 10);
+//    graph.createEdge("4", "5", 1);
+//
+//    std::cout << "\n\n================================================" << std::endl;
+//    std::cout << "     ALGORITMO Strongly Connected Components" << std::endl;
+//    std::cout << "================================================" << std::endl;
+//    cout << "El Grafo de Ejemplo es el siguiente:" << endl;
+//    graph.display();
+//    cout << "\nAplicando el Algoritmo SSC:\n" << endl;
+//    strongConnected<string, float> grafito(graph);
+//
+//    DirectedGraph<string, float> grafes = grafito.SCC("0");
+//    grafes.display();
+//    std::cout << "\n================================================" << std::endl;
+}
+
+void testAirportParser() {
+    AirportParser<string, float> graph_parse;
+    int opcion;
+    cout << "Elija la opcion para que sea un grafo dirigido o no dirigido a base de un archivo JSON: " << endl;
+    cout << "1. Grafo no dirigido a base  aeropuertos del Peru" << endl;
+    cout << "2. Grafo dirigido a base de aeropuertos del Peru" << endl;
+    cout << "\nOpcion => ";
+    cin >> opcion;
+    if (opcion == 1){
+        UnDirectedGraph<string, float> undirectedjson;
+        graph_parse.uGraphMake(undirectedjson);
+        undirectedjson.display();
+    }
+    else if(opcion == 2){
+        DirectedGraph<string, float> directedjson;
+        graph_parse.dGraphMake(directedjson);
+        directedjson.display();
+    }
+}
+
+void testDijkstra(){
+
 }
 
 #endif
