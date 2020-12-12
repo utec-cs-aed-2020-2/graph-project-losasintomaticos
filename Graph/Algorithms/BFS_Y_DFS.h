@@ -41,7 +41,7 @@ public:
 
         while (!q.empty()) {
             Vertex<TV, TE> *vertice_begin = q.front();
-            cout << vertice_begin->data << " " << endl;
+            display(vertice_begin);
             q.pop();
             //list<Edge<TV, TE> *> edge2 = vertice_begin->edges;
 
@@ -69,7 +69,8 @@ public:
 
         while (!q.empty()) {
             Vertex<TV, TE> *vertice_begin = q.front();
-            cout << vertice_begin->data << " " << endl;
+            display(vertice_begin);
+            //cout << vertice_begin->data << " " << endl;
             q.pop();
             //list<Edge<TV, TE> *> edge2 = vertice_begin->edges;
 
@@ -82,7 +83,13 @@ public:
         }
         return udBFS;
     }
+
+    void display(Vertex<TV, TE> *vertice_begin){
+        cout << vertice_begin->data << " " << endl;
+    }
 };
+
+
 
 template<typename TV, typename TE>
 class DFSSearch : public Graph<TV, TE>{
@@ -111,7 +118,7 @@ public:
             s.pop();
 
             if (!visited[vertice_begin->id]){
-                cout << vertice_begin->data << " " << endl;
+                display(vertice_begin);
                 visited[vertice_begin->id] = true;
             }
 
@@ -140,7 +147,7 @@ public:
             s.pop();
 
             if (!visited[vertice_begin->id]){
-                cout << vertice_begin->data << " " << endl;
+                display(vertice_begin);
                 visited[vertice_begin->id] = true;
             }
 
@@ -151,6 +158,10 @@ public:
             }
         }
         return uDFS;
+    }
+
+    void display(Vertex<TV, TE> *vertice_begin){
+        cout << vertice_begin->data << " " << endl;
     }
 };
 
