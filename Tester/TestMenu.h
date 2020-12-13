@@ -478,7 +478,7 @@ void testFloydGraph()
 
 
 void testBellmanGraph() {
-    DirectedGraph<string, float> graph;
+    UnDirectedGraph<string, float> graph;
     graph.insertVertex("1", "1");
     graph.insertVertex("2", "2");
     graph.insertVertex("3", "3");

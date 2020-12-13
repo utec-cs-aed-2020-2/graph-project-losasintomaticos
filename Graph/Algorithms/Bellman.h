@@ -23,43 +23,29 @@ struct EdgeSupport {
 template<typename TV, typename TE>
 class Bellman{ 
 private:
-    DirectedGraph<TV, TE> bellmanVertexes;
+    DirectedGraph<TV, TE> DbellmanVertexes;
+    UnDirectedGraph<TV, TE> UbellmanVertexes;
+    bool isDirected;
+
 public:
-    Bellman(DirectedGraph<TV, TE> grafito):bellmanVertexes(grafito){}
-
-    void insertWeight(unordered_map<int,TE> &weight,  int sizeVertex, TV start)
-    {
-        for (int i = 1; i <= sizeVertex; i++) 
-            weight[i] = INT16_MAX; 
-        weight[stoi(start)] = 0;
-    }
-
-    void structSupport(EdgeSupport<TV,TE>* &edge)
-    {
-        int count=0;
-        for(auto itr:this->bellmanVertexes.vertexes)
-        {
-           list<Edge<TV, TE>*> edge_temp= itr.second->edges;
-           for(auto it:edge_temp)
-           {
-               edge[count].start = stoi(it->vertexes[0]->data);
-               edge[count].end = stoi(it->vertexes[1]->data);
-               edge[count].peso =  it->weight;
-               ++count;
-           }
-        }
-    }
-
-    void display(unordered_map<int,TE> weight,int sizeVertex)
-    {
-        for (int i = 1; i <= sizeVertex; ++i) 
-            cout<<"Distancia minima de 1 a "<<i<<" => "<<weight[i]<<endl;
-    }
+    Bellman(DirectedGraph<TV, TE> grafito):DbellmanVertexes(grafito),isDirected(true){}
+    Bellman(UnDirectedGraph<TV, TE> grafito):UbellmanVertexes(grafito),isDirected(false){}
 
     unordered_map<int,TE> apply(TV start)
     {
-        int sizeVertex = bellmanVertexes.sizeGraph();
-        int sizeEdge = bellmanVertexes.sizeEdges();
+
+        int sizeVertex;
+        int sizeEdge;
+        if(isDirected)
+        {
+            sizeVertex = DbellmanVertexes.sizeGraph();
+            sizeEdge = DbellmanVertexes.sizeEdges();
+        }
+        else
+        {
+            sizeVertex = UbellmanVertexes.sizeGraph();
+            sizeEdge = UbellmanVertexes.sizeEdges();
+        }
         unordered_map<int,TE> weight;
         struct EdgeSupport<TV,TE>* edge = new EdgeSupport<TV,TE>[sizeEdge];
 
@@ -83,6 +69,55 @@ public:
 
         return weight;
     }
+
+private:
+    void insertWeight(unordered_map<int,TE> &weight,  int sizeVertex, TV start)
+    {
+        for (int i = 1; i <= sizeVertex; i++) 
+            weight[i] = INT16_MAX; 
+        weight[stoi(start)] = 0;
+    }
+
+    void structSupport(EdgeSupport<TV,TE>* &edge)
+    {
+        int count=0;
+        if(isDirected)
+        {
+            for(auto itr:this->DbellmanVertexes.vertexes)
+            {
+                list<Edge<TV, TE>*> edge_temp= itr.second->edges;
+                for(auto it:edge_temp)
+                {
+                    edge[count].start = stoi(it->vertexes[0]->data);
+                    edge[count].end = stoi(it->vertexes[1]->data);
+                    edge[count].peso =  it->weight;
+                    ++count;
+                }
+            }
+        }
+        else
+        {
+            for(auto itr:this->UbellmanVertexes.vertexes)
+            {
+                list<Edge<TV, TE>*> edge_temp= itr.second->edges;
+                for(auto it:edge_temp)
+                {
+                    edge[count].start = stoi(it->vertexes[0]->data);
+                    edge[count].end = stoi(it->vertexes[1]->data);
+                    edge[count].peso =  it->weight;
+                    ++count;
+                }
+            }
+        }
+        
+    }
+
+    void display(unordered_map<int,TE> weight,int sizeVertex)
+    {
+        for (int i = 1; i <= sizeVertex; ++i) 
+            cout<<"Distancia minima de 1 a "<<i<<" => "<<weight[i]<<endl;
+    }
+
 };
 
 #endif

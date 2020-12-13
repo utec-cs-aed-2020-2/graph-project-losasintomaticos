@@ -67,6 +67,7 @@ public:
             weight_edge[p.second->data]=INT16_MAX;
             father[p.second->data] = p.second->data;
         }
+        
         weight_edge[inicio]=0;
         
         for(auto p:this->prim_vertexes.vertexes)
