@@ -32,28 +32,6 @@ public:
         return min_index;
     }
 
-    list<Edge<TV, TE>*> edge_min(TV min)
-    {
-        for(auto p:this->prim_vertexes.vertexes)
-        {
-            if(p.second->data==min)
-            {
-                return p.second->edges;
-            }
-        }
-    }
-    
-    string id_min(TV min)
-    {
-        for(auto p:this->prim_vertexes.vertexes)
-        {
-            if(p.second->data==min)
-            {
-                return p.first;
-            }
-        }
-    }
-
     UnDirectedGraph<string, float> apply()
     {
         unordered_map<TV,int> visited;
@@ -74,15 +52,15 @@ public:
         {
             TV min=minEdge(visited,weight_edge);
             visited[min]=true;
-            string id=id_min(min);
+            string id=prim_vertexes.returnID(min);
             if(return_grafo.empty())
                 return_grafo.insertVertex(id,min);
             else
             {
                 return_grafo.insertVertex(id,min);
-                return_grafo.createEdge(id,id_min(father[min]),weight_edge[min]);
+                return_grafo.createEdge(id,prim_vertexes.returnID(father[min]),weight_edge[min]);
             }
-            list<Edge<TV, TE>*> edge_temp= edge_min(min);
+            list<Edge<TV, TE>*> edge_temp= prim_vertexes.returnEdge(min);
             for(auto it:edge_temp)
             {
                 if(visited[it->vertexes[1]->data]==false && it->weight<weight_edge[it->vertexes[1]->data])

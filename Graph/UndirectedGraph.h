@@ -134,6 +134,17 @@ class UnDirectedGraph : public Graph<TV, TE>{
                 return false;
         }
 
+        string returnID(TV dato)
+        {
+            for(auto p:this->vertexes)
+            {
+                if(p.second->data==dato)
+                {
+                    return p.first;
+                }
+            }
+        }
+
         bool deleteVertex(string id)
         {   
             if(this->findById(id))
@@ -160,6 +171,18 @@ class UnDirectedGraph : public Graph<TV, TE>{
             else
                 return false;
         }
+
+        list<Edge<TV, TE>*> returnEdge(TV min)
+        {
+            for(auto p:this->vertexes)
+            {
+                if(p.second->data==min)
+                {
+                    return p.second->edges;
+                }
+            }
+        }
+
         friend class Prim<TV, TE>;
         friend class Kruskal<TV, TE>;
         friend class Floyd<TV,TE>;

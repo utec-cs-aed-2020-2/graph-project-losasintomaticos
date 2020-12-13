@@ -181,6 +181,28 @@ class DirectedGraph : public Graph<TV, TE>{
             return false;
     }
 
+    list<Edge<TV, TE>*> returnEdge(TV min)
+    {
+        for(auto p:this->vertexes)
+        {
+            if(p.second->data==min)
+            {
+                return p.second->edges;
+            }
+        }
+    }
+
+    string returnID(TV dato)
+    {
+        for(auto p:this->vertexes)
+        {
+            if(p.second->data==dato)
+            {
+                return p.first;
+            }
+        }
+    }
+
     friend class Prim<TV, TE>;
     friend class Kruskal<TV, TE>;
     friend class Floyd<TV,TE>;
