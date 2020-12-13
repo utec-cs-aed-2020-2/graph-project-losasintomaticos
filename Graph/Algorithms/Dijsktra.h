@@ -3,59 +3,73 @@
 
 #include "../DirectedGraph.h"
 #include "../UndirectedGraph.h"
+#include <string>
 using namespace std;
 
 template<typename TV, typename TE>
 class Dijsktra:public Graph<TV, TE>{
 
 private:
-    UnDirectedGraph<TV, TE> dij_vertexes;
-    TV inicio;
+    DirectedGraph<TV, TE> dDij_vertexes;
+    UnDirectedGraph<TV, TE> uDij_vertexes;
 
 public:
-//    algo(UnDirectedGraph<TV, TE> grafito, TV dato) : dij_vertexes(grafito),inicio(dato){}
-//
-//    TV minEdge(unordered_map<TV,bool> visited,unordered_map<TV,TE> weight_edge)
-//    {
-//        int min=INT16_MAX;
-//        TV min_index;
-//        for(auto p:this->dij_vertexes.vertexes)
-//        {
-//            if(visited[p.second->data]==false && weight_edge[p.second->data]<min)
-//            {
-//                min=weight_edge[p.second->data];
-//                min_index=p.second->data;
-//            }
-//        }
-//        return min_index;
-//    }
-//
-//    list<Edge<TV, TE>*> edge_min(TV min)
-//    {
-//        for(auto p:this->prim_vertexes.vertexes)
-//        {
-//            if(p.second->data==min)
-//            {
-//                return p.second->edges;
-//            }
-//        }
-//    }
-//
-//    string id_min(TV min)
-//    {
-//        for(auto p:this->prim_vertexes.vertexes)
-//        {
-//            if(p.second->data==min)
-//            {
-//                return p.first;
-//            }
-//        }
-//    }
-//
-//    UnDirectedGraph<string, float> dijkstra(){
-//        unordered_map<TV, bool> visited
-//    }
 
+    Dijsktra(UnDirectedGraph<TV, TE> grafito):uDij_vertexes(grafito){}
+    Dijsktra(DirectedGraph<TV, TE> grafito):dDij_vertexes(grafito){}
+
+    TV min_distance(unordered_map<TV, TE> &dist, unordered_map<TV, bool> &visited){
+        int min = INT_MAX;
+        TV min_index;
+
+        for (auto itr:uDij_vertexes.vertexes){
+            if (visited[itr.second-> data] == false && dist[itr.second->data] <= min){
+                min = dist[itr.second-> data], min_index = itr.second-> data;
+            }
+        }
+        return min_index;
+    }
+
+    list<Edge<TV, TE>*> return_edge(TV u){
+        for (auto itr:uDij_vertexes.vertexes){
+            if (itr.second->data == u){
+                return itr.second->edges;
+            }
+        }
+    }
+
+    UnDirectedGraph<TV, TE> apply(TV src){
+        UnDirectedGraph<TV, TE> uDijsktra;
+
+        //int min=INT16_MAX;
+        unordered_map<TV, bool> visited;
+        unordered_map<TV, TE> dist;
+
+        for(auto itr:uDij_vertexes.vertexes){
+            visited[itr.second->data] = false;
+            dist[itr.second->data] = INT16_MAX;
+        }
+
+        dist[src] = 0;
+
+        for (auto itr:uDij_vertexes.vertexes) {
+            static int count = 0;
+            count++;
+            TV u = min_distance(dist, visited);
+            visited[u] = true;
+            uDijsktra.insertVertex(to_string(count), u);
+            list<Edge<TV, TE>*> adj = return_edge(u);
+
+            for (auto it:adj){
+
+               if(!visited[it->vertexes[1]->data] && dist[u] != INT_MAX
+               && dist[u] + it->weight < dist[it->vertexes[1]->data]){
+                   dist[it->vertexes[1]->data] = dist[u] + it->weight;
+               }
+            }
+        }
+
+    }
 };
 
 #endif //GRAPH_PROJECT_LOSASINTOMATICOS_DIJSKTRA_H
