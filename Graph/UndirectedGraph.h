@@ -49,20 +49,12 @@ class UnDirectedGraph : public Graph<TV, TE>{
             return count;
         }
 
-        int sizeGraph()
-        {
-            int count=0;
-            for(auto itr:this->vertexes)
-                ++count;
-            return count;
-        }
-
         float density()
         {
             if(this->isConnected())
             {
                 int countEdges = sizeEdges();
-                int countVertice = sizeGraph();
+                int countVertice = this->sizeGraph();
 
                 float densidad = (float)2*countEdges/(countVertice*(countVertice-1));
                 return densidad;
@@ -82,7 +74,7 @@ class UnDirectedGraph : public Graph<TV, TE>{
             for(auto p:this->vertexes)
             {
                 Vertex<TV,TE>* vertice = p.second;
-                cout<<vertice->data<<" => ";
+                cout<<vertice->data<<" = ";
                 list<Edge<TV, TE>*> edge_temp = vertice->edges;
                 for(auto itr:edge_temp)
                 {
@@ -97,15 +89,6 @@ class UnDirectedGraph : public Graph<TV, TE>{
             throw 0;
         }
 
-        TV returnDatabyid(string id)
-        {
-            for(auto p:this->vertexes)
-            {
-                if(p.first==id)
-                    return p.second->data;
-            }
-        }
-
         bool deleteEdge(string start, string end)
         {
             if(this->findById(start) && this->findById(end))
@@ -115,10 +98,10 @@ class UnDirectedGraph : public Graph<TV, TE>{
                     typename list<Edge<TV, TE>*>::iterator itri = p.second->edges.begin(); 
                     while (  itri != p.second->edges.end())
                     {
-                        if(((*itri)->vertexes[0]->data == returnDatabyid(start) && 
-                        (*itri)->vertexes[1]->data == returnDatabyid(end)) || 
-                        ((*itri)->vertexes[0]->data == returnDatabyid(end) &&
-                        (*itri)->vertexes[1]->data == returnDatabyid(start)))
+                        if(((*itri)->vertexes[0]->data == this->returnDatabyid(start) && 
+                        (*itri)->vertexes[1]->data == this->returnDatabyid(end)) || 
+                        ((*itri)->vertexes[0]->data == this->returnDatabyid(end) &&
+                        (*itri)->vertexes[1]->data == this->returnDatabyid(start)))
                         {
                             p.second->edges.erase(itri++);
                         }
@@ -134,54 +117,17 @@ class UnDirectedGraph : public Graph<TV, TE>{
                 return false;
         }
 
-        string returnID(TV dato)
+
+        void introduceGraph(TV u,UnDirectedGraph<TV, TE> &graphTemp,UnDirectedGraph<TV, TE> Padre,unordered_map<TV,TV> father,unordered_map<TV,TE> weight_edge)
+    {
+        if(graphTemp.empty())
+            graphTemp.insertVertex(Padre.returnID(u),u);
+        else
         {
-            for(auto p:this->vertexes)
-            {
-                if(p.second->data==dato)
-                {
-                    return p.first;
-                }
-            }
+            graphTemp.insertVertex(Padre.returnID(u),u);
+            graphTemp.createEdge(Padre.returnID(father[u]),Padre.returnID(u),weight_edge[u]);
         }
-
-        bool deleteVertex(string id)
-        {   
-            if(this->findById(id))
-            {
-                for(auto itr:this->vertexes)
-                {
-                    typename list<Edge<TV, TE>*>::iterator itri = itr.second->edges.begin(); 
-                    while (  itri != itr.second->edges.end())
-                    {
-                        if ((*itri)->vertexes[1]->data == returnDatabyid(id))
-                        {
-                            itr.second->edges.erase(itri++);
-                        }
-
-                        else
-                        {
-                            ++itri;
-                        }
-                    }
-                }
-
-                this->vertexes.erase(id);
-            }
-            else
-                return false;
-        }
-
-        list<Edge<TV, TE>*> returnEdge(TV min)
-        {
-            for(auto p:this->vertexes)
-            {
-                if(p.second->data==min)
-                {
-                    return p.second->edges;
-                }
-            }
-        }
+    }
 
         friend class Prim<TV, TE>;
         friend class Kruskal<TV, TE>;

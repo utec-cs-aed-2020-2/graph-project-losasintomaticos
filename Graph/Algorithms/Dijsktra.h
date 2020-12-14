@@ -32,10 +32,10 @@ public:
         dist[src] = 0;
 
         for (auto itr:uDij_vertexes.vertexes) {
-            TV u = min_distanceU(dist, visited);
+            TV u = dDij_vertexes.minDistance(dist, visited);
             visited[u] = true;
 
-            introduceGraphU(u,uDijsktra,father,weight_edge);
+            uDijsktra.introduceGraph(u,uDijsktra,uDij_vertexes,father,weight_edge);
 
             list<Edge<TV, TE>*> adj = uDij_vertexes.returnEdge(u);
 
@@ -68,10 +68,10 @@ public:
         dist[src] = 0;
 
         for (auto itr:dDij_vertexes.vertexes) {
-            TV u = min_distanceD(dist, visited);
+            TV u = dDij_vertexes.minDistance(dist, visited);
             visited[u] = true;
 
-            introduceGraphD(u,dDijsktra,father,weight_edge);
+            dDijsktra.introduceGraph(u,dDijsktra,dDij_vertexes,father,weight_edge);
 
             list<Edge<TV, TE>*> adj = dDij_vertexes.returnEdge(u);
 
@@ -87,53 +87,6 @@ public:
             }
         }
         return dDijsktra;
-    }
-
-private:
-    TV min_distanceU(unordered_map<TV, TE> &dist, unordered_map<TV, bool> &visited){
-        int min = INT_MAX;
-         TV min_index;
-
-        for (auto itr:uDij_vertexes.vertexes){
-            if (visited[itr.second-> data] == false && dist[itr.second->data] <= min){
-                min = dist[itr.second-> data], min_index = itr.second-> data;
-            }
-        }
-        return min_index;
-    }
-
-    TV min_distanceD(unordered_map<TV, TE> &dist, unordered_map<TV, bool> &visited){
-        int min = INT_MAX;
-        TV min_index;
-
-        for (auto itr:dDij_vertexes.vertexes){
-            if (visited[itr.second-> data] == false && dist[itr.second->data] <= min){
-                min = dist[itr.second-> data], min_index = itr.second-> data;
-            }
-        }
-        return min_index;
-    }
-
-    void introduceGraphU(TV u,UnDirectedGraph<TV, TE> &uDijsktra,unordered_map<TV,TV> father,unordered_map<TV,TE> weight_edge)
-    {
-        if(uDijsktra.empty())
-            uDijsktra.insertVertex(uDij_vertexes.returnID(u),u);
-        else
-        {
-            uDijsktra.insertVertex(uDij_vertexes.returnID(u),u);
-            uDijsktra.createEdge(uDij_vertexes.returnID(u),uDij_vertexes.returnID(father[u]),weight_edge[u]);
-        }
-    }
-
-    void introduceGraphD(TV u,DirectedGraph<TV, TE> &dDijsktra,unordered_map<TV,TV> father,unordered_map<TV,TE> weight_edge)
-    {
-        if(dDijsktra.empty())
-            dDijsktra.insertVertex(dDij_vertexes.returnID(u),u);
-        else
-        {
-            dDijsktra.insertVertex(dDij_vertexes.returnID(u),u);
-            dDijsktra.createEdge(dDij_vertexes.returnID(father[u]),dDij_vertexes.returnID(u),weight_edge[u]);
-        }
     }
 };
 

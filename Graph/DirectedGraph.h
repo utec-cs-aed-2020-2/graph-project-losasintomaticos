@@ -34,7 +34,7 @@ class DirectedGraph : public Graph<TV, TE>{
     {
         if(this->isConnected())
         {
-            int countVertice = sizeGraph();
+            int countVertice = this->sizeGraph();
             int countEdges = sizeEdges();
 
             float densidad = (float)countEdges/(countVertice*(countVertice-1));
@@ -42,14 +42,6 @@ class DirectedGraph : public Graph<TV, TE>{
         }  
         else
             return 0;
-    }
-
-    int sizeGraph()
-    {
-        int count=0;
-        for(auto itr:this->vertexes)
-            ++count;
-        return count;
     }
 
     bool isDense(float threshold = 0.5)
@@ -126,8 +118,8 @@ class DirectedGraph : public Graph<TV, TE>{
                 typename list<Edge<TV, TE>*>::iterator itri = p.second->edges.begin(); 
                 while (  itri != p.second->edges.end())
                 {
-                    if((*itri)->vertexes[0]->data == returnDatabyid(start) && 
-                    (*itri)->vertexes[1]->data == returnDatabyid(end))
+                    if((*itri)->vertexes[0]->data == this->returnDatabyid(start) && 
+                    (*itri)->vertexes[1]->data == this->returnDatabyid(end))
                     {
                         p.second->edges.erase(itri++);
                         return 1;
@@ -145,61 +137,14 @@ class DirectedGraph : public Graph<TV, TE>{
 
     }
 
-    TV returnDatabyid(string id)
+    void introduceGraph(TV u,DirectedGraph<TV, TE> &graphTemp,DirectedGraph<TV, TE> Padre,unordered_map<TV,TV> father,unordered_map<TV,TE> weight_edge)
     {
-        for(auto p:this->vertexes)
-        {
-            if(p.first==id)
-                return p.second->data;
-        }
-    }
-
-    bool deleteVertex(string id)
-    {   
-        if(this->findById(id))
-        {
-            for(auto itr:this->vertexes)
-            {
-                typename list<Edge<TV, TE>*>::iterator itri = itr.second->edges.begin(); 
-                while (  itri != itr.second->edges.end())
-                {
-                    if ((*itri)->vertexes[1]->data == returnDatabyid(id))
-                    {
-                        itr.second->edges.erase(itri++);
-                    }
-
-                    else
-                    {
-                        ++itri;
-                    }
-                }
-            }
-
-            this->vertexes.erase(id);
-        }
+        if(graphTemp.empty())
+            graphTemp.insertVertex(Padre.returnID(u),u);
         else
-            return false;
-    }
-
-    list<Edge<TV, TE>*> returnEdge(TV min)
-    {
-        for(auto p:this->vertexes)
         {
-            if(p.second->data==min)
-            {
-                return p.second->edges;
-            }
-        }
-    }
-
-    string returnID(TV dato)
-    {
-        for(auto p:this->vertexes)
-        {
-            if(p.second->data==dato)
-            {
-                return p.first;
-            }
+            graphTemp.insertVertex(Padre.returnID(u),u);
+            graphTemp.createEdge(Padre.returnID(father[u]),Padre.returnID(u),weight_edge[u]);
         }
     }
 
