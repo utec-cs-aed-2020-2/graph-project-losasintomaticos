@@ -57,7 +57,6 @@ struct Edge {
 template<typename TV, typename TE>
 struct Vertex {
     TV data;
-    string id;
     std::list<Edge<TV, TE>*> edges;
     Vertex(TV data):data(data)
     {
@@ -79,7 +78,6 @@ public:
     bool insertVertex(string id, TV vertex)
     {
         Vertex<TV,TE>* temp = new Vertex<TV,TE>(vertex);
-        temp->id=id;
         vertexes[id] = temp;
     }
 

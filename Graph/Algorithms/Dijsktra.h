@@ -14,7 +14,6 @@ private:
     UnDirectedGraph<TV, TE> uDij_vertexes;
 
 public:
-
     Dijsktra(UnDirectedGraph<TV, TE> grafito):uDij_vertexes(grafito){}
     Dijsktra(DirectedGraph<TV, TE> grafito):dDij_vertexes(grafito){}
 
@@ -24,7 +23,6 @@ public:
         unordered_map<TV,TE> weight_edge;
         unordered_map<TV,TV> father;
         unordered_map<TV, TE> dist;
-
 
         for(auto itr:uDij_vertexes.vertexes){
             visited[itr.second->data] = false;
@@ -48,12 +46,11 @@ public:
                {
                    dist[it->vertexes[1]->data] = dist[u] + it->weight;
                    father[it->vertexes[1]->data]=it->vertexes[0]->data;
-                   weight_edge[it->vertexes[1]->data] = it->weight; 
+                   weight_edge[it->vertexes[1]->data] = it->weight;
                }
             }
         }
         return uDijsktra;
-
     }
 
     DirectedGraph<TV, TE> applyD(TV src){
@@ -85,7 +82,7 @@ public:
                {
                    dist[it->vertexes[1]->data] = dist[u] + it->weight;
                    father[it->vertexes[1]->data]=it->vertexes[0]->data;
-                   weight_edge[it->vertexes[1]->data] = it->weight; 
+                   weight_edge[it->vertexes[1]->data] = it->weight;
                }
             }
         }
@@ -95,7 +92,7 @@ public:
 private:
     TV min_distanceU(unordered_map<TV, TE> &dist, unordered_map<TV, bool> &visited){
         int min = INT_MAX;
-        TV min_index;
+         TV min_index;
 
         for (auto itr:uDij_vertexes.vertexes){
             if (visited[itr.second-> data] == false && dist[itr.second->data] <= min){
@@ -138,7 +135,6 @@ private:
             dDijsktra.createEdge(dDij_vertexes.returnID(father[u]),dDij_vertexes.returnID(u),weight_edge[u]);
         }
     }
-
 };
 
 #endif //GRAPH_PROJECT_LOSASINTOMATICOS_DIJSKTRA_H

@@ -31,6 +31,8 @@ unordered_map
 /cygdrive/c/Users/lucia/Documents/GitHub/graph-project-losasintomaticos/Graph/DirectedGraph.h
 ../UndirectedGraph.h
 /cygdrive/c/Users/lucia/Documents/GitHub/graph-project-losasintomaticos/Graph/UndirectedGraph.h
+string
+-
 
 /cygdrive/c/Users/lucia/Documents/GitHub/graph-project-losasintomaticos/Graph/Algorithms/Floyd.h
 ../DirectedGraph.h

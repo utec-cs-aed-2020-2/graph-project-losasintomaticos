@@ -519,10 +519,8 @@ void testdBFSGraph()
     graph.createEdge("0", "1", 12);
     graph.createEdge("0", "2", 2);
     graph.createEdge("1", "2", 4);
-    graph.createEdge("2", "0", 7);
     graph.createEdge("2", "3", 15);
-    graph.createEdge("3", "3", 10);
-    graph.createEdge("4", "5", 1);
+    graph.createEdge("3", "4", 1);
 
 
     std::cout << "\n\n================================================" << std::endl;
@@ -532,7 +530,7 @@ void testdBFSGraph()
     graph.display();
     cout << "\nAplicando el Algoritmo BFS Directed:\n" << endl;
     BFSSearch<string, float> grafito(graph);
-    DirectedGraph<string, float> grafes = grafito.dBFS("3");
+    DirectedGraph<string, float> grafes = grafito.dBFS("A");
     grafes.display();
     std::cout << "\n================================================" << std::endl;
 }
@@ -550,9 +548,8 @@ void testuBFSGraph()
     graph.createEdge("0", "1", 12);
     graph.createEdge("0", "2", 2);
     graph.createEdge("1", "2", 4);
-    graph.createEdge("2", "0", 7);
     graph.createEdge("2", "3", 15);
-    graph.createEdge("3", "3", 10);
+    graph.createEdge("3", "4", 15);
     graph.createEdge("4", "5", 1);
 
 
@@ -562,8 +559,8 @@ void testuBFSGraph()
     cout << "El Grafo de Ejemplo es el siguiente:" << endl;
     graph.display();
     cout << "\nAplicando el Algoritmo BFS Undirected:\n" << endl;
-    BFSSearch<string, float> grafito(graph, "A");
-    UnDirectedGraph<string, float> grafes = grafito.uBFS("3");
+    BFSSearch<string, float> grafito(graph);
+    UnDirectedGraph<string, float> grafes = grafito.uBFS("A");
     grafes.display();
     std::cout << "\n================================================" << std::endl;
 }
@@ -577,14 +574,19 @@ void testdDFSGraph()
     graph.insertVertex("3", "D");
     graph.insertVertex("4", "E");
     graph.insertVertex("5", "F");
+    graph.insertVertex("6", "G");
+    graph.insertVertex("7", "H");
 
     graph.createEdge("0", "1", 12);
     graph.createEdge("0", "2", 2);
-    graph.createEdge("1", "2", 4);
-    graph.createEdge("2", "0", 7);
     graph.createEdge("2", "3", 15);
-    graph.createEdge("3", "3", 10);
+    graph.createEdge("3", "4", 15);
+    graph.createEdge("1", "3", 15);
+    graph.createEdge("7", "4", 15);
+    graph.createEdge("7", "5", 15);
     graph.createEdge("4", "5", 1);
+    graph.createEdge("1", "6", 1);
+    graph.createEdge("6", "7", 1);
 
     std::cout << "\n\n================================================" << std::endl;
     std::cout << "      ALGORITMO Depth First Search Directed" << std::endl;
@@ -593,8 +595,7 @@ void testdDFSGraph()
     graph.display();
     cout << "\nAplicando el Algoritmo DFS Directed:\n" << endl;
     DFSSearch<string, float> grafito(graph);
-
-    DirectedGraph<string, float> grafes = grafito.dDFS("0");
+    DirectedGraph<string, float> grafes = grafito.dDFS("A");
     grafes.display();
     std::cout << "\n================================================" << std::endl;
 }
@@ -608,24 +609,28 @@ void testuDFSGraph()
     graph.insertVertex("3", "D");
     graph.insertVertex("4", "E");
     graph.insertVertex("5", "F");
+    graph.insertVertex("6", "G");
+    graph.insertVertex("7", "H");
 
     graph.createEdge("0", "1", 12);
     graph.createEdge("0", "2", 2);
-    graph.createEdge("1", "2", 4);
-    graph.createEdge("2", "0", 7);
     graph.createEdge("2", "3", 15);
-    graph.createEdge("3", "3", 10);
+    graph.createEdge("3", "4", 15);
+    graph.createEdge("1", "3", 15);
+    graph.createEdge("7", "4", 15);
+    graph.createEdge("7", "5", 15);
     graph.createEdge("4", "5", 1);
+    graph.createEdge("1", "6", 1);
+    graph.createEdge("6", "7", 1);
 
     std::cout << "\n\n================================================" << std::endl;
-    std::cout << "    ALGORITMO Depth First Search Undirected" << std::endl;
+    std::cout << "      ALGORITMO Depth First Search Undirected" << std::endl;
     std::cout << "================================================" << std::endl;
     cout << "El Grafo de Ejemplo es el siguiente:" << endl;
     graph.display();
     cout << "\nAplicando el Algoritmo DFS Undirected:\n" << endl;
-    DFSSearch<string, float> grafito(graph, "A");
-
-    DirectedGraph<string, float> grafes = grafito.dDFS("0");
+    DFSSearch<string, float> grafito(graph);
+    UnDirectedGraph<string, float> grafes = grafito.uDFS("A");
     grafes.display();
     std::cout << "\n================================================" << std::endl;
 }
