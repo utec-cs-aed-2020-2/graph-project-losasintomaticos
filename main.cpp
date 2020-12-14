@@ -20,6 +20,7 @@ void testAirportParser();
 
 int main(int argc, char *argv[]) {
     int option_graph;
+    int option2;
     string flag_all ="si";
     while(flag_all=="si")
     {
@@ -34,13 +35,11 @@ int main(int argc, char *argv[]) {
         cout<<"5. Algoritmo Kruskal"<<endl;
         cout<<"6. Algoritmo Floyd Warshall"<<endl;
         cout<<"7. Algoritmo Bellman Ford"<<endl;
-        cout<<"8. Algoritmo BFS Directed"<<endl;
-        cout<<"9. Algoritmo DFS Directed"<<endl;
-        cout<<"10. Algoritmo BFS UnDirected"<<endl;
-        cout<<"11. Algoritmo DFS UnDirected"<<endl;
-        cout<<"12. Algoritmo de Dijkstra "<<endl;
-        cout<<"13. Strongly Connected Components"<<endl;
-        cout<<"14. Salir"<<endl;
+        cout<<"8. Algoritmo BFS"<<endl;
+        cout<<"9. Algoritmo DFS"<<endl;
+        cout<<"10. Algoritmo de Dijkstra "<<endl;
+        cout<<"11. Strongly Connected Components"<<endl;
+        cout<<"12. Salir"<<endl;
         cout<<"\nOpcion => ";
         cin>>option_graph;
         while(option_graph>14 || option_graph<1)
@@ -64,17 +63,67 @@ int main(int argc, char *argv[]) {
             testFloydGraph();
         else if(option_graph==7)
             testBellmanGraph();
-        else if (option_graph==8)
-            testdBFSGraph();
-        else if (option_graph==9)
-            testdDFSGraph();
-        else if (option_graph==10)
-            testuBFSGraph();
+        else if (option_graph==8){
+            cout << "Escoga una opcion: " << endl;
+            cout << "1. BFS Dirigido" << endl;
+            cout << "2. BFS No Dirigido"<<endl;
+            cout << "\nOpcion => ";
+            cin >> option2;
+            while(option2>2 || option2<1)
+            {
+                cout<<"\nOpcion incorrecta, por favor digita una correcta opcion";
+                cout<<"\nOpcion => ";
+                cin>>option2;
+            }
+            std::cout << "\n================================================" << std::endl;
+            if (option2==1){
+                testdBFSGraph();
+            }
+            else if(option2==2){
+                testuBFSGraph();
+            }
+        }
+        else if (option_graph==9){
+            cout << "Escoga una opcion: " << endl;
+            cout << "1. DFS Dirigido" << endl;
+            cout << "2. DFS No Dirigido"<<endl;
+            cout << "\nOpcion => ";
+            cin >> option2;
+            while(option2>2 || option2<1)
+            {
+                cout<<"\nOpcion incorrecta, por favor digita una correcta opcion";
+                cout<<"\nOpcion => ";
+                cin>>option2;
+            }
+            std::cout << "\n================================================" << std::endl;
+            if (option2==1){
+                testdDFSGraph();
+            }
+            else if(option2==2){
+                testuDFSGraph();
+            }
+        }
+        else if (option_graph==10){
+            cout << "Escoga una opcion: " << endl;
+            cout << "1. Dijsktra Dirigido" << endl;
+            cout << "2. Dijsktra No Dirigido"<<endl;
+            cout << "\nOpcion => ";
+            cin >> option2;
+            while(option2>2 || option2<1)
+            {
+                cout<<"\nOpcion incorrecta, por favor digita una correcta opcion";
+                cout<<"\nOpcion => ";
+                cin>>option2;
+            }
+            std::cout << "\n================================================" << std::endl;
+            if (option2==1){
+                testdDijkstra();
+            }
+            else if(option2==2){
+                testuDijkstra();
+            }
+        }
         else if (option_graph==11)
-            testuDFSGraph();
-        else if (option_graph==12)
-            testDijkstra();
-        else if (option_graph==13)
             testSSCGraph();
         else
             flag_all="no";
