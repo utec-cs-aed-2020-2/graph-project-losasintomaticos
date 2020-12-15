@@ -2,16 +2,14 @@
 ## Proyecto sobre Grafos
 --------
 
+El proyecto del curso consiste en implementar una estructura de datos de grafo y un file parser. El proyecto cuenta con TestMenu que permite agregar grafos dirigidos o no dirigidos y luego, te permite obtener la densidad del grafo, el peso de las aristas, mostrar el grafo, eliminar algún vértice o arista, etc. Por otro lado, el Menú también permite mostrar los algoritmos de búsqueda
+mediante ejemplos específicos para cada algoritmo. Algunos muestran sus variantes para dirigidos y no dirigidos, dicho sea el caso. Finalmente, se hace un testeo del JSON Parser, para mostrar los elementos de un documento JSON en un grafo dirigido y no dirigido. Para poder correr el código de este proyecto, es necesario el uso de CMAKE ya sea en los IDE de CLion o Visual Studio Code.
+
 ## Integrantes
-- 
-- 
-- 
+- José Vásquez Ayala
+- Luciano Zagastizabal Granadino
 
 ----
-
-El proyecto del curso consiste en implementar una estructura de datos de grafo y un file parser. La estructura debe soportar los métodos y algoritmos descritos a continuacion:  
-
-
 ## Graph data structure
 
 * El grafo debe ser dinámico (inserciones. eliminaciones, búsquedas, ...)
@@ -59,6 +57,7 @@ UndirectedGraph<char, int> result = prim.apply();//return a tree
 ```
 
 
+
 ## JSON file parser
 * Construye un grafo a partir de una archivo JSON de aereopuertos del mundo. 
 
@@ -74,33 +73,3 @@ void uGraphMake(UndirectedGraph<string, double> &tempGraph); // Adds the parsed 
 
 void dGraphMake(DirectedGraph<string, double> &tempGraph); // Adds the parsed data into the specified directed graph
 ```
-
-## [Git Karma Guidelines](http://karma-runner.github.io/5.2/dev/git-commit-msg.html)
-
-```
-<type>(<scope>): <subject>
-
-<body>
-```
-
-### Allowed ```<type>``` values
-
-* feat (new feature for the user, not a new feature for build script)
-* fix (bug fix for the user, not a fix to a build script)
-* docs (changes to the documentation)
-* style (formatting, missing semi colons, etc)
-* refactor (refactoring production code, eg. renaming a variable)
-* test (adding missing tests, refactoring tests)
-* chore (updating grunt tasks etc)
-
-### Allowed ```<scope>``` values
-
-* graph
-* directedGraph
-* undirectedGraph
-* parser
-* main
-* tester
-
-
-> **PD:** Puntos extras sobre Evaluación Continua si se implementa una GUI.
