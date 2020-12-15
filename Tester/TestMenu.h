@@ -444,7 +444,7 @@ void testKruskalGraph()
     std::cout << "\n================================================" << std::endl;
 }
 
-void testFloydGraph()
+void DtestFloydGraph()
 {
     DirectedGraph<string, float> graph;
     graph.insertVertex("1","1");
@@ -457,8 +457,8 @@ void testFloydGraph()
     graph.createEdge("1","4",3);
     graph.createEdge("2","1",3);
     graph.createEdge("3","4",2);
-    graph.createEdge("4","2",1);
     graph.createEdge("4","3",1);
+    graph.createEdge("4","2",1);
     graph.createEdge("5","2",4);
     graph.createEdge("5","4",2);
 
@@ -467,18 +467,47 @@ void testFloydGraph()
     std::cout << "================================================" << std::endl;
     cout<<"El Grafo de Ejemplo es el siguiente:"<<endl;
     graph.display();
-    cout<<"\nAplicando el Algoritmo Kruskal:\n"<<endl;
+    cout<<"\nAplicando el Algoritmo Floyd Warshall:\n"<<endl;
     Floyd<string,float> grafito(graph);
     int** floyd;
     floyd = grafito.apply();
+    
+    std::cout << "\n================================================" << std::endl;
+}
 
-    //grafes.display();
+void UtestFloydGraph()
+{
+    UnDirectedGraph<string, float> graph;
+    graph.insertVertex("1","1");
+    graph.insertVertex("2","2");
+    graph.insertVertex("3","3");
+    graph.insertVertex("4","4");
+    graph.insertVertex("5","5");
+
+    graph.createEdge("1","3",6);
+    graph.createEdge("1","4",3);
+    graph.createEdge("2","1",3);
+    graph.createEdge("3","4",1);
+    graph.createEdge("4","2",1);
+    graph.createEdge("5","2",4);
+    graph.createEdge("5","4",2);
+
+    std::cout << "\n\n================================================" << std::endl;
+    std::cout << "            ALGORITMO Floyd Warshall" << std::endl;
+    std::cout << "================================================" << std::endl;
+    cout<<"El Grafo de Ejemplo es el siguiente:"<<endl;
+    graph.display();
+    cout<<"\nAplicando el Algoritmo Floyd Warshall:\n"<<endl;
+    Floyd<string,float> grafito(graph);
+    int** floyd;
+    floyd = grafito.apply();
+    
     std::cout << "\n================================================" << std::endl;
 }
 
 
 void testBellmanGraph() {
-    UnDirectedGraph<string, float> graph;
+    DirectedGraph<string, float> graph;
     graph.insertVertex("1", "1");
     graph.insertVertex("2", "2");
     graph.insertVertex("3", "3");
@@ -637,33 +666,34 @@ void testuDFSGraph()
 
 
 void testSSCGraph(){
-//    DirectedGraph<string, float> graph;
-//    graph.insertVertex("0", "A");
-//    graph.insertVertex("1", "B");
-//    graph.insertVertex("2", "C");
-//    graph.insertVertex("3", "D");
-//    graph.insertVertex("4", "E");
-//    graph.insertVertex("5", "F");
-//
-//    graph.createEdge("0", "1", 12);
-//    graph.createEdge("0", "2", 2);
-//    graph.createEdge("1", "2", 4);
-//    graph.createEdge("2", "0", 7);
-//    graph.createEdge("2", "3", 15);
-//    graph.createEdge("3", "3", 10);
-//    graph.createEdge("4", "5", 1);
-//
-//    std::cout << "\n\n================================================" << std::endl;
-//    std::cout << "     ALGORITMO Strongly Connected Components" << std::endl;
-//    std::cout << "================================================" << std::endl;
-//    cout << "El Grafo de Ejemplo es el siguiente:" << endl;
-//    graph.display();
-//    cout << "\nAplicando el Algoritmo SSC:\n" << endl;
-//    strongConnected<string, float> grafito(graph);
-//
-//    DirectedGraph<string, float> grafes = grafito.SCC("0");
-//    grafes.display();
-//    std::cout << "\n================================================" << std::endl;
+    DirectedGraph<string, float> graph;
+    graph.insertVertex("0", "A");
+    graph.insertVertex("1", "B");
+    graph.insertVertex("2", "C");
+    graph.insertVertex("3", "D");
+    graph.insertVertex("4", "E");
+    graph.insertVertex("5", "F");
+
+    graph.createEdge("0", "2", 5);
+    graph.createEdge("2", "1", 2);
+    graph.createEdge("1", "0", 4);
+    graph.createEdge("1", "3", 7);
+    graph.createEdge("3", "4", 15);
+    graph.createEdge("4", "5", 10);
+    graph.createEdge("5", "3", 1);
+
+    std::cout << "\n\n================================================" << std::endl;
+    std::cout << "     ALGORITMO Strongly Connected Components" << std::endl;
+    std::cout << "================================================" << std::endl;
+    cout << "El Grafo de Ejemplo es el siguiente:" << endl;
+    graph.display();
+    cout << "\nAplicando el Algoritmo SSC:\n" << endl;
+    strongConnected<string, float> grafito(graph);
+
+    //DirectedGraph<string, float> grafes = grafito.apply("0");
+    //grafes.display();
+    grafito.apply();
+    std::cout << "\n================================================" << std::endl;
 }
 
 void testAirportParser() {

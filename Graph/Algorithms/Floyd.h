@@ -3,6 +3,7 @@
 
 #include "../DirectedGraph.h"
 #include "../UndirectedGraph.h"
+#include "../graph.h"
 using namespace std;
 
 #define INF 9999
@@ -14,9 +15,12 @@ template<typename TV, typename TE>
 class Floyd{ 
 private:
     DirectedGraph<TV, TE> floydVertexes;
+    UnDirectedGraph<TV, TE> UfloydVertexes;
+    bool isDirect;
 public:
 
-    Floyd(DirectedGraph<TV, TE> grafito):floydVertexes(grafito){}
+    Floyd(DirectedGraph<TV, TE> grafito):floydVertexes(grafito),isDirect(true){}
+    Floyd(UnDirectedGraph<TV, TE> grafito):UfloydVertexes(grafito),isDirect(false){}
 
     int** getArray(int size)
     {
@@ -40,7 +44,9 @@ public:
             for (j = 0; j < size; j++)
             {
                 if(VerifyAdj(i,j,temp))
+                {
                     arr[i][j] = weight(i,j,temp);
+                }
                 else
                     arr[i][j]=INF;
                 if(i==j)
@@ -52,25 +58,23 @@ public:
 
         return arr;
     }
-
-    Vertex<TV, TE>* returnVertex(TV data)
-    {
-        for(auto itr:this->floydVertexes.vertexes)
-        {
-            if(itr.second->data==data)
-                return itr.second;
-        }
-    }
     
     bool VerifyAdj(int i, int j,unordered_map<int, TV> temp)
     {
         TV data1 = temp[i];
         TV data2 = temp[j];
-        Vertex<TV, TE>* dataVertex1 = returnVertex(data1);
+        Vertex<TV, TE>* dataVertex1;
+        if(isDirect)
+            dataVertex1= floydVertexes.returnVertex(data1);
+        else{
+            dataVertex1= UfloydVertexes.returnVertex(data1);
+        }
         for(auto itr:dataVertex1->edges)
         {
             if(itr->vertexes[1]->data == data2)
+            {
                 return true;
+            }
         }
         return false;
     }
@@ -79,7 +83,11 @@ public:
     {
         TV data1 = temp[i];
         TV data2 = temp[j];
-        Vertex<TV, TE>* dataVertex1 = returnVertex(data1);
+        Vertex<TV, TE>* dataVertex1;
+        if(isDirect)
+            dataVertex1= floydVertexes.returnVertex(data1);
+        else
+            dataVertex1= UfloydVertexes.returnVertex(data1);
         for(auto itr:dataVertex1->edges)
         {
             if(itr->vertexes[1]->data == data2)
@@ -90,11 +98,19 @@ public:
     int** apply()
     {
         unordered_map<int, TV> temp;
-        int size = floydVertexes.sizeGraph();
+        int size;
+        if(isDirect)
+            size = floydVertexes.sizeGraph();
+        else
+            size = UfloydVertexes.sizeGraph();
         int** matrix;
 
-        for(auto itr:this->floydVertexes.vertexes)
-            temp[stoi(itr.second->data)-1] = itr.second->data;
+        if(isDirect)
+            for(auto itr:this->floydVertexes.vertexes)
+                temp[stoi(itr.second->data)-1] = itr.second->data;
+        else
+            for(auto itr:this->UfloydVertexes.vertexes)
+                temp[stoi(itr.second->data)-1] = itr.second->data;
 
         matrix = InsertElements(size,temp);
 

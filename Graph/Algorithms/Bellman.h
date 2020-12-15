@@ -24,28 +24,18 @@ template<typename TV, typename TE>
 class Bellman{ 
 private:
     DirectedGraph<TV, TE> DbellmanVertexes;
-    UnDirectedGraph<TV, TE> UbellmanVertexes;
-    bool isDirected;
 
 public:
-    Bellman(DirectedGraph<TV, TE> grafito):DbellmanVertexes(grafito),isDirected(true){}
-    Bellman(UnDirectedGraph<TV, TE> grafito):UbellmanVertexes(grafito),isDirected(false){}
+    Bellman(DirectedGraph<TV, TE> grafito):DbellmanVertexes(grafito){}
 
     unordered_map<int,TE> apply(TV start)
     {
 
         int sizeVertex;
         int sizeEdge;
-        if(isDirected)
-        {
-            sizeVertex = DbellmanVertexes.sizeGraph();
-            sizeEdge = DbellmanVertexes.sizeEdges();
-        }
-        else
-        {
-            sizeVertex = UbellmanVertexes.sizeGraph();
-            sizeEdge = UbellmanVertexes.sizeEdges();
-        }
+        sizeVertex = DbellmanVertexes.sizeGraph();
+        sizeEdge = DbellmanVertexes.sizeEdges();
+
         unordered_map<int,TE> weight;
         struct EdgeSupport<TV,TE>* edge = new EdgeSupport<TV,TE>[sizeEdge];
 
@@ -80,33 +70,16 @@ private:
 
     void structSupport(EdgeSupport<TV,TE>* &edge)
     {
+        
         int count=0;
-        if(isDirected)
+        for(auto itr:this->DbellmanVertexes.vertexes)
         {
-            for(auto itr:this->DbellmanVertexes.vertexes)
+            for(auto it:itr.second->edges)
             {
-                list<Edge<TV, TE>*> edge_temp= itr.second->edges;
-                for(auto it:edge_temp)
-                {
-                    edge[count].start = stoi(it->vertexes[0]->data);
-                    edge[count].end = stoi(it->vertexes[1]->data);
-                    edge[count].peso =  it->weight;
-                    ++count;
-                }
-            }
-        }
-        else
-        {
-            for(auto itr:this->UbellmanVertexes.vertexes)
-            {
-                list<Edge<TV, TE>*> edge_temp= itr.second->edges;
-                for(auto it:edge_temp)
-                {
-                    edge[count].start = stoi(it->vertexes[0]->data);
-                    edge[count].end = stoi(it->vertexes[1]->data);
-                    edge[count].peso =  it->weight;
-                    ++count;
-                }
+                edge[count].start = stoi(it->vertexes[0]->data);
+                edge[count].end = stoi(it->vertexes[1]->data);
+                edge[count].peso =  it->weight;
+                ++count;
             }
         }
         

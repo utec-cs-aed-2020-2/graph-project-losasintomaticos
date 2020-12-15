@@ -13,7 +13,6 @@ private:
     TV inicio;
 
 public:
-    //Prim():{}
 
     Prim(UnDirectedGraph<TV, TE> grafito,TV dato):prim_vertexes(grafito),inicio(dato){}
 

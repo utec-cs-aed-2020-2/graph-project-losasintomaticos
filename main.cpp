@@ -60,7 +60,26 @@ int main(int argc, char *argv[]) {
         else if(option_graph==5)
             testKruskalGraph();
         else if(option_graph==6)
-            testFloydGraph();
+        {
+            cout << "Escoga una opcion: " << endl;
+            cout << "1. Floyd Dirigido" << endl;
+            cout << "2. Floyd No Dirigido"<<endl;
+            cout << "\nOpcion => ";
+            cin >> option2;
+            while(option2>2 || option2<1)
+            {
+                cout<<"\nOpcion incorrecta, por favor digita una correcta opcion";
+                cout<<"\nOpcion => ";
+                cin>>option2;
+            }
+            std::cout << "\n================================================" << std::endl;
+            if (option2==1){
+                DtestFloydGraph();
+            }
+            else if(option2==2){
+                UtestFloydGraph();
+            }
+        }
         else if(option_graph==7)
             testBellmanGraph();
         else if (option_graph==8){
