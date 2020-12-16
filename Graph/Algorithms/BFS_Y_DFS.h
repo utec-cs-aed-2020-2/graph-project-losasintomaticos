@@ -18,7 +18,7 @@ class DFSSearch;
 /*****************************************/
 
 template<typename TV, typename TE>
-class BFSSearch : public Graph<TV, TE>{
+class BFSSearch{
 private:
     DirectedGraph<TV, TE> bGraphSearch;
     UnDirectedGraph<TV, TE> undirectBFS;
@@ -97,7 +97,7 @@ public:
 
 
 template<typename TV, typename TE>
-class DFSSearch : public Graph<TV, TE>{
+class DFSSearch{
 private:
     DirectedGraph<TV, TE> dGraphSearch;
     UnDirectedGraph<TV,TE> undirectDFS;

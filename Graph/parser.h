@@ -42,12 +42,11 @@ struct Node{
 };
 
 template<typename TV, typename TE>
-class AirportParser : public Graph<TV, TE> {
+class AirportParser{
 private:
     unordered_map<string, Node<TV,TE>*> map_general;
 
 public:
-    AirportParser(): Graph<TV, TE>(){}
     ~AirportParser()= default;
 
 

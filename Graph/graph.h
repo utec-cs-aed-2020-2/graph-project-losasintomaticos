@@ -81,7 +81,7 @@ public:
         vertexes[id] = temp;
     }
 
-    bool createEdge(string id1, string id2, TE w);
+    virtual bool createEdge(string id1, string id2, TE w) = 0 ; 
 
     bool deleteVertex(string id)
     {   
@@ -110,7 +110,7 @@ public:
             return false;
     }
 
-    bool deleteEdge(string start, string end);
+    virtual bool deleteEdge(string start, string end) = 0;
 
     TE &operator()(string start, string end)
     {
@@ -136,9 +136,9 @@ public:
         }
     }
 
-    float density();
+    virtual float density() = 0;
 
-    bool isDense(float threshold = 0.5);
+    virtual bool isDense(float threshold = 0.5) = 0;
     bool isConnected()
     {
         unordered_map<string,int> visited;
@@ -166,7 +166,7 @@ public:
         return true;
     }
 
-    bool isStronglyConnected() throw();
+    virtual bool isStronglyConnected() throw() = 0;
     bool empty()
     {
         return (vertexes.empty()? 1:0);
@@ -191,7 +191,7 @@ public:
         return false;
     }
 
-    void display();
+    virtual void display() = 0;
 
     /************************FUNCIONES DE APOYO************************/
 

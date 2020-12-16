@@ -7,7 +7,7 @@
 using namespace std;
 
 template<typename TV, typename TE>
-class Dijsktra:public Graph<TV, TE>{
+class Dijsktra{
 
 private:
     DirectedGraph<TV, TE> dDij_vertexes;

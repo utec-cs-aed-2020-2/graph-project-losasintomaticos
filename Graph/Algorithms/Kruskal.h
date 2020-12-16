@@ -68,17 +68,6 @@ public:
 
     Kruskal(UnDirectedGraph<TV, TE> grafito):kruskal_vertexes(grafito){}
 
-    string id_min(TV min)
-    {
-        for(auto p:this->kruskal_vertexes.vertexes)
-        {
-            if(p.second->data==min)
-            {
-                return p.first;
-            }
-        }
-    }
-
     DirectedGraph<string, float> apply()
     {
         DirectedGraph<string, float> kruskal;
@@ -127,9 +116,9 @@ public:
             { 
                 TV father = ds.merge(set_u, set_v); 
                 if(father!=set_u)  
-                    kruskal.createEdge(id_min(set_u),id_min(set_v),1); 
+                    kruskal.createEdge(kruskal_vertexes.returnID(set_u),kruskal_vertexes.returnID(set_v),1); 
                 else
-                    kruskal.createEdge(id_min(set_v),id_min(set_u),1); 
+                    kruskal.createEdge(kruskal_vertexes.returnID(set_v),kruskal_vertexes.returnID(set_u),1); 
             } 
         }
         edges.clear();

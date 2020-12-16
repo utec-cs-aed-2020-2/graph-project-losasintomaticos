@@ -680,7 +680,7 @@ void testSSCGraph(){
     graph.createEdge("1", "3", 7);
     graph.createEdge("3", "4", 15);
     graph.createEdge("4", "5", 10);
-    graph.createEdge("5", "3", 1);
+    graph.createEdge("5", "3", 1);  
 
     std::cout << "\n\n================================================" << std::endl;
     std::cout << "     ALGORITMO Strongly Connected Components" << std::endl;
