@@ -702,17 +702,37 @@ void testAirportParser() {
     cout << "Elija la opcion para que sea un grafo dirigido o no dirigido a base de un archivo JSON: " << endl;
     cout << "1. Grafo no dirigido a base  aeropuertos del Peru" << endl;
     cout << "2. Grafo dirigido a base de aeropuertos del Peru" << endl;
+    cout << "3. Grafo dirigido de aeropuertos del Peru usando Dijkstra" << endl;
+    cout << "4. Grafo dirigido de aeropuertos del Peru usando Depth First Search" << endl;
+    cout << "5. Grafo dirigido de aeropuertos del Peru usando Breath First Search" << endl;
     cout << "\nOpcion => ";
     cin >> opcion;
-    if (opcion == 1){
+    if (opcion == 1) {
         UnDirectedGraph<string, float> undirectedjson;
         graph_parse.uGraphMake(undirectedjson);
         undirectedjson.display();
-    }
-    else if(opcion == 2){
+    } else if (opcion == 2) {
         DirectedGraph<string, float> directedjson;
         graph_parse.dGraphMake(directedjson);
         directedjson.display();
+    } else if (opcion == 3) {
+        DirectedGraph<string, float> dijkstrajson;
+        graph_parse.dGraphMake(dijkstrajson);
+        Dijsktra<string, float> grafito(dijkstrajson);
+        DirectedGraph<string, float> dijkstra = grafito.applyD("Jorge Chavez Intl");
+        dijkstra.display();
+    } else if (opcion == 4) {
+        DirectedGraph<string, float> DFSparser;
+        graph_parse.dGraphMake(DFSparser);
+        DFSSearch<string, float> grafito(DFSparser);
+        DirectedGraph<string, float> DFS = grafito.dDFS("Juliaca");
+        DFS.display();
+    } else if (opcion == 5) {
+        DirectedGraph<string, float> BFSparser;
+        graph_parse.dGraphMake(BFSparser);
+        BFSSearch<string, float> grafito(BFSparser);
+        DirectedGraph<string, float> BFS = grafito.dBFS("Pedro Canga");
+        BFS.display();
     }
 }
 
