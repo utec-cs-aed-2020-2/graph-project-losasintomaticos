@@ -16,7 +16,12 @@ mediante ejemplos específicos para cada algoritmo. Algunos muestran sus variant
 * Se debe implementar los dos tipos de grafos: dirigidos y no-dirigidos.
 * No considerar loops ni multi-arista. 
 
+## Cambios realizados para la entrega final
 
+Se agregaron ejemplos de testeo del parser con tres algoritmos dirigidos. El DFS, el BFS y el Dijkstra son los algoritmos aplicados con el grafo
+de aeropuertos para mostrar el dinamismo del Parser. Ademas, se cambiaron las funciones de graph a virtual debido al feedback recibido en la presentacion.
+
+(Nota: el parser muestra doble los aeropuertos conectados solo para el grafo no dirigido)
 ### Methods:
 ```cpp
 bool insertVertex(string id, V data); // Creates a new vertex in the graph with some data and an ID

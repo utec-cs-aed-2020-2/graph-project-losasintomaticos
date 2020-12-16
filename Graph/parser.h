@@ -99,11 +99,21 @@ public:
             cout << "\n";
             tempGraph.insertVertex(p.first, p.second -> Nombre);
         }
+        unordered_map<string,unordered_map<string,int>> visited;
+        for(auto itr:map_general)
+        {
+            vector<string> temp = itr.second -> Adyacentes;
+            for (auto i:itr.second->euclid_sucio)
+                visited[itr.second->Nombre][i.first]=false;
+        }
 
         for (auto p:map_general){
-            auto temp = p.second -> euclid_sucio;
+            auto temp = p.second-> euclid_sucio;
             for (auto itr:temp){
-                tempGraph.createEdge(p.first, itr.first, itr.second);
+                if(!visited[p.second->Nombre][itr.first]){
+                    visited[itr.first][p.second->Nombre]=true;
+                    tempGraph.createEdge(p.first, itr.first, itr.second);
+                }
             }
         }
     }
@@ -147,25 +157,14 @@ public:
     }
 
     void euclidNoDirect(unordered_map<string, Node<TV,TE>*> map_general){
-        unordered_map<string,unordered_map<string,int>> visited;
-        for(auto itr:map_general)
-        {
-            vector<string> temp = itr.second -> Adyacentes;
-            for (auto i = temp.begin(); i != temp.end() ; ++i)
-                visited[itr.second->Nombre][*i]=false;
-        }
 
         for (auto p:map_general) {
             vector<string> temp = p.second -> Adyacentes;
             for (auto i = temp.begin(); i != temp.end() ; ++i) {
-                if(!visited[p.second->Nombre][*i])
-                {
-                    float la2 = get_la(*i);
-                    float lo2 = get_lo(*i);
-                    float euclid = sqrt(powf((la2 - p.second -> Latitud), 2) + powf((lo2 - p.second -> Longitud),2));
-                    p.second -> euclid_sucio[*i] = euclid;
-                    visited[*i][p.second->Nombre]=true;
-                }
+                float la2 = get_la(*i);
+                float lo2 = get_lo(*i);
+                float euclid = sqrt(powf((la2 - p.second -> Latitud), 2) + powf((lo2 - p.second -> Longitud),2));
+                p.second -> euclid_sucio[*i] = euclid;
             }
         }
     }
