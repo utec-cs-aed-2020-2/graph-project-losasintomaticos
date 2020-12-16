@@ -55,7 +55,7 @@ public:
     Document peru_doc{};
     StringBuffer buffer{};
 
-    void readJSON() {
+    void readJSON(bool isDirect) {
         if (!peru_parse.is_open()) {
             cerr << "No se puede leer el archivo seleccionado";
             return;
@@ -80,16 +80,19 @@ public:
             auto *temp = new Node<TV, TE>(temp_nombre, Longitud, Latitud, Adyacentes);
             map_general[temp_id] = temp;
         }
-        euclid(map_general);
-    };// Parser JSON file and saves data into class
+        if(isDirect)
+            euclidDirect(map_general);
+        else
+            euclidNoDirect(map_general);
+    };
 
     void clear_parser() {
         peru_doc.Swap(Value(kObjectType).Move());
         cout << "Archivo despejado exitosamente!" << endl;
-    } //Clears parser saved values
+    }
 
     void uGraphMake(UnDirectedGraph<string, TE> &tempGraph) {
-        readJSON();
+        readJSON(false);
         cout << "Los aeropuertos son los siguientes: \n" << endl;
         for (auto p:map_general) {
             cout << " - " << p.second -> Nombre << endl;
@@ -106,7 +109,7 @@ public:
     }
 
     void dGraphMake(DirectedGraph<string, TE> &tempGraph) {
-        readJSON();
+        readJSON(true);
         cout << "Los aeropuertos son los siguientes: \n" << endl;
         for (auto p:map_general) {
             cout << " - " << p.second -> Nombre << endl;
@@ -131,7 +134,7 @@ public:
         return temp_id;
     }
 
-    void euclid(unordered_map<string, Node<TV,TE>*> map_general){
+    void euclidDirect(unordered_map<string, Node<TV,TE>*> map_general){
         for (auto p:map_general) {
             vector<string> temp = p.second -> Adyacentes;
             for (auto i = temp.begin(); i != temp.end() ; ++i) {
@@ -142,6 +145,32 @@ public:
             }
         }
     }
+
+    void euclidNoDirect(unordered_map<string, Node<TV,TE>*> map_general){
+        unordered_map<string,unordered_map<string,int>> visited;
+        for(auto itr:map_general)
+        {
+            vector<string> temp = itr.second -> Adyacentes;
+            for (auto i = temp.begin(); i != temp.end() ; ++i)
+                visited[itr.second->Nombre][*i]=false;
+        }
+
+        for (auto p:map_general) {
+            vector<string> temp = p.second -> Adyacentes;
+            for (auto i = temp.begin(); i != temp.end() ; ++i) {
+                if(!visited[p.second->Nombre][*i])
+                {
+                    float la2 = get_la(*i);
+                    float lo2 = get_lo(*i);
+                    float euclid = sqrt(powf((la2 - p.second -> Latitud), 2) + powf((lo2 - p.second -> Longitud),2));
+                    p.second -> euclid_sucio[*i] = euclid;
+                    visited[*i][p.second->Nombre]=true;
+                }
+            }
+        }
+    }
+
+
 
     float get_la(string id){
         auto *temp = map_general[id];
